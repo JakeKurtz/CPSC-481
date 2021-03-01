@@ -20,30 +20,29 @@ namespace CPSC_481
     /// </summary>
     public partial class MainWindow : Window
     {
+	public MainWindow() 
+	{
+		InitializeComponent();
 
-        public MainWindow()
-        {
-            InitializeComponent();
+		List<Item> orderCurrent = new List<Item>();
+		List<Item> orderHistory = new List<Item>();
 
-			List<Item> orderCurrent = new List<Item>();
-			List<Item> orderHistory = new List<Item>();
+		List<Addon> _Addons = new List<Addon>();
 
-			List<Addon> _Addons = new List<Addon>();
+		_Addons.Add(new Addon() { Name = "addon_0", Cost = 0.50f, Quantity = 1 });
+		_Addons.Add(new Addon() { Name = "addon_1", Cost = 1.49f, Quantity = 1 });
 
-			_Addons.Add(new Addon() { Name = "addon_0", Cost = 0.50f, Quantity = 1 });
-			_Addons.Add(new Addon() { Name = "addon_1", Cost = 1.49f, Quantity = 1 });
+		orderCurrent.Add(new Item()  {Main = "main_0", Addons = _Addons, Cost = 1.99f, Quantity = 1 });
+		orderCurrent.Add(new Item() { Main = "main_1", Addons = _Addons, Cost = 1.99f, Quantity = 1 });
 
-			orderCurrent.Add(new Item()  {Main = "main_0", Addons = _Addons, Cost = 1.99f, Quantity = 1 });
-			orderCurrent.Add(new Item() { Main = "main_1", Addons = _Addons, Cost = 1.99f, Quantity = 1 });
+		orderHistory.Add(new Item() { Main = "main_2", Addons = _Addons, Cost = 1.99f, Quantity = 1 });
+		orderHistory.Add(new Item() { Main = "main_3", Addons = _Addons, Cost = 1.99f, Quantity = 1 });
 
-			orderHistory.Add(new Item() { Main = "main_2", Addons = _Addons, Cost = 1.99f, Quantity = 1 });
-			orderHistory.Add(new Item() { Main = "main_3", Addons = _Addons, Cost = 1.99f, Quantity = 1 });
-
-			List<Order> orders = new List<Order>();
-			orders.Add(new Order() { Name = "Current Order", Items = orderCurrent });
-			orders.Add(new Order() { Name = "Order History", Items = orderHistory });
-			orderList.ItemsSource = orders;
-		}
+		List<Order> orders = new List<Order>();
+		orders.Add(new Order() { Name = "Current Order", Items = orderCurrent });
+		orders.Add(new Order() { Name = "Order History", Items = orderHistory });
+		orderList.ItemsSource = orders;
+	}
     }
 }
 
