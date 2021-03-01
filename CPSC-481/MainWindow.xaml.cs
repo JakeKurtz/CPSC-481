@@ -28,11 +28,16 @@ namespace CPSC_481
 			List<Item> orderCurrent = new List<Item>();
 			List<Item> orderHistory = new List<Item>();
 
-			orderCurrent.Add(new Item()  {Main = "Main 1", Side = "side 1", Cost = 1.99f, Quantity = 1 });
-			orderCurrent.Add(new Item() { Main = "Main 2", Side = "side 2", Cost = 2.99f, Quantity = 1 });
+			List<Addon> _Addons = new List<Addon>();
 
-			orderHistory.Add(new Item() { Main = "Main 3", Side = "side 4", Cost = 3.99f, Quantity = 1 });
-			orderHistory.Add(new Item() { Main = "Main 4", Side = "side 4", Cost = 4.99f, Quantity = 1 });
+			_Addons.Add(new Addon() { Name = "addon_0", Cost = 0.50f, Quantity = 1 });
+			_Addons.Add(new Addon() { Name = "addon_1", Cost = 1.49f, Quantity = 1 });
+
+			orderCurrent.Add(new Item()  {Main = "main_0", Addons = _Addons, Cost = 1.99f, Quantity = 1 });
+			orderCurrent.Add(new Item() { Main = "main_1", Addons = _Addons, Cost = 1.99f, Quantity = 1 });
+
+			orderHistory.Add(new Item() { Main = "main_2", Addons = _Addons, Cost = 1.99f, Quantity = 1 });
+			orderHistory.Add(new Item() { Main = "main_3", Addons = _Addons, Cost = 1.99f, Quantity = 1 });
 
 			List<Order> orders = new List<Order>();
 			orders.Add(new Order() { Name = "Current Order", Items = orderCurrent });
@@ -42,14 +47,20 @@ namespace CPSC_481
     }
 }
 
-public class Item
+public class Addon
 {
-	public string Main { get; set; }
-	public string Side { get; set; }
+	public string Name { get; set; }
 	public float Cost { get; set; }
 	public int Quantity { get; set; }
 }
 
+public class Item
+{
+	public string Main { get; set; }
+	public List<Addon> Addons { get; set; }
+	public float Cost { get; set; }
+	public int Quantity { get; set; }
+}
 public class Order
 {
 	public string Name { get; set; }

@@ -52,15 +52,52 @@
             </Button>
         </Grid>
 
-        <ListView Name="orderList" ItemsSource="{Binding ParentItems}" >
+         <!--> Orders <-->
+        <ListView Name="orderList" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Expander Header="{Binding Name}" Style="{DynamicResource MaterialDesignExpander}" Width="332">
+                        <!--> Items <-->
                         <ListView ItemsSource="{Binding Items}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <Expander Header="{Binding Main}" Style="{DynamicResource MaterialDesignExpander}"  Width="313">
-                                        <TextBlock TextWrapping="Wrap" Text="{Binding Side}" />
+                                    <Expander Style="{DynamicResource MaterialDesignExpander}"  Width="313">
+                                        <!--> Item header text format <-->
+                                        <Expander.Header>
+                                            <TextBlock>
+                                                <TextBlock.Text>
+                                                    <!--> Hard coded for now. Probably a way to generate the string format dynamically <-->
+                                                    <!--> Find a way to stylize so there won't be a need for repeated code <-->
+                                                    <MultiBinding StringFormat="{}{0}    {1}                                           {2}">
+                                                        <Binding Path="Quantity"/>
+                                                        <Binding Path="Main"/>
+                                                        <Binding Path="Cost"/>
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                            </TextBlock>
+                                        </Expander.Header>
+                                        <!--> Addons <-->
+                                        <ListView ItemsSource="{Binding Addons}">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <BulletDecorator>
+                                                        <BulletDecorator.Bullet>
+                                                            <Ellipse Height="10" Width="10" Fill="Black"/>
+                                                        </BulletDecorator.Bullet>
+                                                        <!--> Addon text format <-->
+                                                        <TextBlock>
+                                                            <TextBlock.Text>
+                                                                <MultiBinding StringFormat="{}{0} {1}                                                {2}">
+                                                                    <Binding Path="Quantity"/>
+                                                                    <Binding Path="Name"/>
+                                                                    <Binding Path="Cost"/>
+                                                                </MultiBinding>
+                                                            </TextBlock.Text>
+                                                        </TextBlock>
+                                                    </BulletDecorator>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
                                     </Expander>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
@@ -69,7 +106,5 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
     </Grid>
 </Window>
-    
