@@ -14,12 +14,16 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
+    <Window.Resources>
+        <local:StateColorSelector x:Key="StateColorSelector"/>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="544*" />
             <RowDefinition Height="65*" />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="1">
+        <!-- Menu Buttons -->
+        <Grid Grid.Row="1" Background="White">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
@@ -51,11 +55,12 @@
                 </StackPanel>
             </Button>
         </Grid>
-        <Canvas Background="LightGray" Grid.Row="0"/>
+        <Canvas Background="WhiteSmoke" Grid.Row="0"/>
         <!--> Orders <-->
         <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Hidden">
             <StackPanel>
-                <Expander Style="{DynamicResource MaterialDesignExpander}" Width="333" Background="WhiteSmoke">
+                <!-- Current Order -->
+                <Expander Width="333" Background="WhiteSmoke">
                     <Expander.Header>
                         <TextBlock Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Text="Current Order"/>
                     </Expander.Header>
@@ -66,10 +71,10 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <ListView Name="_orderCurrent" Grid.Row="0">
+                        <ListView Name="_orderCurrent">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <Expander Style="{DynamicResource MaterialDesignExpander}" Width="310" Margin="0,-8,0,0" Background="WhiteSmoke">
+                                    <Expander Width="310" Margin="0,-8,0,0" Background="WhiteSmoke">
                                         <!--> Item header text format <-->
                                         <Expander.Header>
                                             <Grid>
@@ -80,14 +85,14 @@
                                                 </Grid.ColumnDefinitions>
                                                 <TextBlock FontWeight="Bold" Text="{Binding Quantity}" Grid.Column="0"/>
                                                 <StackPanel Grid.Column="1">
-                                                    <TextBlock FontWeight="Bold" Text="{Binding Name}"/>
-                                                    <TextBlock Text="{Binding Options}"/>
+                                                    <TextBlock FontWeight="Bold" Text="{Binding Name}" TextWrapping="WrapWithOverflow"/>
+                                                    <TextBlock Text="{Binding Options}" TextWrapping="WrapWithOverflow"/>
                                                 </StackPanel>
                                                 <TextBlock FontWeight="Bold" Text="{Binding Cost, StringFormat={}${0}}" Grid.Column="2"/>
                                             </Grid>
                                         </Expander.Header>
                                         <!--> Addons <-->
-                                        <ListView ItemsSource="{Binding Addons}" Margin="20,0,0,0" IsHitTestVisible="False">
+                                        <ListView ItemsSource="{Binding Addons}" Margin="20,-10,0,0" IsHitTestVisible="False">
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
                                                     <BulletDecorator>
@@ -101,7 +106,7 @@
                                                                 <ColumnDefinition Width="156" />
                                                                 <ColumnDefinition Width="Auto" />
                                                             </Grid.ColumnDefinitions>
-                                                            <TextBlock Text="{Binding Quantity, StringFormat={}  {0}}" Grid.Column="0"/>
+                                                            <TextBlock Text="{Binding Quantity, StringFormat={}   {0}}" Grid.Column="0"/>
                                                             <TextBlock Text="{Binding Name}" Grid.Column="1"/>
                                                             <TextBlock Text="{Binding Cost, StringFormat={}${0}}" Grid.Column="2"/>
                                                         </Grid>
@@ -144,102 +149,111 @@
                         </Button>
                     </Grid>
                 </Expander>
-
-                <Expander Style="{DynamicResource MaterialDesignExpander}" Width="332" Background="WhiteSmoke">
+                <!-- Order History -->
+                <Expander Width="333" Background="WhiteSmoke">
                     <Expander.Header>
                         <TextBlock Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Text="Order History"/>
                     </Expander.Header>
                     <!--> Items <-->
-                    <Grid>
+                    <Grid Background="WhiteSmoke">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <ListView Name="_orderHistory" Grid.Row="0">
+                        <ListView Name="_orderHistory" Width="342" Grid.Row="0">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <Expander Style="{DynamicResource MaterialDesignExpander}" Width="310" Margin="0,-8,0,0" Background="WhiteSmoke">
-                                        <!--> Item header text format <-->
-                                        <Expander.Header>
-                                            <Grid>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="20" />
-                                                    <ColumnDefinition Width="165" />
-                                                    <ColumnDefinition Width="Auto" />
-                                                </Grid.ColumnDefinitions>
-                                                <TextBlock FontWeight="Bold" Text="{Binding Quantity}" Grid.Column="0"/>
-                                                <StackPanel Grid.Column="1">
-                                                    <TextBlock FontWeight="Bold" Text="{Binding Name}"/>
-                                                    <TextBlock Text="{Binding Options}"/>
-                                                </StackPanel>
-                                                <TextBlock FontWeight="Bold" Text="{Binding Cost, StringFormat={}${0}}" Grid.Column="2"/>
-                                            </Grid>
-                                        </Expander.Header>
-                                        <!--> Addons <-->
-                                        <StackPanel>
-                                            <ListView ItemsSource="{Binding Addons}" Margin="20,0,0,0" IsHitTestVisible="False">
-                                                <ListView.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <BulletDecorator>
-                                                            <BulletDecorator.Bullet>
-                                                                <Ellipse Height="5" Width="5" Fill="DarkGray"/>
-                                                            </BulletDecorator.Bullet>
-                                                            <!--> Addon text format <-->
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding State}" Margin="20,0,0,5" FontSize="16" FontWeight="Bold" Foreground="{Binding State, Converter={StaticResource StateColorSelector}}"/>
+                                        <TextBlock Text="{Binding Time}" Margin="20,0,0,5" FontSize="12"/>
+                                        <ListView ItemsSource="{Binding Items}">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Expander Width="310" Margin="0,-8,0,0" Background="WhiteSmoke">
+                                                        <!--> Item header text format <-->
+                                                        <Expander.Header>
                                                             <Grid>
                                                                 <Grid.ColumnDefinitions>
                                                                     <ColumnDefinition Width="20" />
-                                                                    <ColumnDefinition Width="156" />
+                                                                    <ColumnDefinition Width="165" />
                                                                     <ColumnDefinition Width="Auto" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <TextBlock Text="{Binding Quantity, StringFormat={}  {0}}" Grid.Column="0"/>
-                                                                <TextBlock Text="{Binding Name}" Grid.Column="1"/>
-                                                                <TextBlock Text="{Binding Cost, StringFormat={}${0}}" Grid.Column="2"/>
+                                                                <TextBlock FontWeight="Bold" Text="{Binding Quantity}" Grid.Column="0"/>
+                                                                <StackPanel Grid.Column="1">
+                                                                    <TextBlock FontWeight="Bold" Text="{Binding Name}" TextWrapping="WrapWithOverflow"/>
+                                                                    <TextBlock Text="{Binding Options}" TextWrapping="WrapWithOverflow"/>
+                                                                </StackPanel>
+                                                                <TextBlock FontWeight="Bold" Text="{Binding Cost, StringFormat={}${0}}" Grid.Column="2"/>
                                                             </Grid>
-                                                        </BulletDecorator>
-                                                    </DataTemplate>
-                                                </ListView.ItemTemplate>
-                                            </ListView>
-                                            <Button Style="{DynamicResource MaterialDesignRaisedDarkButton}" Height="Auto">
-                                                <StackPanel Orientation="Horizontal">
-                                                    <materialDesign:PackIcon Kind="RepeatVariant" Width="25" Height="25" HorizontalAlignment="Center"/>
-                                                    <TextBlock Margin="0,4,0,0">Reorder</TextBlock>
-                                                </StackPanel>
-                                            </Button>
-                                        </StackPanel>
-                                    </Expander>
+                                                        </Expander.Header>
+                                                        <!--> Addons <-->
+                                                        <StackPanel>
+                                                            <ListView ItemsSource="{Binding Addons}" Margin="20,-10,0,0" IsHitTestVisible="False">
+                                                                <ListView.ItemTemplate>
+                                                                    <DataTemplate>
+                                                                        <BulletDecorator>
+                                                                            <BulletDecorator.Bullet>
+                                                                                <Ellipse Height="5" Width="5" Fill="DarkGray"/>
+                                                                            </BulletDecorator.Bullet>
+                                                                            <!--> Addon text format <-->
+                                                                            <Grid>
+                                                                                <Grid.ColumnDefinitions>
+                                                                                    <ColumnDefinition Width="20" />
+                                                                                    <ColumnDefinition Width="156" />
+                                                                                    <ColumnDefinition Width="Auto" />
+                                                                                </Grid.ColumnDefinitions>
+                                                                                <TextBlock Text="{Binding Quantity, StringFormat={}   {0}}" Grid.Column="0"/>
+                                                                                <TextBlock Text="{Binding Name}" Grid.Column="1"/>
+                                                                                <TextBlock Text="{Binding Cost, StringFormat={}${0}}" Grid.Column="2"/>
+                                                                            </Grid>
+                                                                        </BulletDecorator>
+                                                                    </DataTemplate>
+                                                                </ListView.ItemTemplate>
+                                                            </ListView>
+                                                            <Button Style="{DynamicResource MaterialDesignRaisedDarkButton}" Height="Auto">
+                                                                <StackPanel Orientation="Horizontal">
+                                                                    <materialDesign:PackIcon Kind="RepeatVariant" Width="25" Height="25" HorizontalAlignment="Center"/>
+                                                                    <TextBlock Margin="0,4,0,0">Reorder</TextBlock>
+                                                                </StackPanel>
+                                                            </Button>
+                                                        </StackPanel>
+                                                    </Expander>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </StackPanel>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+                    <Grid Grid.Row="1" Background="Wheat"></Grid>
+                    <Grid Grid.Row="1" Margin="20,12,20,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="19" />
+                            <RowDefinition Height="23" />
+                            <RowDefinition Height="41" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="168*" />
+                            <ColumnDefinition Width="75*" />
+                        </Grid.ColumnDefinitions>
 
-                        <Grid Grid.Row="1" Background="Wheat"></Grid>
-                        <Grid Grid.Row="1" Margin="20,12,20,0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="19" />
-                                <RowDefinition Height="23" />
-                                <RowDefinition Height="41" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="168*" />
-                                <ColumnDefinition Width="75*" />
-                            </Grid.ColumnDefinitions>
+                        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock}" Grid.Row="0" Grid.Column="0">Subtotal</TextBlock>
+                        <TextBlock Grid.Row="0" Grid.Column="1">$79.4</TextBlock>
 
-                            <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock}" Grid.Row="0" Grid.Column="0">Subtotal</TextBlock>
-                            <TextBlock Grid.Row="0" Grid.Column="1">$41.00</TextBlock>
+                        <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock}" Grid.Row="1" Grid.Column="0">GST</TextBlock>
+                        <TextBlock Grid.Row="1" Grid.Column="1">$3.97</TextBlock>
 
-                            <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock}" Grid.Row="1" Grid.Column="0">GST</TextBlock>
-                            <TextBlock Grid.Row="1" Grid.Column="1">$2.05</TextBlock>
+                        <TextBlock FontWeight="Bold" Style="{DynamicResource MaterialDesignBody1TextBlock}" Grid.Row="2" Grid.Column="0">TOTAL</TextBlock>
+                        <TextBlock FontWeight="Bold" Style="{DynamicResource MaterialDesignBody1TextBlock}" Grid.Row="2" Grid.Column="1">$83.37</TextBlock>
+                    </Grid>
 
-                            <TextBlock FontWeight="Bold" Style="{DynamicResource MaterialDesignBody1TextBlock}" Grid.Row="2" Grid.Column="0">TOTAL</TextBlock>
-                            <TextBlock FontWeight="Bold" Style="{DynamicResource MaterialDesignBody1TextBlock}" Grid.Row="2" Grid.Column="1">$43.05</TextBlock>
-                        </Grid>
-
-                        <Button Style="{DynamicResource MaterialDesignFlatButton}" Grid.Row="2" Height="Auto" Padding="20" Background="WhiteSmoke"  HorizontalAlignment="Center" Margin="85,0,106,0" Width="161">
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="ScriptText" Width="35" Height="25"/>
-                                <TextBlock Margin="0,4,0,0" >  Request Bill</TextBlock>
-                            </StackPanel>
-                        </Button>
+                    <Button Style="{DynamicResource MaterialDesignFlatButton}" Grid.Row="2" Height="Auto" Padding="20" Background="WhiteSmoke" HorizontalAlignment="Center" >
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ScriptText" Width="35" Height="25"/>
+                            <TextBlock Margin="0,4,0,0" >Request Bill</TextBlock>
+                        </StackPanel>
+                    </Button>
                     </Grid>
                 </Expander>
             </StackPanel>
