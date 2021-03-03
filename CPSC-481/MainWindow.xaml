@@ -53,7 +53,7 @@
         </Grid>
         <Canvas Background="LightGray" Grid.Row="0"/>
         <!--> Orders <-->
-        <ScrollViewer Grid.Row="0">
+        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Hidden">
             <StackPanel>
                 <Expander Style="{DynamicResource MaterialDesignExpander}" Width="333" Background="WhiteSmoke">
                     <Expander.Header>
@@ -87,7 +87,7 @@
                                             </Grid>
                                         </Expander.Header>
                                         <!--> Addons <-->
-                                        <ListView ItemsSource="{Binding Addons}" Margin="20,0,0,0">
+                                        <ListView ItemsSource="{Binding Addons}" Margin="20,0,0,0" IsHitTestVisible="False">
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
                                                     <BulletDecorator>
@@ -114,8 +114,8 @@
                             </ListView.ItemTemplate>
                         </ListView>
 
-                        <Grid Grid.Row="1" Background="Wheat"></Grid>
-                        <Grid Grid.Row="1" Margin="20,20,20,0">
+                        <Grid Grid.Row="1" Background="Wheat"/>
+                        <Grid Grid.Row="1" Margin="20,12,20,0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="19" />
                                 <RowDefinition Height="23" />
@@ -136,7 +136,7 @@
                             <TextBlock FontWeight="Bold" Style="{DynamicResource MaterialDesignBody1TextBlock}" Grid.Row="2" Grid.Column="1">$104.48</TextBlock>
                         </Grid>
 
-                        <Button Style="{DynamicResource MaterialDesignFlatButton}" Grid.Row="2" Height="Auto" Padding="15" Background="WhiteSmoke" HorizontalAlignment="Center" Margin="68,0,94,0" Width="190">
+                        <Button Style="{DynamicResource MaterialDesignFlatButton}" Grid.Row="2" Height="Auto" Padding="20" Background="WhiteSmoke" HorizontalAlignment="Center" Margin="68,0,94,0" Width="190">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="ArrowRightBold" Width="35" Height="25"/>
                                 <TextBlock Margin="0,4,0,0" >Send to Kitchen</TextBlock>
@@ -178,7 +178,7 @@
                                         </Expander.Header>
                                         <!--> Addons <-->
                                         <StackPanel>
-                                            <ListView ItemsSource="{Binding Addons}" Margin="20,0,0,0">
+                                            <ListView ItemsSource="{Binding Addons}" Margin="20,0,0,0" IsHitTestVisible="False">
                                                 <ListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <BulletDecorator>
@@ -213,7 +213,7 @@
                         </ListView>
 
                         <Grid Grid.Row="1" Background="Wheat"></Grid>
-                        <Grid Grid.Row="1" Margin="20,20,20,0">
+                        <Grid Grid.Row="1" Margin="20,12,20,0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="19" />
                                 <RowDefinition Height="23" />
@@ -234,7 +234,7 @@
                             <TextBlock FontWeight="Bold" Style="{DynamicResource MaterialDesignBody1TextBlock}" Grid.Row="2" Grid.Column="1">$43.05</TextBlock>
                         </Grid>
 
-                        <Button Style="{DynamicResource MaterialDesignFlatButton}" Grid.Row="2" Height="Auto" Padding="15" Background="WhiteSmoke"  HorizontalAlignment="Center" Margin="85,0,106,0" Width="161">
+                        <Button Style="{DynamicResource MaterialDesignFlatButton}" Grid.Row="2" Height="Auto" Padding="20" Background="WhiteSmoke"  HorizontalAlignment="Center" Margin="85,0,106,0" Width="161">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="ScriptText" Width="35" Height="25"/>
                                 <TextBlock Margin="0,4,0,0" >  Request Bill</TextBlock>
