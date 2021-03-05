@@ -96,7 +96,7 @@
                                         <ListView ItemsSource="{Binding Options}">
                                             <ListView.ItemTemplate>
                                                 <DataTemplate>
-                                                    <TextBlock Text="{Binding}" Margin="20,0,0,0"/>
+                                                    <RadioButton GroupName="{Binding RelativeSource={RelativeSource AncestorType=Expander}}" Content="{Binding}" Style="{DynamicResource MaterialDesignDarkRadioButton}"/>
                                                 </DataTemplate>
                                             </ListView.ItemTemplate>
                                         </ListView>
@@ -113,7 +113,22 @@
                         <ListView Name="_itemAddons">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="180"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Grid.Column="0" Text="{Binding Name}" Style="{DynamicResource MaterialDesignSubtitle2TextBlock}" FontSize="16" VerticalAlignment="Center"/>
+                                        <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                            <Button Style="{DynamicResource MaterialDesignToolForegroundButton}" Width="30" Height="30" Margin="0,0,5,0">
+                                                <materialDesign:PackIcon Kind="PlusCircleOutline" Width="20" Height="20"/>
+                                            </Button>
+                                            <TextBlock Text="0" VerticalAlignment="Center"/>
+                                            <Button Style="{DynamicResource MaterialDesignToolForegroundButton}"  Width="30" Height="30" Margin="5,0,0,0">
+                                                <materialDesign:PackIcon Kind="MinusCircleOutline" Width="20" Height="20"/>
+                                            </Button>
+                                        </StackPanel>
+                                    </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
@@ -123,7 +138,7 @@
                 <Border Grid.Row="3">
                     <StackPanel>
                         <TextBlock Style="{DynamicResource MaterialDesignSubtitle2TextBlock}" Margin="0,0,0,5" FontWeight="Bold" Text="Special Requests"/>
-                        <TextBox TextWrapping="Wrap" Height="125" Background="WhiteSmoke"/>
+                        <TextBox TextWrapping="Wrap" Height="125" BorderThickness="1"/>
                         <TextBlock Style="{DynamicResource MaterialDesignSubtitle2TextBlock}" FontSize="11" Foreground="Maroon" Margin="0,5,0,0" TextWrapping="Wrap" TextAlignment="Center">
                             * This section is for cooking and preparation instructions (like 'well-done'), 
                             it is not for adding toppings or sides to your order (like 'extra cheese')"
@@ -135,7 +150,7 @@
                     <Button Height="Auto" Padding="10" Width="150">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Plus" Width="25" Height="25"/>
-                            <TextBlock Text="Add to Order" Margin="4,4,0,0"/>
+                            <TextBlock Text="Add to Order" VerticalAlignment="Center"/>
                         </StackPanel>
                     </Button>
                 </Border>
