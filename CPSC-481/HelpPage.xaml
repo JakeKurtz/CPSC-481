@@ -17,6 +17,10 @@
         FontFamily="{DynamicResource MaterialDesignFont}">
     <Window.Resources>
         <local:StateColorSelector x:Key="StateColorSelector"/>
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -84,6 +88,17 @@
                 <Expander.Header>
                     <TextBlock Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Text="CONTACT SERVER"/>
                 </Expander.Header>
+                <StackPanel>
+                    <TextBlock Name ="csIntro" TextWrapping="Wrap" Margin="43,30,0,0">
+                        <Bold>Optional: </Bold> add a message with your request.
+                    </TextBlock>
+
+                    <TextBox Name ="csInput"  Margin="25, 0" TextWrapping="Wrap" MinHeight="150" MaxHeight="150" MinWidth="250" MaxWidth="250" BorderThickness="1"/>
+                     
+                    <Button Width="200" Margin="20" Background="DarkGray" BorderBrush="LightGray" TextElement.Foreground="{DynamicResource MaterialDesignBody}"> REQUEST SERVER</Button>
+
+                </StackPanel>
+                
             </Expander>
         </StackPanel>
     </Grid>
