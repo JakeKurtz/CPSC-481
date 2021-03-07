@@ -52,7 +52,7 @@
             </Button>
         </Grid>
 
-         <!--> Orders <-->
+        <!--> Orders <-->
         <ListView Name="orderList" >
             <ListView.ItemTemplate>
                 <DataTemplate>
