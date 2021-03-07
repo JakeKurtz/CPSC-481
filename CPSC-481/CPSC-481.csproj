@@ -55,10 +55,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ItemAddedWindow.xaml.cs">
+      <DependentUpon>ItemAddedWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SpecialsWindow.xaml.cs">
       <DependentUpon>SpecialsWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="AppetizerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ItemAddedWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
