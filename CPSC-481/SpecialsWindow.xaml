@@ -71,7 +71,7 @@
                         <Border Grid.Row="0">
                             <StackPanel Margin="0,0,0,5">
                                 <Grid>
-                                    <Image Source="wings_special.jpg" MaxWidth="170"/>
+                                    <Image Source="/Resources/images/food_items/wings_special.jpg" MaxWidth="170"/>
                                     <TextBlock Text="Wings Special" Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Foreground="White" VerticalAlignment="Bottom" Padding="10,0,0,30"/>
                                     <TextBlock Text="$8.75" Style="{DynamicResource MaterialDesignHeadline6TextBlock}" FontWeight="Regular" FontStyle="Italic" Foreground="White" VerticalAlignment="Bottom" Padding="10,0,0,5"/>
                                 </Grid>
@@ -86,7 +86,7 @@
                                         <RowDefinition Height="50*"/>
                                         <RowDefinition Height="21*"/>
                                     </Grid.RowDefinitions>
-                                    <Image Source="beer.jpg" MaxWidth="170" Grid.RowSpan="2"/>
+                                    <Image Source="/Resources/images/drink_items/beer.jpg" MaxWidth="170" Grid.RowSpan="2"/>
                                     <TextBlock Text="Draft Beer" Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Foreground="White" VerticalAlignment="Bottom" Padding="10,0,0,30" Grid.Row="1"/>
                                     <TextBlock Text="$4.99" Style="{DynamicResource MaterialDesignHeadline6TextBlock}" FontWeight="Regular" FontStyle="Italic" Foreground="White" VerticalAlignment="Bottom" Padding="10,0,0,5" Grid.Row="1"/>
                                 </Grid>
@@ -105,7 +105,7 @@
                         <Border Grid.Row="0">
                             <StackPanel Margin="0,0,0,5">
                                 <Grid>
-                                    <Image Source="sushi_crop.jpg" MaxWidth="170" Grid.RowSpan="2"/>
+                                    <Image Source="/Resources/images/food_items/sushi_crop.jpg" MaxWidth="170" Grid.RowSpan="2"/>
                                     <TextBlock Text="All Sushi Rolls" Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Foreground="White" VerticalAlignment="Bottom" Padding="10,0,0,30"/>
                                     <TextBlock Text="$10.00" Style="{DynamicResource MaterialDesignHeadline6TextBlock}" FontWeight="Regular" FontStyle="Italic" Foreground="White" VerticalAlignment="Bottom" Padding="10,0,0,5"/>
                                 </Grid>
@@ -116,7 +116,7 @@
                         <Border Grid.Row="1">
                             <StackPanel Margin="0,5,0,0">
                                 <Grid>
-                                    <Image Source="wine.jpg" MaxWidth="170"/>
+                                    <Image Source="/Resources/images/drink_items/wine.jpg" MaxWidth="170"/>
                                     <TextBlock Text="Wine Bottles" Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Foreground="White" VerticalAlignment="Bottom" Padding="10,0,0,30"/>
                                     <TextBlock Text="$10.00" Style="{DynamicResource MaterialDesignHeadline6TextBlock}" FontWeight="Regular" FontStyle="Italic" Foreground="White" VerticalAlignment="Bottom" Padding="10,0,0,5"/>
                                 </Grid>

@@ -37,6 +37,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -67,7 +68,7 @@
     <Compile Include="SpecialsWindow.xaml.cs">
       <DependentUpon>SpecialsWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="AppetizerWindow.xaml">
+    <Page Include="AppWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -75,20 +76,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FoodWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AppetizerWindow.xaml.cs">
-      <DependentUpon>AppetizerWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="FoodWindow.xaml.cs">
-      <DependentUpon>FoodWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
+    <Compile Include="AppWindow.xaml.cs">
+      <DependentUpon>AppWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="ItemWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -141,28 +134,31 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="fries_landscape.jpg" />
+    <Resource Include="Resources\images\drink_items\wine.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="wings.jpg" />
+    <Resource Include="Resources\images\drink_items\beer.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="caesar.jpg" />
+    <Resource Include="Resources\images\food_items\wings_special.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="nachos.jpg" />
+    <Resource Include="Resources\images\food_items\fries_landscape.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="wings_special.jpg" />
+    <Resource Include="Resources\images\food_items\nachos.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="beer.jpg" />
+    <Resource Include="Resources\images\food_items\steak_dinner.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="wine.jpg" />
+    <Resource Include="Resources\images\food_items\sushi_crop.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="sushi_crop.jpg" />
+    <Resource Include="Resources\images\food_items\wings.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\food_items\kale.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
