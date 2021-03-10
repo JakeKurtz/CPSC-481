@@ -58,6 +58,12 @@
     <Compile Include="ItemAddedWindow.xaml.cs">
       <DependentUpon>ItemAddedWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ItemWindow.xaml.cs">
+      <DependentUpon>ItemWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OrderWindow.xaml.cs">
+      <DependentUpon>OrderWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SpecialsWindow.xaml.cs">
       <DependentUpon>SpecialsWindow.xaml</DependentUpon>
     </Compile>
@@ -69,7 +75,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="foodWindow.xaml">
+    <Page Include="FoodWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -80,10 +86,18 @@
     <Compile Include="AppetizerWindow.xaml.cs">
       <DependentUpon>AppetizerWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="foodWindow.xaml.cs">
-      <DependentUpon>foodWindow.xaml</DependentUpon>
+    <Compile Include="FoodWindow.xaml.cs">
+      <DependentUpon>FoodWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ItemWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OrderWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="SpecialsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

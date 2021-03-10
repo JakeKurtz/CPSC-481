@@ -19,10 +19,10 @@ namespace CPSC_481
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class OrderWindow : Window
     {
 
-		public MainWindow()
+		public OrderWindow()
         {
             InitializeComponent();
 

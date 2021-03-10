@@ -17,9 +17,9 @@ namespace CPSC_481
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class ItemWindow : Window
     {
-        public Window1()
+        public ItemWindow()
         {
             InitializeComponent();
 

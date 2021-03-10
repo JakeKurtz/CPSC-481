@@ -63,11 +63,11 @@ namespace CPSC_481.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap steak_dinner {
-            get {
-                object obj = ResourceManager.GetObject("steak_dinner", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
+        //internal static System.Drawing.Bitmap steak_dinner {
+        //    get {
+         //       object obj = ResourceManager.GetObject("steak_dinner", resourceCulture);
+          //      return ((System.Drawing.Bitmap)(obj));
+           // }
+        //}
     }
 }
