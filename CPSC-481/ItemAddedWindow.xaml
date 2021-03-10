@@ -1,0 +1,68 @@
+﻿<Window x:Class="CPSC_481.ItemAddedWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CPSC_481"
+        mc:Ignorable="d"
+        Title="ItemAddedWindow" Height="640" Width="360"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}">
+    <Grid HorizontalAlignment="Center" Width="354">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="536*" />
+            <RowDefinition Height="73*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="Item added to your order!" Style="{DynamicResource MaterialDesignHeadline5TextBlock}" FontWeight="DemiBold" HorizontalAlignment="Center" Padding="5"></TextBlock>
+                <TextBlock Text="Please select &quot;Order&quot; to review and send order " Style="{DynamicResource MaterialDesignTextBlock}" FontWeight="DemiBold" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" FontSize="14"></TextBlock>
+            </StackPanel>
+            
+        </Grid>
+
+        
+
+        <!-- Bottom row of buttons -->
+        <Grid Grid.Row="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button Style="{DynamicResource MaterialDesignToolButton}" Grid.Row="1" Grid.Column="0" Height="Auto" Margin="0,0,0,0">
+                <StackPanel>
+                    <materialDesign:PackIcon Kind="Food" Width="25" Height="25" HorizontalAlignment="Center"/>
+                    <TextBlock>Food</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Style="{DynamicResource MaterialDesignToolButton}" Grid.Row="1" Grid.Column="1" Height="Auto" Margin="0,0,0,0">
+                <StackPanel>
+                    <materialDesign:PackIcon Kind="GlassCocktail" Width="25" Height="25" HorizontalAlignment="Center"/>
+                    <TextBlock>Drinks</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Style="{DynamicResource MaterialDesignToolButton}" Grid.Row="1" Grid.Column="2" Height="Auto" Margin="0,0,0,0">
+                <StackPanel>
+                    <materialDesign:PackIcon Kind="NoteTextOutline" Width="25" Height="25" HorizontalAlignment="Center"/>
+                    <TextBlock>Order</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Style="{DynamicResource MaterialDesignToolButton}" Grid.Row="1" Grid.Column="3" Height="Auto" Margin="0,0,0,0">
+                <StackPanel>
+                    <materialDesign:PackIcon Kind="HelpCircleOutline" Width="25" Height="25" HorizontalAlignment="Center"/>
+                    <TextBlock>Help</TextBlock>
+                </StackPanel>
+            </Button>
+        </Grid>
+
+    </Grid>
+</Window>
