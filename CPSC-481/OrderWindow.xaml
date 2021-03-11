@@ -19,41 +19,11 @@
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="544*" />
-            <RowDefinition Height="65*" />
+            <RowDefinition Style="{StaticResource mainPageContentRowHeight}"/>
+            <RowDefinition Style="{StaticResource mainPageMenuRowHeight}"/>
         </Grid.RowDefinitions>
-        <!-- Menu Buttons -->
-        <Grid Grid.Row="1" Background="White">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Button Style="{DynamicResource MaterialDesignToolButton}" Grid.Row="2" Grid.Column="0" Height="Auto" Margin="0,0,0,0">
-                <StackPanel>
-                    <materialDesign:PackIcon Kind="Food" Width="25" Height="25" HorizontalAlignment="Center"/>
-                    <TextBlock>Food</TextBlock>
-                </StackPanel>
-            </Button>
-            <Button Style="{DynamicResource MaterialDesignToolButton}" Grid.Row="1" Grid.Column="1" Height="Auto" Margin="0,0,0,0">
-                <StackPanel>
-                    <materialDesign:PackIcon Kind="GlassCocktail" Width="25" Height="25" HorizontalAlignment="Center"/>
-                    <TextBlock>Drinks</TextBlock>
-                </StackPanel>
-            </Button>
-            <Button Style="{DynamicResource MaterialDesignToolButton}" Grid.Row="1" Grid.Column="2" Height="Auto" Margin="0,0,0,0">
-                <StackPanel>
-                    <materialDesign:PackIcon Kind="NoteTextOutline" Width="25" Height="25" HorizontalAlignment="Center"/>
-                    <TextBlock>Order</TextBlock>
-                </StackPanel>
-            </Button>
-            <Button Style="{DynamicResource MaterialDesignToolButton}" Grid.Row="1" Grid.Column="3" Height="Auto" Margin="0,0,0,0">
-                <StackPanel>
-                    <materialDesign:PackIcon Kind="HelpCircleOutline" Width="25" Height="25" HorizontalAlignment="Center"/>
-                    <TextBlock>Help</TextBlock>
-                </StackPanel>
-            </Button>
+        <Grid Grid.Row="1">
+            <StaticResource ResourceKey="menuBar"/>
         </Grid>
         <Canvas Background="WhiteSmoke" Grid.Row="0"/>
         <!-- Orders -->
