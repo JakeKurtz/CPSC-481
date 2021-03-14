@@ -39,26 +39,26 @@
             </Grid.ColumnDefinitions>
             <Button Style="{DynamicResource MaterialDesignToolButton}" Grid.Row="2" Grid.Column="0" Height="Auto" Margin="0,0,0,0">
                 <StackPanel>
-                    <materialDesign:PackIcon Kind="Food" Width="25" Height="25" HorizontalAlignment="Center"/>
-                    <TextBlock>Food</TextBlock>
+                    <materialDesign:PackIcon x:Name="FoodIcon" Foreground="Gray" Kind="Food" Width="25" Height="25" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="FoodIconText"  Foreground="Gray">Food</TextBlock>
                 </StackPanel>
             </Button>
             <Button Style="{DynamicResource MaterialDesignToolButton}" Grid.Row="1" Grid.Column="1" Height="Auto" Margin="0,0,0,0">
                 <StackPanel>
-                    <materialDesign:PackIcon Kind="GlassCocktail" Width="25" Height="25" HorizontalAlignment="Center"/>
-                    <TextBlock>Drinks</TextBlock>
+                    <materialDesign:PackIcon x:Name="DrinkIcon" Kind="GlassCocktail" Foreground="Gray" Width="25" Height="25" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="DrinkIconText" Foreground="Gray">Drinks</TextBlock>
                 </StackPanel>
             </Button>
             <Button Style="{DynamicResource MaterialDesignToolButton}" Grid.Row="1" Grid.Column="2" Height="Auto" Margin="0,0,0,0">
                 <StackPanel>
-                    <materialDesign:PackIcon Kind="NoteTextOutline" Width="25" Height="25" HorizontalAlignment="Center"/>
-                    <TextBlock>Order</TextBlock>
+                    <materialDesign:PackIcon x:Name="OrderIcon" Kind="NoteTextOutline" Foreground="Gray" Width="25" Height="25" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="OrderIconText" Foreground="Gray">Order</TextBlock>
                 </StackPanel>
             </Button>
             <Button Style="{DynamicResource MaterialDesignToolButton}" Grid.Row="1" Grid.Column="3" Height="Auto" Margin="0,0,0,0">
                 <StackPanel>
-                    <materialDesign:PackIcon Kind="HelpCircleOutline" Width="25" Height="25" HorizontalAlignment="Center"/>
-                    <TextBlock>Help</TextBlock>
+                    <materialDesign:PackIcon x:Name="HelpIcon" Kind="HelpCircleOutline"  Width="25" Height="25" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="HelpIconText" Foreground="Gray">Help</TextBlock>
                 </StackPanel>
             </Button>
         </Grid>
@@ -66,11 +66,19 @@
         <!-- help page -->
         <StackPanel Margin="0,35,20,0" Grid.RowSpan="3">
             <!-- getting started -->
-            <Expander x:Name="gettingStarted" Width="333" Background="WhiteSmoke" RenderTransformOrigin="0.5,0.5" Margin="0">
+            <Expander x:Name="gettingStarted" Width="333" Background="WhiteSmoke" RenderTransformOrigin="0.5,0.5" Margin="0" Collapsed="onGettingStartedTabCollapse" Expanded="onGettingStartedTabExpand">
                 <Expander.Header>
                     <TextBlock Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Text="GETTING STARTED"/>
                 </Expander.Header>
+                <Canvas Height="450">
+                    <Button x:Name="gettingStartedBackButton" Canvas.Left="10" Canvas.Top="10" Width="80" Visibility="Hidden" Click="LastGettingStartedItem">Back</Button>
+                    <Button Height="400" Canvas.Top="50" Width="350" Opacity="0" Panel.ZIndex="3" Click="NextGettingStartedItem"/>
+                    <TextBlock x:Name="gettingStartedContinueText" FontSize="23" Canvas.Top="110" TextAlignment="Center" TextWrapping="Wrap" FontWeight="Bold" Text="Tap to continue" Width="350"/>
+                    <Image x:Name="gettingStartedArrow" Source="arrow-9190.png" Width="90" Canvas.Top="354" Height="114" Canvas.Left="0"/>
+                    <TextBlock x:Name="gettingStartedDescription" FontSize="18"  Canvas.Top="295" Width="226" TextWrapping="Wrap" Text="Here is where you browse the food menu" Canvas.Left="10"/>
+                </Canvas>
             </Expander>
+
             <!-- FAQ-->
             <Expander x:Name="FAQ" Width="333" Background="WhiteSmoke" RenderTransformOrigin="0.5,0.5" Margin="0">
                 <Expander.Header>
@@ -98,7 +106,7 @@
                     <Button Width="200" Margin="20"> REQUEST SERVER</Button>
 
                 </StackPanel>
-                
+
             </Expander>
         </StackPanel>
     </Grid>
