@@ -93,9 +93,9 @@
                         <Bold>Optional: </Bold> add a message with your request.
                     </TextBlock>
 
-                    <TextBox Name ="csInput"  Margin="25, 0" TextWrapping="Wrap" MinHeight="150" MaxHeight="150" MinWidth="250" MaxWidth="250" BorderThickness="1"/>
+                    <TextBox Name ="csInput"  Margin="25, 5" TextWrapping="Wrap" MinHeight="150" MaxHeight="150" MinWidth="250" MaxWidth="250" BorderThickness="1"/>
                      
-                    <Button Width="200" Margin="20" Background="DarkGray" BorderBrush="LightGray" TextElement.Foreground="{DynamicResource MaterialDesignBody}"> REQUEST SERVER</Button>
+                    <Button Width="200" Margin="20"> REQUEST SERVER</Button>
 
                 </StackPanel>
                 
