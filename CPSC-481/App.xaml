@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:CPSC_481"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             StartupUri="ItemWindow.xaml">
+             StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -15,45 +15,11 @@
 
             <Style x:Key="mainPageMenuRowHeight" TargetType="RowDefinition">
                 <Setter Property="Height" Value="65*"/>
-            </Style>            
-            
+            </Style>
+
             <Style x:Key="mainPageContentRowHeight" TargetType="RowDefinition">
                 <Setter Property="Height" Value="544*"/>
             </Style>
-
-            <Grid x:Key="menuBar" Background="White">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Button Style="{DynamicResource MaterialDesignToolButton}" Grid.Row="2" Grid.Column="0" Height="Auto" Margin="0,0,0,0">
-                    <StackPanel>
-                        <materialDesign:PackIcon Kind="Food" Width="25" Height="25" HorizontalAlignment="Center"/>
-                        <TextBlock>Food</TextBlock>
-                    </StackPanel>
-                </Button>
-                <Button Style="{DynamicResource MaterialDesignToolButton}" Grid.Row="1" Grid.Column="1" Height="Auto" Margin="0,0,0,0">
-                    <StackPanel>
-                        <materialDesign:PackIcon Kind="GlassCocktail" Width="25" Height="25" HorizontalAlignment="Center"/>
-                        <TextBlock>Drinks</TextBlock>
-                    </StackPanel>
-                </Button>
-                <Button Style="{DynamicResource MaterialDesignToolButton}" Grid.Row="1" Grid.Column="2" Height="Auto" Margin="0,0,0,0">
-                    <StackPanel>
-                        <materialDesign:PackIcon Kind="NoteTextOutline" Width="25" Height="25" HorizontalAlignment="Center"/>
-                        <TextBlock>Order</TextBlock>
-                    </StackPanel>
-                </Button>
-                <Button Style="{DynamicResource MaterialDesignToolButton}" Grid.Row="1" Grid.Column="3" Height="Auto" Margin="0,0,0,0">
-                    <StackPanel>
-                        <materialDesign:PackIcon Kind="HelpCircleOutline" Width="25" Height="25" HorizontalAlignment="Center"/>
-                        <TextBlock>Help</TextBlock>
-                    </StackPanel>
-                </Button>
-            </Grid>
-            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

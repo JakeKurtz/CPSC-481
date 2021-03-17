@@ -16,15 +16,14 @@ using System.Windows.Shapes;
 
 namespace CPSC_481
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class OrderWindow : Window
-    {
-
-		public OrderWindow()
-        {
-            InitializeComponent();
+	/// <summary>
+	/// Interaction logic for OrderPage.xaml
+	/// </summary>
+	public partial class OrderPage : UserControl
+	{
+		public OrderPage()
+		{
+			InitializeComponent();
 
 			List<Item> orderCurrent = new List<Item>();
 
@@ -80,8 +79,8 @@ namespace CPSC_481
 			order5_item2_addons.Add(new Addon() { Name = "Chicken", Cost = 6.00f, Quantity = 1 });
 			order5_items.Add(new Item() { Name = "Quinoa and Avocado Powerbowl", Addons = order5_item2_addons, Options = BuildOptions(order5_item2_options), Cost = 16.7f, Quantity = 1 });
 
-			Order order4 = new Order() { State = OrderState.Delivered, Time = DateTime.Now, Items = order4_items};
-			Order order5 = new Order() { State = OrderState.Processing, Time = DateTime.Now, Items = order5_items};
+			Order order4 = new Order() { State = OrderState.Delivered, Time = DateTime.Now, Items = order4_items };
+			Order order5 = new Order() { State = OrderState.Processing, Time = DateTime.Now, Items = order5_items };
 
 			orderHistory.Add(order4);
 			orderHistory.Add(order5);
@@ -91,6 +90,7 @@ namespace CPSC_481
 			_orderCurrent.ItemsSource = orderCurrent;
 			_orderHistory.ItemsSource = orderHistory;
 		}
+
 		// Builds a string out of the selected options.
 		private String BuildOptions(List<String> options)
 		{
@@ -100,7 +100,7 @@ namespace CPSC_481
 			for (int i = 0; i < options.Count; i++)
 			{
 				output += options[i];
-				if (i != options.Count-1) output += " and ";
+				if (i != options.Count - 1) output += " and ";
 			}
 			return output;
 		}
@@ -125,33 +125,4 @@ namespace CPSC_481
 			throw new NotSupportedException();
 		}
 	}
-}
-
-public enum OrderState
-{
-	Delivered,
-	Processing
-}
-
-public class Addon
-{
-	public string Name { get; set; }
-	public float Cost { get; set; }
-	public int Quantity { get; set; }
-}
-
-public class Item
-{
-	public string Name { get; set; }
-	public List<Addon> Addons { get; set; }
-	public String Options { get; set; }
-	public float Cost { get; set; }
-	public int Quantity { get; set; }
-}
-
-public class Order
-{
-	public OrderState State { get; set; }
-	public DateTime Time { get; set; }
-	public List<Item> Items { get; set; }
 }

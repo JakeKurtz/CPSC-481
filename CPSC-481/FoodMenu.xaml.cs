@@ -10,18 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace CPSC_481
 {
-    /// <summary>
-    /// Interaction logic for Window3.xaml
-    /// </summary>
-    public partial class Window3 : Window
-    {
-        public Window3()
-        {
-            //InitializeComponent();
-        }
-    }
+	/// <summary>
+	/// Interaction logic for FoodMenu.xaml
+	/// </summary>
+	public partial class FoodMenu : UserControl
+	{
+		public FoodMenu()
+		{
+			InitializeComponent();
+		}
+	}
 }

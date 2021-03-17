@@ -13,5 +13,5 @@ namespace CPSC_481
     /// </summary>
     public partial class App : Application
     {
-    }
+	}
 }

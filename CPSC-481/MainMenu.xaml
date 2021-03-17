@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="CPSC_481.MainMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CPSC_481"
+             mc:Ignorable="d" 
+             d:DesignHeight="640" d:DesignWidth="360"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+
+    <Grid Grid.Row="1" Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Button Name="food" Click="Button_Click_0" Style="{DynamicResource MaterialDesignToolButton}" Grid.Row="2" Grid.Column="0" Height="Auto" Margin="0,0,0,0">
+            <StackPanel>
+                <materialDesign:PackIcon x:Name="FoodIcon" Kind="Food" Width="25" Height="25" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="FoodIconText">Food</TextBlock>
+            </StackPanel>
+        </Button>
+        <Button Name="drink" Click="Button_Click_1" Style="{DynamicResource MaterialDesignToolButton}" Grid.Row="1" Grid.Column="1" Height="Auto" Margin="0,0,0,0">
+            <StackPanel>
+                <materialDesign:PackIcon x:Name="DrinkIcon" Kind="GlassCocktail" Width="25" Height="25" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="DrinkIconText">Drinks</TextBlock>
+            </StackPanel>
+        </Button>
+        <Button Name="order" Click="Button_Click_2" Style="{DynamicResource MaterialDesignToolButton}" Grid.Row="1" Grid.Column="2" Height="Auto" Margin="0,0,0,0">
+            <StackPanel>
+                <materialDesign:PackIcon x:Name="OrderIcon" Kind="NoteTextOutline" Width="25" Height="25" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="OrderIconText">Order</TextBlock>
+            </StackPanel>
+        </Button>
+        <Button Name="help" Click="Button_Click_3" Style="{DynamicResource MaterialDesignToolButton}" Grid.Row="1" Grid.Column="3" Height="Auto" Margin="0,0,0,0">
+            <StackPanel>
+                <materialDesign:PackIcon x:Name="HelpIcon" Kind="HelpCircleOutline" Width="25" Height="25" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="HelpIconText">Help</TextBlock>
+            </StackPanel>
+        </Button>
+    </Grid>
+</UserControl>
