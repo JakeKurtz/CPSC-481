@@ -161,7 +161,6 @@ namespace CPSC_481
 
 		public void HighlightCorrespondingIcon(bool backToDefault)
 		{
-
 			resetButtonIconColor();
 
 			if (backToDefault == true)
@@ -182,7 +181,6 @@ namespace CPSC_481
 		{
 			HighlightCorrespondingIcon(true);
 		}
-
 		private void onGettingStartedTabExpand(object sender, RoutedEventArgs e)
 		{
 			HighlightCorrespondingIcon(false);

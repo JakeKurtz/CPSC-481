@@ -14,5 +14,6 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
-    <Grid/>
+    <Grid>
+    </Grid>
 </Window>

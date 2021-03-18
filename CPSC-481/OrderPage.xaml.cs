@@ -25,7 +25,7 @@ namespace CPSC_481
 		{
 			InitializeComponent();
 
-			List<Item> orderCurrent = new List<Item>();
+			List<OrderItem> orderCurrent = new List<OrderItem>();
 
 			List<Addon> item1_addons = new List<Addon>();
 			List<Addon> item2_addons = new List<Addon>();
@@ -47,18 +47,18 @@ namespace CPSC_481
 			item3_options.Add("Lobster Tail");
 			item3_addons.Add(new Addon() { Name = "Extra Prawns", Cost = 10.00f, Quantity = 1 });
 
-			orderCurrent.Add(new Item() { Name = "Chicken Fettuccine Alfredo", Addons = item1_addons, Options = BuildOptions(item1_options), Cost = 23.00f, Quantity = 1 });
-			orderCurrent.Add(new Item() { Name = "Salmon Zen Bowl", Addons = item2_addons, Cost = 28.50f, Options = BuildOptions(item2_options), Quantity = 1 });
-			orderCurrent.Add(new Item() { Name = "Surf and Turf 6 oz Filet", Addons = item3_addons, Options = BuildOptions(item3_options), Cost = 48.00f, Quantity = 1 });
+			orderCurrent.Add(new OrderItem() { Name = "Chicken Fettuccine Alfredo", Addons = item1_addons, Options = BuildOptions(item1_options), Cost = 23.00f, Quantity = 1 });
+			orderCurrent.Add(new OrderItem() { Name = "Salmon Zen Bowl", Addons = item2_addons, Cost = 28.50f, Options = BuildOptions(item2_options), Quantity = 1 });
+			orderCurrent.Add(new OrderItem() { Name = "Surf and Turf 6 oz Filet", Addons = item3_addons, Options = BuildOptions(item3_options), Cost = 48.00f, Quantity = 1 });
 
 			// ---- Order History Data ---- //
 
 			List<Order> orderHistory = new List<Order>();
-			List<Item> order4_items = new List<Item>();
+			List<OrderItem> order4_items = new List<OrderItem>();
 			List<String> order4_item1_options = new List<String>();
 			List<Addon> order4_item1_addons = new List<Addon>();
 
-			List<Item> order5_items = new List<Item>();
+			List<OrderItem> order5_items = new List<OrderItem>();
 
 			List<String> order5_item1_options = new List<String>();
 			List<Addon> order5_item1_addons = new List<Addon>();
@@ -68,16 +68,16 @@ namespace CPSC_481
 
 			order4_item1_options.Add("Salt and pepper");
 			order4_item1_addons.Add(new Addon() { Name = "Ranch", Cost = 2.00f, Quantity = 2 });
-			order4_items.Add(new Item() { Name = "Wings hot", Addons = order4_item1_addons, Options = BuildOptions(order4_item1_options), Cost = 33.00f, Quantity = 2 });
+			order4_items.Add(new OrderItem() { Name = "Wings hot", Addons = order4_item1_addons, Options = BuildOptions(order4_item1_options), Cost = 33.00f, Quantity = 2 });
 
-			order4_items.Add(new Item() { Name = "Galic Fries", Addons = new List<Addon>(), Options = BuildOptions(new List<string>()), Cost = 8.00f, Quantity = 1 });
+			order4_items.Add(new OrderItem() { Name = "Galic Fries", Addons = new List<Addon>(), Options = BuildOptions(new List<string>()), Cost = 8.00f, Quantity = 1 });
 
 			order5_item1_options.Add("Fries");
 			order5_item1_options.Add("Substituted lettuce for bun");
-			order5_items.Add(new Item() { Name = "Vegan Burger", Addons = order5_item1_addons, Options = BuildOptions(order5_item1_options), Cost = 21.7f, Quantity = 1 });
+			order5_items.Add(new OrderItem() { Name = "Vegan Burger", Addons = order5_item1_addons, Options = BuildOptions(order5_item1_options), Cost = 21.7f, Quantity = 1 });
 
 			order5_item2_addons.Add(new Addon() { Name = "Chicken", Cost = 6.00f, Quantity = 1 });
-			order5_items.Add(new Item() { Name = "Quinoa and Avocado Powerbowl", Addons = order5_item2_addons, Options = BuildOptions(order5_item2_options), Cost = 16.7f, Quantity = 1 });
+			order5_items.Add(new OrderItem() { Name = "Quinoa and Avocado Powerbowl", Addons = order5_item2_addons, Options = BuildOptions(order5_item2_options), Cost = 16.7f, Quantity = 1 });
 
 			Order order4 = new Order() { State = OrderState.Delivered, Time = DateTime.Now, Items = order4_items };
 			Order order5 = new Order() { State = OrderState.Processing, Time = DateTime.Now, Items = order5_items };

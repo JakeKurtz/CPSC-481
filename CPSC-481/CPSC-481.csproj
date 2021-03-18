@@ -69,8 +69,8 @@
       <DependentUpon>OrderPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Switcher.cs" />
-    <Compile Include="_ItemWindow.xaml.cs">
-      <DependentUpon>_ItemWindow.xaml</DependentUpon>
+    <Compile Include="ItemPage.xaml.cs">
+      <DependentUpon>ItemPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -94,9 +94,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="_ItemWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="ItemPage.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainMenu.xaml">
       <SubType>Designer</SubType>
