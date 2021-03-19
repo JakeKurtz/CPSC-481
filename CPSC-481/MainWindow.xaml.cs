@@ -35,20 +35,20 @@ namespace CPSC_481
 			Switcher.Switch(new FoodMenu());
 
 			// Example of a menu item. Used for testing out the itempage.
-			List<Option> item1_options = new List<Option>();
+			List<OptionType> item1_options = new List<OptionType>();
 			List<Addon> item1_addons = new List<Addon>();
 
-			List<string> size_options = new List<string>();
-			size_options.Add("6 oz Sirloin");
-			size_options.Add("9 oz Sirloin");
-			size_options.Add("6 oz Filet");
-			Option size = new Option { Type = "Size", Options = size_options };
+			List<Option> size_options = new List<Option>();
+			size_options.Add(new Option { ID = 0, Name = "6 oz Sirloin", Cost=1 });
+			size_options.Add(new Option { ID = 0, Name = "9 oz Sirloin", Cost=1 });
+			size_options.Add(new Option { ID = 0, Name = "6 oz Filet", Cost=1 });
+			OptionType size = new OptionType { Type = "Size", Options = size_options };
 
-			List<string> side_options = new List<string>();
-			side_options.Add("Fries");
-			side_options.Add("Caesar Salad");
-			side_options.Add("Kale Salad");
-			Option side = new Option { Type = "Side", Options = side_options };
+			List<Option> side_options = new List<Option>();
+			side_options.Add(new Option { ID = 1, Name = "Fries", Cost=1 });
+			side_options.Add(new Option { ID = 1, Name = "Caesar Salad", Cost=1 });
+			side_options.Add(new Option { ID = 1, Name = "Kale Salad", Cost=1 });
+			OptionType side = new OptionType { Type = "Side", Options = side_options };
 
 			item1_options.Add(size);
 			item1_options.Add(side);
@@ -102,6 +102,10 @@ public class OrderHandler
 		return currentItem;
 	}
 
+	public void addAddon(Addon addon) {
+		
+	}
+
 	public void AddToOrder(OrderItem item)
 	{
 		orderCurrent.Add(item);
@@ -131,7 +135,7 @@ public class MenuItem
 	public string Description { get; set; }
 	public ImageSource ImageSrc { get; set; }
 	public List<Addon> Addons { get; set; }
-	public List<Option> Options { get; set; }
+	public List<OptionType> Options { get; set; }
 	public float Cost { get; set; }
 }
 
@@ -153,15 +157,40 @@ public class Order
 	public List<OrderItem> Items { get; set; }
 }
 
-public class Addon
+public class Addon : INotifyPropertyChanged
 {
 	public string Name { get; set; }
 	public float Cost { get; set; }
-	public int Quantity { get; set; }
+
+	int _Quantity;
+	public int Quantity
+	{
+		get => _Quantity;
+		set => SetField(ref _Quantity, value, nameof(Quantity));
+	}
+
+	public event PropertyChangedEventHandler PropertyChanged;
+
+	protected void SetField<T>(ref T field, T value, string propertyName)
+	{
+		if (!EqualityComparer<T>.Default.Equals(field, value))
+		{
+			field = value;
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+}
+
+public class OptionType
+{
+	public string Type { get; set; }
+	public List<Option> Options { get; set; }
+	public Option Selected { get; set; }
 }
 
 public class Option
 {
-	public string Type { get; set; }
-	public List<string> Options { get; set; }
+	public int ID { get; set; }
+	public string Name { get; set; }
+	public float Cost { get; set; }
 }

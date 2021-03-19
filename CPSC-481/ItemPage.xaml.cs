@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace CPSC_481
 {
@@ -13,8 +15,8 @@ namespace CPSC_481
 		// Reference to the orderhandler in the mainwindow
 		public static OrderHandler orderHandler { get; set; }
 
-		List<Addon> addons_selected = new List<Addon>();
-		List<string> options_selected = new List<string>();
+		Dictionary<int, Option> options_selected = new Dictionary<int, Option>();
+
 		string _SpecialRequest = "";
 
 		public ItemPage()
@@ -33,39 +35,67 @@ namespace CPSC_481
 			itemAddons.ItemsSource = item.Addons;
 		}
 
+		private void Button_Add_Addon(object sender, RoutedEventArgs e)
+		{
+			var item = ((sender as Button)?.Tag as ListViewItem)?.DataContext as Addon;
+			item.Quantity += 1;
+		}
+		private void Button_Remove_Addon(object sender, RoutedEventArgs e)
+		{
+			var item = ((sender as Button)?.Tag as ListViewItem)?.DataContext as Addon;
+			if (item.Quantity != 0) item.Quantity -= 1;
+		}
+
+		private void HandleCheck(object sender, RoutedEventArgs e)
+		{
+			var option = ((sender as RadioButton)?.Tag as ListViewItem)?.DataContext as Option;
+			options_selected[option.ID] = option;
+		}
+
 		private float getTotal(MenuItem item) {
 			var total = item.Cost;
 
-			foreach (var addon in addons_selected) {
-				total += addon.Cost;
-			}
+			//foreach (var addon in addons_selected) {
+				//total += addon.Cost;
+			//}
 
-			foreach (var option in options_selected)
-			{
+			//foreach (var option in options_selected)
+			//{
 				//total += option.Cost;
-			}
+			//}
 
 			return total;
 		}
 
-		private string BuildOptions(List<string> options)
+		private string BuildOptions(Dictionary<int, Option> options)
 		{
 			if (options.Count == 0) return "";
 
 			var output = "with ";
-			for (int i = 0; i < options.Count; i++)
+			var i = 0;
+			foreach (KeyValuePair<int, Option> ele in options)
 			{
-				output += options[i];
+				output += ele.Value.Name;
 				if (i != options.Count - 1) output += " and ";
+				i++;
 			}
 			return output;
 		}
 		void Button_Click_AddToOrder(object sender, RoutedEventArgs e)
 		{
+
+			List<Addon> addons_selected = new List<Addon>();
+			//List<string> options_selected = new List<string>();
+
 			var item = orderHandler.getCurrentItem();
 
 			var _Cost = getTotal(item);
 			var optionString = BuildOptions(options_selected);
+
+			foreach (var a in item.Addons)
+			{
+				if (a.Quantity > 0) addons_selected.Add(a);
+			}
 
 			OrderItem orderItem = new OrderItem { 
 				Name = item.Name, 

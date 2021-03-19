@@ -25,7 +25,7 @@ namespace CPSC_481
 		{
 			InitializeComponent();
 
-			List<OrderItem> orderCurrent = new List<OrderItem>();
+			/*List<OrderItem> orderCurrent = new List<OrderItem>();
 
 			List<Addon> item1_addons = new List<Addon>();
 			List<Addon> item2_addons = new List<Addon>();
@@ -84,11 +84,11 @@ namespace CPSC_481
 
 			orderHistory.Add(order4);
 			orderHistory.Add(order5);
-
+			*/
 			// ---- Send it ---- //
 
-			_orderCurrent.ItemsSource = orderCurrent;
-			_orderHistory.ItemsSource = orderHistory;
+			//_orderCurrent.ItemsSource = orderCurrent;
+			//_orderHistory.ItemsSource = orderHistory;
 		}
 
 		// Builds a string out of the selected options.
