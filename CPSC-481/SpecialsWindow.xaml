@@ -75,28 +75,28 @@
 
                             <!-- Top-left special -->
                             <Border Grid.Row="0">
-                                <StackPanel Margin="0,0,0,5">
-                                    <Grid>
-                                        <Image Source="/Resources/images/food_items/wings_special.jpg" MaxWidth="170"/>
-                                        <TextBlock Text="Wings Special" Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Foreground="White" VerticalAlignment="Bottom" Padding="10,0,0,30"/>
-                                        <TextBlock Text="$8.75" Style="{DynamicResource MaterialDesignHeadline6TextBlock}" FontWeight="Regular" FontStyle="Italic" Foreground="White" VerticalAlignment="Bottom" Padding="10,0,0,5"/>
-                                    </Grid>
-                                </StackPanel>
+                                <Button Height="220" Margin="0,0,0,5" Background="WhiteSmoke" BorderBrush="#FFF9F9F9">
+                                    <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" >
+                                        <Grid Margin="-16">
+                                            <Image Source="/Resources/images/food_items/wings_special.jpg" MaxWidth="170"/>
+                                            <TextBlock Text="Wings Special" Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Foreground="White" VerticalAlignment="Bottom" Padding="10,0,0,30"/>
+                                            <TextBlock Text="$8.75" Style="{DynamicResource MaterialDesignHeadline6TextBlock}" FontWeight="Regular" FontStyle="Italic" Foreground="White" VerticalAlignment="Bottom" Padding="10,0,0,5"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </Button>
                             </Border>
 
                             <!-- Bottom-left special-->
                             <Border Grid.Row="1" Margin="0,5,0,0">
-                                <StackPanel>
-                                    <Grid>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="50*"/>
-                                            <RowDefinition Height="21*"/>
-                                        </Grid.RowDefinitions>
-                                        <Image Source="/Resources/images/drink_items/beer.jpg" MaxWidth="170" Grid.RowSpan="2"/>
-                                        <TextBlock Text="Draft Beer" Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Foreground="White" VerticalAlignment="Bottom" Padding="10,0,0,30" Grid.Row="1"/>
-                                        <TextBlock Text="$4.99" Style="{DynamicResource MaterialDesignHeadline6TextBlock}" FontWeight="Regular" FontStyle="Italic" Foreground="White" VerticalAlignment="Bottom" Padding="10,0,0,5" Grid.Row="1"/>
-                                    </Grid>
-                                </StackPanel>
+                                <Button Height="220" Margin="0,0,0,0" Background="WhiteSmoke" BorderBrush="#FFF9F9F9">
+                                    <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" >
+                                        <Grid Margin="-16">
+                                            <Image Source="/Resources/images/drink_items/beer.jpg" MaxWidth="170" Grid.RowSpan="2"/>
+                                            <TextBlock Text="Draft Beer" Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Foreground="White" VerticalAlignment="Bottom" Padding="10,0,0,30" Grid.Row="1"/>
+                                            <TextBlock Text="$4.99" Style="{DynamicResource MaterialDesignHeadline6TextBlock}" FontWeight="Regular" FontStyle="Italic" Foreground="White" VerticalAlignment="Bottom" Padding="10,0,0,5" Grid.Row="1"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </Button>
                             </Border>
                         </Grid>
 
@@ -109,24 +109,28 @@
 
                             <!-- Top-right special -->
                             <Border Grid.Row="0">
-                                <StackPanel Margin="0,0,0,5">
-                                    <Grid>
-                                        <Image Source="/Resources/images/food_items/sushi_crop.jpg" MaxWidth="170" Grid.RowSpan="2"/>
-                                        <TextBlock Text="All Sushi Rolls" Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Foreground="White" VerticalAlignment="Bottom" Padding="10,0,0,30"/>
-                                        <TextBlock Text="$10.00" Style="{DynamicResource MaterialDesignHeadline6TextBlock}" FontWeight="Regular" FontStyle="Italic" Foreground="White" VerticalAlignment="Bottom" Padding="10,0,0,5"/>
-                                    </Grid>
-                                </StackPanel>
+                                <Button Height="220" Margin="0,0,0,5" Background="WhiteSmoke" BorderBrush="#FFF9F9F9">
+                                    <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" >
+                                        <Grid Margin="-16">
+                                            <Image Source="/Resources/images/food_items/sushi_crop.jpg" MaxWidth="170" Grid.RowSpan="2"/>
+                                            <TextBlock Text="All Sushi Rolls" Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Foreground="White" VerticalAlignment="Bottom" Padding="10,0,0,30"/>
+                                            <TextBlock Text="$10.00" Style="{DynamicResource MaterialDesignHeadline6TextBlock}" FontWeight="Regular" FontStyle="Italic" Foreground="White" VerticalAlignment="Bottom" Padding="10,0,0,5"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </Button>
                             </Border>
 
-                            <!-- Top-right special -->
-                            <Border Grid.Row="1">
-                                <StackPanel Margin="0,5,0,0">
-                                    <Grid>
-                                        <Image Source="/Resources/images/drink_items/wine.jpg" MaxWidth="170"/>
-                                        <TextBlock Text="Wine Bottles" Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Foreground="White" VerticalAlignment="Bottom" Padding="10,0,0,30"/>
-                                        <TextBlock Text="$10.00" Style="{DynamicResource MaterialDesignHeadline6TextBlock}" FontWeight="Regular" FontStyle="Italic" Foreground="White" VerticalAlignment="Bottom" Padding="10,0,0,5"/>
-                                    </Grid>
-                                </StackPanel>
+                            <!-- Bottom-right special -->
+                            <Border Grid.Row="1" Margin="0,5,0,0">
+                                <Button Height="220" Margin="0,0,0,0" Background="WhiteSmoke" BorderBrush="#FFF9F9F9">
+                                    <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0" >
+                                        <Grid Margin="-16">
+                                            <Image Source="/Resources/images/drink_items/wine.jpg" MaxWidth="170"/>
+                                            <TextBlock Text="Wine Bottles" Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Foreground="White" VerticalAlignment="Bottom" Padding="10,0,0,30"/>
+                                            <TextBlock Text="$10.00" Style="{DynamicResource MaterialDesignHeadline6TextBlock}" FontWeight="Regular" FontStyle="Italic" Foreground="White" VerticalAlignment="Bottom" Padding="10,0,0,5"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </Button>
                             </Border>
 
 
