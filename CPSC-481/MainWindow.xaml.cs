@@ -36,7 +36,7 @@ namespace CPSC_481
 			Switcher.Switch(new FoodMenu());
 
 			// Example of a menu item. Used for testing out the itempage.
-			List<OptionType> item1_options = new List<OptionType>();
+			Dictionary<string, OptionType> item1_options = new Dictionary<string, OptionType>();
 			List<Addon> item1_addons = new List<Addon>();
 
 			List<Option> size_options = new List<Option>();
@@ -44,17 +44,17 @@ namespace CPSC_481
 			size_options.Add(new Option { ID = size_options_id, Name = "6 oz Sirloin", Cost=1 });
 			size_options.Add(new Option { ID = size_options_id, Name = "9 oz Sirloin", Cost=1 });
 			size_options.Add(new Option { ID = size_options_id, Name = "6 oz Filet", Cost=1 });
-			OptionType size = new OptionType { Type = "Size", Options = size_options };
+			OptionType size = new OptionType { Type = "Size", Options = size_options, Selected=false,Color = Colors.Black };
 
 			List<Option> side_options = new List<Option>();
 			Guid side_options_id = Guid.NewGuid();
 			side_options.Add(new Option { ID = side_options_id, Name = "Fries", Cost=1 });
 			side_options.Add(new Option { ID = side_options_id, Name = "Caesar Salad", Cost=1 });
 			side_options.Add(new Option { ID = side_options_id, Name = "Kale Salad", Cost=1 });
-			OptionType side = new OptionType { Type = "Side", Options = side_options };
+			OptionType side = new OptionType { Type = "Side", Options = side_options, Selected=false, Color=Colors.Black };
 
-			item1_options.Add(size);
-			item1_options.Add(side);
+			item1_options[size.Type] = size;
+			item1_options[side.Type] = side;
 
 			Addon addon_1 = new Addon { Name = "Sauteed Mushrooms", Cost = 2.5f };
 			Addon addon_2 = new Addon { Name = "Gravy", Cost = 2.0f };
@@ -142,7 +142,7 @@ public class MenuItem : INotifyPropertyChanged
 	public string Description { get; set; }
 	public ImageSource ImageSrc { get; set; }
 	public List<Addon> Addons { get; set; }
-	public List<OptionType> Options { get; set; }
+	public Dictionary<string, OptionType> Options { get; set; }
 
 	float _Cost;
 	public float Cost
@@ -222,11 +222,29 @@ public class Addon : INotifyPropertyChanged
 	}
 }
 
-public class OptionType
+public class OptionType : INotifyPropertyChanged
 {
+	public event PropertyChangedEventHandler PropertyChanged;
+
+	protected void SetField<T>(ref T field, T value, string propertyName)
+	{
+		if (!EqualityComparer<T>.Default.Equals(field, value))
+		{
+			field = value;
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+
 	public string Type { get; set; }
 	public List<Option> Options { get; set; }
-	public Option Selected { get; set; }
+	public bool Selected { get; set; }
+
+	Color _Color;
+	public Color Color
+	{
+		get => _Color;
+		set => SetField(ref _Color, value, nameof(Color));
+	}
 }
 
 public class Option

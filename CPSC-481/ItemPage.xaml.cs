@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace CPSC_481
 {
@@ -32,7 +35,7 @@ namespace CPSC_481
 			itemDescription.Text = item.Description;
 			itemImageSrc.Source = item.ImageSrc;
 			itemCost.Text = "  $" + item.Cost.ToString();
-			itemOptions.ItemsSource = item.Options;
+			itemOptions.ItemsSource = item.Options.Values;
 			itemAddons.ItemsSource = item.Addons;
 		}
 
@@ -53,6 +56,10 @@ namespace CPSC_481
 		{
 			var option = ((sender as RadioButton)?.Tag as ListViewItem)?.DataContext as Option;
 			options_selected[option.ID] = option;
+			var group = (sender as RadioButton).GroupName;
+
+			orderHandler.currentItem.Options[group].Selected = true;
+			orderHandler.currentItem.Options[group].Color = Colors.Black;
 		}
 
 		private float getTotal(MenuItem item) {
@@ -85,38 +92,86 @@ namespace CPSC_481
 			}
 			return output;
 		}
-		void Button_Click_AddToOrder(object sender, RoutedEventArgs e)
+
+		private bool verifyOptions() 
 		{
-
 			var item = orderHandler.currentItem;
-			var _Cost = getTotal(item);
 
-			foreach (var a in item.Addons)
+			bool success = true;
+			foreach (KeyValuePair<string, OptionType> ele in item.Options)
 			{
-				if (a.Quantity > 0)
+				if (!ele.Value.Selected)
 				{
-					var addon = a.Copy();
-					addon.Cost *= addon.Quantity;
-					addons_selected.Add(addon);
-					a.Quantity = 0;
+					ele.Value.Color = Colors.Red;
+					if (success) success = false;
 				}
 			}
-			var optionString = BuildOptions();
+			return success;
+		}
 
-			OrderItem orderItem = new OrderItem {
-				ID = Guid.NewGuid(),
-				Name = item.Name, 
-				Addons = new List<Addon>(addons_selected), 
-				Options = optionString, 
-				SpecialRequest = _SpecialRequest, 
-				Cost = _Cost, 
-				Quantity = 1
-			};
+		private bool clearOptionSelections()
+		{
+			var item = orderHandler.currentItem;
 
-			orderHandler.AddToOrder(orderItem);
+			bool success = true;
+			foreach (KeyValuePair<string, OptionType> ele in item.Options)
+			{
+				ele.Value.Selected = false;
+			}
+			return success;
+		}
 
-			addons_selected.Clear();
-			options_selected.Clear();
+
+		private bool sendit = false; 
+		void Button_Click_AddToOrder(object sender, RoutedEventArgs e)
+		{
+			if (verifyOptions())
+			{
+				sendit = true;
+				DialogContentTextBlock.Text = "Item has been added to your order!";
+				var item = orderHandler.currentItem;
+
+				var _Cost = getTotal(item);
+
+				foreach (var a in item.Addons)
+				{
+					if (a.Quantity > 0)
+					{
+						var addon = a.Copy();
+						addon.Cost *= addon.Quantity;
+						addons_selected.Add(addon);
+						a.Quantity = 0;
+					}
+				}
+				var optionString = BuildOptions();
+
+				OrderItem orderItem = new OrderItem
+				{
+					ID = Guid.NewGuid(),
+					Name = item.Name,
+					Addons = new List<Addon>(addons_selected),
+					Options = optionString,
+					SpecialRequest = _SpecialRequest,
+					Cost = _Cost,
+					Quantity = 1
+				};
+
+				orderHandler.AddToOrder(orderItem);
+
+				addons_selected.Clear();
+				options_selected.Clear();
+				clearOptionSelections();
+			} else
+			{
+				DialogContentTextBlock.Text = "Please select from the required options above";
+			}
+		}
+		public void Button_Confirm_Order(object sender, RoutedEventArgs e)
+		{
+			if (sendit)
+			{
+				Switcher.Switch(new FoodMenu());
+			}
 		}
 	}
 }

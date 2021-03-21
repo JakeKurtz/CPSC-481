@@ -42,249 +42,264 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Style="{StaticResource mainPageContentRowHeight}"/>
-            <RowDefinition Style="{StaticResource mainPageMenuRowHeight}"/>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="1">
-            <local:MainMenu/>
-        </Grid>
-        <Canvas Background="White" Grid.Row="0"/>
-        <!-- Orders -->
-        <TabControl BorderThickness="0" Height="572">
-            <!-- Current Order -->
-            <TabItem Name="OrderCurrentTab" Margin="-2,-2,-52,2">
-                <TabItem.Header>
-                    <TextBlock Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Text="Current Order" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                </TabItem.Header>
-                <!--> Items <-->
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="310" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <ScrollViewer Grid.Row="0"  VerticalScrollBarVisibility="Hidden">
-                        <ListView Name="_orderCurrent" Template="{StaticResource NonScrollableListView}">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <Expander Width="320" Margin="0,5,0,0" Background="White">
-                                        <!--> Item header text format <-->
-                                        <Expander.Header>
-                                            <Grid Margin="-10">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="40" />
-                                                    <ColumnDefinition Width="20" />
-                                                    <ColumnDefinition Width="140" />
-                                                    <ColumnDefinition Width="Auto" />
-                                                </Grid.ColumnDefinitions>
-                                                <Button Click="Button_Delete_Item" Tag="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}}" Style="{DynamicResource MaterialDesignToolForegroundButton}" Grid.Row="0" Height="25" Width="25" HorizontalAlignment="Left" VerticalAlignment="Top">
-                                                    <materialDesign:PackIcon Kind="CloseCircleOutline" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Maroon"/>
-                                                </Button>
-                                                <TextBlock FontWeight="Bold" Text="{Binding Quantity, StringFormat={}{0}}" Grid.Column="1"/>
-                                                <StackPanel Grid.Column="2">
-                                                    <TextBlock FontWeight="Bold" Text="{Binding Name}" TextWrapping="WrapWithOverflow"/>
-                                                    <TextBlock Text="{Binding Options}" TextWrapping="WrapWithOverflow"/>
-                                                </StackPanel>
-                                                <TextBlock FontWeight="Bold" Text="{Binding Cost, StringFormat={}${0}}" Grid.Column="3"/>
-                                            </Grid>
-                                        </Expander.Header>
-
-                                        <!--> Addons <-->
-                                        <ListView ItemsSource="{Binding Addons}" Margin="50,0,0,0" IsHitTestVisible="False">
-                                            <ListView.ItemTemplate>
-                                                <DataTemplate>
-                                                    <BulletDecorator>
-                                                        <BulletDecorator.Bullet>
-                                                            <Ellipse Height="5" Width="5" Fill="DarkGray"/>
-                                                        </BulletDecorator.Bullet>
-                                                        <!--> Addon text format <-->
-                                                        <Grid>
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="30" />
-                                                                <ColumnDefinition Width="136" />
-                                                                <ColumnDefinition Width="Auto" />
-                                                            </Grid.ColumnDefinitions>
-                                                            <TextBlock Text="{Binding Quantity, StringFormat={}   {0}}" Grid.Column="0"/>
-                                                            <TextBlock Text="{Binding Name}" Grid.Column="1"/>
-                                                            <TextBlock Text="{Binding Cost, StringFormat={}${0}}" Grid.Column="2"/>
-                                                        </Grid>
-                                                    </BulletDecorator>
-                                                </DataTemplate>
-                                            </ListView.ItemTemplate>
-                                        </ListView>
-                                    </Expander>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </ScrollViewer>
-                    <!--> View when no items have been added to the current order <-->
-                    <Grid Name="OrderCurrentIsEmpty" Grid.Row="0" Margin="0,174,0,0">
-                        <StackPanel VerticalAlignment="Center">
-                            <materialDesign:PackIcon Kind="ScriptOutline" Width="100" Height="100" Foreground="LightGray" HorizontalAlignment="Center"/>
-                            <TextBlock Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Text="Your Current Order Is Empty" Foreground="Gray" Padding="10" HorizontalAlignment="Center"/>
-                        </StackPanel>
-                    </Grid>
-                    <!--> View when items are in the current order <-->
-                    <Grid Name="OrderCurrentInvoice" Grid.Row="1">
+    
+    <materialDesign:DialogHost>
+        <materialDesign:DialogHost.DialogContent>
+            <Grid Margin="20">
+                <StackPanel>
+                    <TextBlock Name="OrderButtonMessage" Margin="0,0,0,10" TextWrapping="Wrap" Width="230" TextAlignment="Center" Style="{DynamicResource MaterialDesignBody1TextBlock}"/>
+                    <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{DynamicResource MaterialDesignFlatButton}">
+                        <TextBlock Text="Ok"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </materialDesign:DialogHost.DialogContent>
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Style="{StaticResource mainPageContentRowHeight}"/>
+                <RowDefinition Style="{StaticResource mainPageMenuRowHeight}"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1">
+                <local:MainMenu/>
+            </Grid>
+            <Canvas Background="White" Grid.Row="0"/>
+            <!-- Orders -->
+            <TabControl BorderThickness="0" Height="572">
+                <!-- Current Order -->
+                <TabItem Name="OrderCurrentTab" Margin="-2,-2,-52,2">
+                    <TabItem.Header>
+                        <TextBlock Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Text="Current Order" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </TabItem.Header>
+                    <!--> Items <-->
+                    <Grid>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="310" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <Grid Grid.Row="0" Background="Wheat" Width="332"/>
-                        <Grid Grid.Row="0" Margin="20,12,20,0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="19" />
-                                <RowDefinition Height="23" />
-                                <RowDefinition Height="41" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="168*" />
-                                <ColumnDefinition Width="45*" />
-                            </Grid.ColumnDefinitions>
+                        <ScrollViewer Grid.Row="0"  VerticalScrollBarVisibility="Hidden">
+                            <ListView Name="_orderCurrent" Template="{StaticResource NonScrollableListView}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Expander Width="320" Margin="0,5,0,0" Background="White">
+                                            <!--> Item header text format <-->
+                                            <Expander.Header>
+                                                <Grid Margin="-10">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="40" />
+                                                        <ColumnDefinition Width="20" />
+                                                        <ColumnDefinition Width="140" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Button Click="Button_Delete_Item" Tag="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}}" Style="{DynamicResource MaterialDesignToolForegroundButton}" Grid.Row="0" Height="25" Width="25" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                                        <materialDesign:PackIcon Kind="CloseCircleOutline" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Maroon"/>
+                                                    </Button>
+                                                    <TextBlock FontWeight="Bold" Text="{Binding Quantity, StringFormat={}{0}}" Grid.Column="1"/>
+                                                    <StackPanel Grid.Column="2">
+                                                        <TextBlock FontWeight="Bold" Text="{Binding Name}" TextWrapping="WrapWithOverflow"/>
+                                                        <TextBlock Text="{Binding Options}" TextWrapping="WrapWithOverflow"/>
+                                                    </StackPanel>
+                                                    <TextBlock FontWeight="Bold" Text="{Binding Cost, StringFormat={}${0}}" Grid.Column="3"/>
+                                                </Grid>
+                                            </Expander.Header>
 
-                            <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock}" Grid.Row="0" Grid.Column="0">Subtotal</TextBlock>
-                            <TextBlock Name="oc_subTotal"  Grid.Row="0" Grid.Column="1"/>
-
-                            <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock}" Grid.Row="1" Grid.Column="0">GST</TextBlock>
-                            <TextBlock Name="oc_gst" Grid.Row="1" Grid.Column="1"/>
-
-                            <TextBlock FontWeight="Bold" Style="{DynamicResource MaterialDesignBody1TextBlock}" Grid.Row="2" Grid.Column="0">TOTAL</TextBlock>
-                            <TextBlock Name="oc_total" FontWeight="Bold" Style="{DynamicResource MaterialDesignBody1TextBlock}" Grid.Row="2" Grid.Column="1"/>
-                        </Grid>
-
-                        <Button Click="Button_Send_Order" Style="{DynamicResource MaterialDesignRaisedButton}" Grid.Row="1" Height="65" Padding="20" HorizontalAlignment="Center" Width="333">
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="ArrowRightBold" Width="25" Height="25"/>
-                                <TextBlock Margin="0,4,0,0" >Send to Kitchen</TextBlock>
-                            </StackPanel>
-                        </Button>
-                    </Grid>
-                </Grid>
-            </TabItem>
-            <!-- Order History -->
-            <TabItem Name="OrderHistoryTab" Background="White" Margin="52,-2,-52,0" HorizontalAlignment="Left" Width="180" Height="57" VerticalAlignment="Top">
-                <TabItem.Header>
-                    <TextBlock Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Text="Order History" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                </TabItem.Header>
-                <!--> Items <-->
-                <Grid Background="White">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="310" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Hidden">
-                        <ListView Name="_orderHistory" Template="{StaticResource NonScrollableListView}">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel>
-                                        <TextBlock Text="{Binding State}" Margin="20,0,0,5" FontSize="16" FontWeight="Bold" Foreground="{Binding State, Converter={StaticResource StateColorSelector}}"/>
-                                        <TextBlock Text="{Binding Time}" Margin="20,0,0,5" FontSize="12"/>
-                                        <ListView ItemsSource="{Binding Items}" Template="{StaticResource NonScrollableListView}">
-                                            <ListView.ItemTemplate>
-                                                <DataTemplate>
-                                                    <Expander Width="310" Margin="0,-8,0,0" Background="White">
-                                                        <!--> Item header text format <-->
-                                                        <Expander.Header>
-                                                            <Grid Margin="-10">
+                                            <!--> Addons <-->
+                                            <ListView ItemsSource="{Binding Addons}" Margin="50,0,0,0" IsHitTestVisible="False">
+                                                <ListView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <BulletDecorator>
+                                                            <BulletDecorator.Bullet>
+                                                                <Ellipse Height="5" Width="5" Fill="DarkGray"/>
+                                                            </BulletDecorator.Bullet>
+                                                            <!--> Addon text format <-->
+                                                            <Grid>
                                                                 <Grid.ColumnDefinitions>
-                                                                    <ColumnDefinition Width="20" />
-                                                                    <ColumnDefinition Width="165" />
+                                                                    <ColumnDefinition Width="30" />
+                                                                    <ColumnDefinition Width="136" />
                                                                     <ColumnDefinition Width="Auto" />
                                                                 </Grid.ColumnDefinitions>
-                                                                <TextBlock FontWeight="Bold" Text="{Binding Quantity}" Grid.Column="0"/>
-                                                                <StackPanel Grid.Column="1">
-                                                                    <TextBlock FontWeight="Bold" Text="{Binding Name}" TextWrapping="WrapWithOverflow"/>
-                                                                    <TextBlock Text="{Binding Options}" TextWrapping="WrapWithOverflow"/>
-                                                                </StackPanel>
-                                                                <TextBlock FontWeight="Bold" Text="{Binding Cost, StringFormat={}${0}}" Grid.Column="2"/>
+                                                                <TextBlock Text="{Binding Quantity, StringFormat={}   {0}}" Grid.Column="0"/>
+                                                                <TextBlock Text="{Binding Name}" Grid.Column="1"/>
+                                                                <TextBlock Text="{Binding Cost, StringFormat={}${0}}" Grid.Column="2"/>
                                                             </Grid>
-                                                        </Expander.Header>
-                                                        <!--> Addons <-->
-                                                        <StackPanel>
-                                                            <ListView ItemsSource="{Binding Addons}" Margin="10,0,0,0" IsHitTestVisible="False">
-                                                                <ListView.ItemTemplate>
-                                                                    <DataTemplate>
-                                                                        <BulletDecorator>
-                                                                            <BulletDecorator.Bullet>
-                                                                                <Ellipse Height="5" Width="5" Fill="DarkGray"/>
-                                                                            </BulletDecorator.Bullet>
-                                                                            <!--> Addon text format <-->
-                                                                            <Grid>
-                                                                                <Grid.ColumnDefinitions>
-                                                                                    <ColumnDefinition Width="30" />
-                                                                                    <ColumnDefinition Width="156" />
-                                                                                    <ColumnDefinition Width="Auto" />
-                                                                                </Grid.ColumnDefinitions>
-                                                                                <TextBlock Text="{Binding Quantity, StringFormat={}   {0}}" Grid.Column="0"/>
-                                                                                <TextBlock Text="{Binding Name}" Grid.Column="1"/>
-                                                                                <TextBlock Text="{Binding Cost, StringFormat={}${0}}" Grid.Column="2"/>
-                                                                            </Grid>
-                                                                        </BulletDecorator>
-                                                                    </DataTemplate>
-                                                                </ListView.ItemTemplate>
-                                                            </ListView>
-                                                            <Button Style="{DynamicResource MaterialDesignRaisedDarkButton}" Height="Auto">
-                                                                <StackPanel Orientation="Horizontal">
-                                                                    <materialDesign:PackIcon Kind="RepeatVariant" Width="25" Height="25" HorizontalAlignment="Center"/>
-                                                                    <TextBlock Margin="0,4,0,0">Reorder</TextBlock>
-                                                                </StackPanel>
-                                                            </Button>
-                                                        </StackPanel>
-                                                    </Expander>
-                                                </DataTemplate>
-                                            </ListView.ItemTemplate>
-                                        </ListView>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </ScrollViewer>
-                    <!--> View when no items have been added to the history order <-->
-                    <Grid Name="OrderHistoryIsEmpty" Grid.Row="0" Margin="0,174,0,0">
-                        <StackPanel VerticalAlignment="Center">
-                            <materialDesign:PackIcon Kind="ScriptOutline" Width="100" Height="100" Foreground="LightGray" HorizontalAlignment="Center"/>
-                            <TextBlock Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Text="Your Order History Is Empty" Foreground="Gray" Padding="10" HorizontalAlignment="Center"/>
-                        </StackPanel>
+                                                        </BulletDecorator>
+                                                    </DataTemplate>
+                                                </ListView.ItemTemplate>
+                                            </ListView>
+                                        </Expander>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </ScrollViewer>
+                        <!--> View when no items have been added to the current order <-->
+                        <Grid Name="OrderCurrentIsEmpty" Grid.Row="0" Margin="0,174,0,0">
+                            <StackPanel VerticalAlignment="Center">
+                                <materialDesign:PackIcon Kind="ScriptOutline" Width="100" Height="100" Foreground="LightGray" HorizontalAlignment="Center"/>
+                                <TextBlock Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Text="Your Current Order Is Empty" Foreground="Gray" Padding="10" HorizontalAlignment="Center"/>
+                            </StackPanel>
+                        </Grid>
+                        <!--> View when items are in the current order <-->
+                        <Grid Name="OrderCurrentInvoice" Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" Background="Wheat" Width="332"/>
+                            <Grid Grid.Row="0" Margin="20,12,20,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="19" />
+                                    <RowDefinition Height="23" />
+                                    <RowDefinition Height="41" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="168*" />
+                                    <ColumnDefinition Width="45*" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock}" Grid.Row="0" Grid.Column="0">Subtotal</TextBlock>
+                                <TextBlock Name="oc_subTotal"  Grid.Row="0" Grid.Column="1"/>
+
+                                <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock}" Grid.Row="1" Grid.Column="0">GST</TextBlock>
+                                <TextBlock Name="oc_gst" Grid.Row="1" Grid.Column="1"/>
+
+                                <TextBlock FontWeight="Bold" Style="{DynamicResource MaterialDesignBody1TextBlock}" Grid.Row="2" Grid.Column="0">TOTAL</TextBlock>
+                                <TextBlock Name="oc_total" FontWeight="Bold" Style="{DynamicResource MaterialDesignBody1TextBlock}" Grid.Row="2" Grid.Column="1"/>
+                            </Grid>
+
+                            <Button Click="Button_Send_Order" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" Style="{DynamicResource MaterialDesignRaisedButton}" Grid.Row="1" Height="65" Padding="20" HorizontalAlignment="Center" Width="333">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="ArrowRightBold" Width="25" Height="25"/>
+                                    <TextBlock Margin="0,4,0,0" >Send to Kitchen</TextBlock>
+                                </StackPanel>
+                            </Button>
+                        </Grid>
                     </Grid>
-                    <!--> View when items are in the current order <-->
-                    <Grid Name="OrderHistoryInvoice" Grid.Row="1">
+                </TabItem>
+                <!-- Order History -->
+                <TabItem Name="OrderHistoryTab" Background="White" Margin="53,-2,-43,0" HorizontalAlignment="Left" Width="171" Height="57" VerticalAlignment="Top">
+                    <TabItem.Header>
+                        <TextBlock Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Text="Order History" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </TabItem.Header>
+                    <!--> Items <-->
+                    <Grid Background="White">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="310" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <Grid Grid.Row="0" Background="Wheat" Width="332"></Grid>
-                        <Grid Grid.Row="0" Margin="20,12,20,0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="19" />
-                                <RowDefinition Height="23" />
-                                <RowDefinition Height="41" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="168*" />
-                                <ColumnDefinition Width="45*" />
-                            </Grid.ColumnDefinitions>
 
-                            <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock}" Grid.Row="0" Grid.Column="0">Subtotal</TextBlock>
-                            <TextBlock Name="oh_subTotal" Grid.Row="0" Grid.Column="1"/>
-
-                            <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock}" Grid.Row="1" Grid.Column="0">GST</TextBlock>
-                            <TextBlock Name="oh_gst" Grid.Row="1" Grid.Column="1"/>
-
-                            <TextBlock FontWeight="Bold" Style="{DynamicResource MaterialDesignBody1TextBlock}" Grid.Row="2" Grid.Column="0">TOTAL</TextBlock>
-                            <TextBlock Name="oh_total" FontWeight="Bold" Style="{DynamicResource MaterialDesignBody1TextBlock}" Grid.Row="2" Grid.Column="1"/>
-
+                        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Hidden">
+                            <ListView Name="_orderHistory" Template="{StaticResource NonScrollableListView}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding State}" Margin="20,0,0,5" FontSize="16" FontWeight="Bold" Foreground="{Binding State, Converter={StaticResource StateColorSelector}}"/>
+                                            <TextBlock Text="{Binding Time}" Margin="20,0,0,5" FontSize="12"/>
+                                            <ListView ItemsSource="{Binding Items}" Template="{StaticResource NonScrollableListView}">
+                                                <ListView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Expander Width="310" Margin="0,-8,0,0" Background="White">
+                                                            <!--> Item header text format <-->
+                                                            <Expander.Header>
+                                                                <Grid Margin="-10">
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="20" />
+                                                                        <ColumnDefinition Width="165" />
+                                                                        <ColumnDefinition Width="Auto" />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock FontWeight="Bold" Text="{Binding Quantity}" Grid.Column="0"/>
+                                                                    <StackPanel Grid.Column="1">
+                                                                        <TextBlock FontWeight="Bold" Text="{Binding Name}" TextWrapping="WrapWithOverflow"/>
+                                                                        <TextBlock Text="{Binding Options}" TextWrapping="WrapWithOverflow"/>
+                                                                    </StackPanel>
+                                                                    <TextBlock FontWeight="Bold" Text="{Binding Cost, StringFormat={}${0}}" Grid.Column="2"/>
+                                                                </Grid>
+                                                            </Expander.Header>
+                                                            <!--> Addons <-->
+                                                            <StackPanel>
+                                                                <ListView ItemsSource="{Binding Addons}" Margin="10,0,0,0" IsHitTestVisible="False">
+                                                                    <ListView.ItemTemplate>
+                                                                        <DataTemplate>
+                                                                            <BulletDecorator>
+                                                                                <BulletDecorator.Bullet>
+                                                                                    <Ellipse Height="5" Width="5" Fill="DarkGray"/>
+                                                                                </BulletDecorator.Bullet>
+                                                                                <!--> Addon text format <-->
+                                                                                <Grid>
+                                                                                    <Grid.ColumnDefinitions>
+                                                                                        <ColumnDefinition Width="30" />
+                                                                                        <ColumnDefinition Width="156" />
+                                                                                        <ColumnDefinition Width="Auto" />
+                                                                                    </Grid.ColumnDefinitions>
+                                                                                    <TextBlock Text="{Binding Quantity, StringFormat={}   {0}}" Grid.Column="0"/>
+                                                                                    <TextBlock Text="{Binding Name}" Grid.Column="1"/>
+                                                                                    <TextBlock Text="{Binding Cost, StringFormat={}${0}}" Grid.Column="2"/>
+                                                                                </Grid>
+                                                                            </BulletDecorator>
+                                                                        </DataTemplate>
+                                                                    </ListView.ItemTemplate>
+                                                                </ListView>
+                                                                <Button Style="{DynamicResource MaterialDesignRaisedDarkButton}" Height="Auto">
+                                                                    <StackPanel Orientation="Horizontal">
+                                                                        <materialDesign:PackIcon Kind="RepeatVariant" Width="25" Height="25" HorizontalAlignment="Center"/>
+                                                                        <TextBlock Margin="0,4,0,0">Reorder</TextBlock>
+                                                                    </StackPanel>
+                                                                </Button>
+                                                            </StackPanel>
+                                                        </Expander>
+                                                    </DataTemplate>
+                                                </ListView.ItemTemplate>
+                                            </ListView>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </ScrollViewer>
+                        <!--> View when no items have been added to the history order <-->
+                        <Grid Name="OrderHistoryIsEmpty" Grid.Row="0" Margin="0,174,0,0">
+                            <StackPanel VerticalAlignment="Center">
+                                <materialDesign:PackIcon Kind="ScriptOutline" Width="100" Height="100" Foreground="LightGray" HorizontalAlignment="Center"/>
+                                <TextBlock Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Text="Your Order History Is Empty" Foreground="Gray" Padding="10" HorizontalAlignment="Center"/>
+                            </StackPanel>
                         </Grid>
 
-                        <Button Style="{DynamicResource MaterialDesignRaisedButton}" Grid.Row="1" Height="65" Padding="20" HorizontalAlignment="Center" Width="333">
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="ScriptText" Width="35" Height="25"/>
-                                <TextBlock Margin="0,4,0,0" >Request Bill</TextBlock>
-                            </StackPanel>
-                        </Button>
+                        <!--> View when items are in the current order <-->
+                        <Grid Name="OrderHistoryInvoice" Grid.Row="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" Background="Wheat" Width="332"></Grid>
+                            <Grid Grid.Row="0" Margin="20,12,20,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="19" />
+                                    <RowDefinition Height="23" />
+                                    <RowDefinition Height="41" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="168*" />
+                                    <ColumnDefinition Width="45*" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock}" Grid.Row="0" Grid.Column="0">Subtotal</TextBlock>
+                                <TextBlock Name="oh_subTotal" Grid.Row="0" Grid.Column="1"/>
+
+                                <TextBlock Style="{DynamicResource MaterialDesignBody2TextBlock}" Grid.Row="1" Grid.Column="0">GST</TextBlock>
+                                <TextBlock Name="oh_gst" Grid.Row="1" Grid.Column="1"/>
+
+                                <TextBlock FontWeight="Bold" Style="{DynamicResource MaterialDesignBody1TextBlock}" Grid.Row="2" Grid.Column="0">TOTAL</TextBlock>
+                                <TextBlock Name="oh_total" FontWeight="Bold" Style="{DynamicResource MaterialDesignBody1TextBlock}" Grid.Row="2" Grid.Column="1"/>
+
+                            </Grid>
+                            <Button Click="Button_Get_Bill" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" Style="{DynamicResource MaterialDesignRaisedButton}" Grid.Row="1" Height="65" Padding="20" HorizontalAlignment="Center" Width="333">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="ScriptText" Width="35" Height="25"/>
+                                    <TextBlock Margin="0,4,0,0" >Request Bill</TextBlock>
+                                </StackPanel>
+                            </Button>
+                        </Grid>
                     </Grid>
-                </Grid>
-            </TabItem>
-        </TabControl>
-    </Grid>
+                </TabItem>
+            </TabControl>
+        </Grid>
+    </materialDesign:DialogHost>
 </UserControl>

@@ -130,6 +130,12 @@ namespace CPSC_481
 			_orderCurrent.Items.Refresh();
 			_orderHistory.Items.Refresh();
 
+			OrderButtonMessage.Text = "Your order has been sent to the kitchen!";
+
+		}
+		public void Button_Get_Bill(object sender, RoutedEventArgs e)
+		{
+			OrderButtonMessage.Text = "The bill is on the way!";
 		}
 		public void Button_Delete_Item(object sender, RoutedEventArgs e) {
 
@@ -138,6 +144,7 @@ namespace CPSC_481
 			_orderCurrent.Items.Refresh();
 			updateOrderCurrentInvoice();
 		}
+
 	}
 
 	public class StateColorSelector : IValueConverter

@@ -14,87 +14,116 @@
             TextOptions.TextRenderingMode="Auto"
             Background="White"
             FontFamily="{DynamicResource MaterialDesignFont}">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Style="{StaticResource mainPageContentRowHeight}"/>
-            <RowDefinition Style="{StaticResource mainPageMenuRowHeight}"/>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="1">
-            <local:MainMenu x:Name ="menu"/>
-        </Grid>
-        <ScrollViewer VerticalScrollBarVisibility="Hidden">
-            <Grid Height="Auto" Width="303">
-                <Grid.Resources >
-                    <Style TargetType="Border" >
-                        <Setter Property="Padding" Value="0,10,0,5" />
-                    </Style>
-                </Grid.Resources>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <!-- Picture/Discription -->
-                <Border Grid.Row="0">
-                    <StackPanel>
-                        <Grid>
-                            <Image Name="itemImageSrc" Height="Auto"/>
-                            <TextBlock Name="itemName" Style="{DynamicResource MaterialDesignHeadline5TextBlock}" Foreground="WhiteSmoke" VerticalAlignment="Bottom" Padding="10"/>
-                        </Grid>
-                        <TextBlock Name="itemDescription"  Padding="5,10,5,0" Style="{DynamicResource MaterialDesignBody2TextBlock}" TextWrapping="Wrap"/>
-                    </StackPanel>
-                </Border>
-                <!-- Options -->
-                <Border Grid.Row="1">
-                    <StackPanel>
-                        <TextBlock Text="Options" FontSize="20" Style="{DynamicResource MaterialDesignSubtitle2TextBlock}" FontWeight="Bold" Padding="0,0,0,15"/>
-                        <ListView Name="itemOptions" Template="{StaticResource NonScrollableListView}">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <Expander Width="200" Background="White" HorizontalAlignment="Center">
-                                        <Expander.Header>
-                                            <TextBlock Text="{Binding Type}" Style="{DynamicResource MaterialDesignSubtitle1TextBlock}" FontWeight="Bold"/>
-                                        </Expander.Header>
-                                        <ListView ItemsSource="{Binding Options}" Template="{StaticResource NonScrollableListView}">
-                                            <ListView.ItemTemplate>
-                                                <DataTemplate>
-                                                    <RadioButton
-                                                        GroupName="{Binding RelativeSource={RelativeSource AncestorType={x:Type Expander}}}" 
+    <UserControl.Resources>
+        <local:StateColorSelector x:Key="OptionColorSelector"/>
+    </UserControl.Resources>
+    <materialDesign:DialogHost>
+        <materialDesign:DialogHost.DialogContent>
+            <Grid Margin="20">
+                <StackPanel>
+                    <TextBlock Name="DialogContentTextBlock" TextWrapping="Wrap" Width="230" TextAlignment="Center" Margin="0,0,0,10" Style="{DynamicResource MaterialDesignBody1TextBlock}"/>
+                    <Button Click="Button_Confirm_Order" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{DynamicResource MaterialDesignFlatButton}">
+                        <TextBlock Text="Ok"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </materialDesign:DialogHost.DialogContent>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Style="{StaticResource mainPageContentRowHeight}"/>
+                <RowDefinition Style="{StaticResource mainPageMenuRowHeight}"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1">
+                <local:MainMenu x:Name ="menu"/>
+            </Grid>
+            <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                <Grid Height="Auto" Width="303">
+                    <Grid.Resources >
+                        <Style TargetType="Border" >
+                            <Setter Property="Padding" Value="0,10,0,5" />
+                        </Style>
+                    </Grid.Resources>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <!-- Picture/Discription -->
+                    <Border Grid.Row="0">
+                        <StackPanel>
+                            <Grid>
+                                <Image Name="itemImageSrc" Height="Auto"/>
+                                <TextBlock Name="itemName" Style="{DynamicResource MaterialDesignHeadline5TextBlock}" Foreground="WhiteSmoke" VerticalAlignment="Bottom" Padding="10"/>
+                            </Grid>
+                            <TextBlock Name="itemDescription"  Padding="5,10,5,0" Style="{DynamicResource MaterialDesignBody2TextBlock}" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Border>
+                    <!-- Options -->
+                    <Border Grid.Row="1">
+                        <StackPanel>
+                            <TextBlock Text="Options" FontSize="20" Style="{DynamicResource MaterialDesignSubtitle2TextBlock}" FontWeight="Bold" Padding="0,0,0,15"/>
+                            <ListView Name="itemOptions" Template="{StaticResource NonScrollableListView}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Expander Width="200" Background="White" HorizontalAlignment="Center">
+                                            <Expander.Header>
+                                                <StackPanel>
+                                                    <TextBlock Text="{Binding Type}" Style="{DynamicResource MaterialDesignSubtitle1TextBlock}" FontWeight="Bold">
+                                                        <TextBlock.Foreground>
+                                                            <SolidColorBrush Color="{Binding Color}"/>
+                                                        </TextBlock.Foreground>
+                                                    </TextBlock>
+                                                    <TextBlock x:Name="OuterRef" Margin="0,5,0,0" Text="Required">
+                                                        <TextBlock.Foreground>
+                                                            <SolidColorBrush Color="{Binding Color}"/>
+                                                        </TextBlock.Foreground>
+                                                    </TextBlock>
+                                                </StackPanel>
+                                            </Expander.Header>
+                                            <ListView ItemsSource="{Binding Options}" Template="{StaticResource NonScrollableListView}">
+                                                <ListView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <RadioButton
+                                                        GroupName="{Binding ElementName=OuterRef, Path=DataContext.Type}" 
                                                         Click="HandleCheck" 
                                                         Tag="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}}" 
                                                         Content="{Binding Name}" 
                                                         Style="{DynamicResource MaterialDesignDarkRadioButton}"
-                                                    />
-                                                </DataTemplate>
-                                            </ListView.ItemTemplate>
-                                        </ListView>
-                                    </Expander>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackPanel>
-                </Border>
-                <!-- Addons -->
-                <Border Grid.Row="2">
-                    <StackPanel>
-                        <TextBlock Text="Addons" FontSize="20" Style="{DynamicResource MaterialDesignSubtitle2TextBlock}" FontWeight="Bold" Padding="0,0,0,15"/>
-                        <ListView Name="itemAddons" Template="{StaticResource NonScrollableListView}">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="180"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition/>
-                                            <RowDefinition/>
-                                        </Grid.RowDefinitions>
-                                        <TextBlock Grid.Column="0" Text="{Binding Name}" Style="{DynamicResource MaterialDesignSubtitle2TextBlock}" FontSize="16" VerticalAlignment="Center"/>
-                                        <StackPanel Grid.Column="1" Orientation="Horizontal">
-                                            <Button 
+                                                        Margin="20,0,0,0">
+                                                            <RadioButton.Foreground>
+                                                                <SolidColorBrush Color="{Binding ElementName=OuterRef, Path=DataContext.Color}"/>
+                                                            </RadioButton.Foreground>
+                                                        </RadioButton>
+                                                    </DataTemplate>
+                                                </ListView.ItemTemplate>
+                                            </ListView>
+                                        </Expander>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackPanel>
+                    </Border>
+                    <!-- Addons -->
+                    <Border Grid.Row="2">
+                        <StackPanel>
+                            <TextBlock Text="Addons" FontSize="20" Style="{DynamicResource MaterialDesignSubtitle2TextBlock}" FontWeight="Bold" Padding="0,0,0,15"/>
+                            <ListView Name="itemAddons" Template="{StaticResource NonScrollableListView}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="180"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Grid.Column="0" Text="{Binding Name}" Style="{DynamicResource MaterialDesignSubtitle2TextBlock}" FontSize="16" VerticalAlignment="Center"/>
+                                            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                                                <Button 
                                                 Tag="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}}"  
                                                 Click="Button_Add_Addon" 
                                                 Style="{DynamicResource MaterialDesignToolForegroundButton}" 
@@ -102,48 +131,51 @@
                                                 Height="30" 
                                                 Margin="0,0,5,0"
                                             >
-                                                <materialDesign:PackIcon Kind="PlusCircleOutline" Width="20" Height="20"/>
-                                            </Button>
-                                            <TextBlock Text="{Binding Quantity, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"/>
-                                            <Button 
+                                                    <materialDesign:PackIcon Kind="PlusCircleOutline" Width="20" Height="20"/>
+                                                </Button>
+                                                <TextBlock Text="{Binding Quantity, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"/>
+                                                <Button 
                                                 Tag="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}}" 
                                                 Click="Button_Remove_Addon" Style="{DynamicResource MaterialDesignToolForegroundButton}"  
                                                 Width="30" 
                                                 Height="30" 
                                                 Margin="5,0,0,0"
                                              >
-                                                <materialDesign:PackIcon Kind="MinusCircleOutline" Width="20" Height="20"/>
-                                            </Button>
-                                        </StackPanel>
-                                        <TextBlock Grid.Row="1" Text="{Binding Cost, StringFormat={}${0}}"/>
-                                    </Grid>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackPanel>
-                </Border>
-                <!-- Special Requests -->
-                <Border Grid.Row="3">
-                    <StackPanel>
-                        <TextBlock Style="{DynamicResource MaterialDesignSubtitle2TextBlock}" Margin="0,0,0,5" FontWeight="Bold" Text="Special Requests"/>
-                        <TextBox TextWrapping="Wrap" Height="125" BorderThickness="1"/>
-                        <TextBlock Style="{DynamicResource MaterialDesignSubtitle2TextBlock}" FontSize="11" Foreground="Maroon" Margin="0,5,0,0" TextWrapping="Wrap" TextAlignment="Center">
+                                                    <materialDesign:PackIcon Kind="MinusCircleOutline" Width="20" Height="20"/>
+                                                </Button>
+                                            </StackPanel>
+                                            <TextBlock Grid.Row="1" Text="{Binding Cost, StringFormat={}${0}}"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackPanel>
+                    </Border>
+                    <!-- Special Requests -->
+                    <Border Grid.Row="3">
+                        <StackPanel>
+                            <TextBlock Style="{DynamicResource MaterialDesignSubtitle2TextBlock}" Margin="0,0,0,5" FontWeight="Bold" Text="Special Requests"/>
+                            <TextBox TextWrapping="Wrap" Height="125" BorderThickness="1"/>
+                            <TextBlock Style="{DynamicResource MaterialDesignSubtitle2TextBlock}" FontSize="11" Foreground="Red" Margin="0,5,0,0" TextWrapping="Wrap" TextAlignment="Center">
                             * This section is for cooking and preparation instructions (like 'well-done'), 
                             it is not for adding toppings or sides to your order (like 'extra cheese')"
-                        </TextBlock>
-                    </StackPanel>
-                </Border>
-                <!-- Add to Order -->
-                <Border Grid.Row="4">
-                    <Button Click="Button_Click_AddToOrder" Height="Auto" Padding="15" Width="Auto">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Plus" Width="25" Height="25"/>
-                            <TextBlock Text="Add to Order" VerticalAlignment="Center"/>
-                            <TextBlock Name="itemCost" VerticalAlignment="Center"/>
+                            </TextBlock>
                         </StackPanel>
-                    </Button>
-                </Border>
-            </Grid>
-        </ScrollViewer>
-    </Grid>
+                    </Border>
+
+                    <!-- Add to Order -->
+                    <Border Grid.Row="4">
+
+                        <Button Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" Click="Button_Click_AddToOrder" Height="Auto" Padding="15" Width="Auto">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Plus" Width="25" Height="25"/>
+                                <TextBlock Text="Add to Order" VerticalAlignment="Center"/>
+                                <TextBlock Name="itemCost" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                    </Border>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+    </materialDesign:DialogHost>
 </UserControl>
