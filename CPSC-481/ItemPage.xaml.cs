@@ -15,7 +15,8 @@ namespace CPSC_481
 		// Reference to the orderhandler in the mainwindow
 		public static OrderHandler orderHandler { get; set; }
 
-		Dictionary<int, Option> options_selected = new Dictionary<int, Option>();
+		Dictionary<Guid, Option> options_selected = new Dictionary<Guid, Option>();
+		List<Addon> addons_selected = new List<Addon>();
 
 		string _SpecialRequest = "";
 
@@ -24,13 +25,13 @@ namespace CPSC_481
 			InitializeComponent();
 
 			// get the current item that the user is looking at
-			var item = orderHandler.getCurrentItem();
+			var item = orderHandler.currentItem;
 
 			// update the user control with item info
 			itemName.Text = item.Name;
 			itemDescription.Text = item.Description;
 			itemImageSrc.Source = item.ImageSrc;
-			//itemCost = item.Cost;
+			itemCost.Text = "  $" + item.Cost.ToString();
 			itemOptions.ItemsSource = item.Options;
 			itemAddons.ItemsSource = item.Addons;
 		}
@@ -39,11 +40,13 @@ namespace CPSC_481
 		{
 			var item = ((sender as Button)?.Tag as ListViewItem)?.DataContext as Addon;
 			item.Quantity += 1;
+			itemCost.Text = "  $" + getTotal(orderHandler.currentItem).ToString();
 		}
 		private void Button_Remove_Addon(object sender, RoutedEventArgs e)
 		{
 			var item = ((sender as Button)?.Tag as ListViewItem)?.DataContext as Addon;
 			if (item.Quantity != 0) item.Quantity -= 1;
+			itemCost.Text = "  $" + getTotal(orderHandler.currentItem).ToString();
 		}
 
 		private void HandleCheck(object sender, RoutedEventArgs e)
@@ -55,28 +58,29 @@ namespace CPSC_481
 		private float getTotal(MenuItem item) {
 			var total = item.Cost;
 
-			//foreach (var addon in addons_selected) {
-				//total += addon.Cost;
-			//}
+			foreach (var addon in item.Addons) 
+			{
+				total += addon.Cost * addon.Quantity;
+			}
 
-			//foreach (var option in options_selected)
-			//{
-				//total += option.Cost;
-			//}
+			foreach (KeyValuePair<Guid, Option> ele in options_selected)
+			{
+				total += ele.Value.Cost;
+			}
 
 			return total;
 		}
 
-		private string BuildOptions(Dictionary<int, Option> options)
+		private string BuildOptions()
 		{
-			if (options.Count == 0) return "";
+			if (options_selected.Count == 0) return "";
 
 			var output = "with ";
 			var i = 0;
-			foreach (KeyValuePair<int, Option> ele in options)
+			foreach (KeyValuePair<Guid, Option> ele in options_selected)
 			{
 				output += ele.Value.Name;
-				if (i != options.Count - 1) output += " and ";
+				if (i != options_selected.Count - 1) output += " and ";
 				i++;
 			}
 			return output;
@@ -84,22 +88,25 @@ namespace CPSC_481
 		void Button_Click_AddToOrder(object sender, RoutedEventArgs e)
 		{
 
-			List<Addon> addons_selected = new List<Addon>();
-			//List<string> options_selected = new List<string>();
-
-			var item = orderHandler.getCurrentItem();
-
+			var item = orderHandler.currentItem;
 			var _Cost = getTotal(item);
-			var optionString = BuildOptions(options_selected);
 
 			foreach (var a in item.Addons)
 			{
-				if (a.Quantity > 0) addons_selected.Add(a);
+				if (a.Quantity > 0)
+				{
+					var addon = a.Copy();
+					addon.Cost *= addon.Quantity;
+					addons_selected.Add(addon);
+					a.Quantity = 0;
+				}
 			}
+			var optionString = BuildOptions();
 
-			OrderItem orderItem = new OrderItem { 
+			OrderItem orderItem = new OrderItem {
+				ID = Guid.NewGuid(),
 				Name = item.Name, 
-				Addons = addons_selected, 
+				Addons = new List<Addon>(addons_selected), 
 				Options = optionString, 
 				SpecialRequest = _SpecialRequest, 
 				Cost = _Cost, 
@@ -107,6 +114,9 @@ namespace CPSC_481
 			};
 
 			orderHandler.AddToOrder(orderItem);
+
+			addons_selected.Clear();
+			options_selected.Clear();
 		}
 	}
 }

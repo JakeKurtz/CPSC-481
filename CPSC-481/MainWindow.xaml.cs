@@ -29,6 +29,7 @@ namespace CPSC_481
 
 			// Passing reference of the orderhandler to the itempage usercontrol
 			ItemPage.orderHandler = orderHandler;
+			OrderPage.orderHandler = orderHandler;
 
 			// Set the food menu as default usercontrol
 			Switcher.pageSwitcher = this;
@@ -39,15 +40,17 @@ namespace CPSC_481
 			List<Addon> item1_addons = new List<Addon>();
 
 			List<Option> size_options = new List<Option>();
-			size_options.Add(new Option { ID = 0, Name = "6 oz Sirloin", Cost=1 });
-			size_options.Add(new Option { ID = 0, Name = "9 oz Sirloin", Cost=1 });
-			size_options.Add(new Option { ID = 0, Name = "6 oz Filet", Cost=1 });
+			Guid size_options_id = Guid.NewGuid();
+			size_options.Add(new Option { ID = size_options_id, Name = "6 oz Sirloin", Cost=1 });
+			size_options.Add(new Option { ID = size_options_id, Name = "9 oz Sirloin", Cost=1 });
+			size_options.Add(new Option { ID = size_options_id, Name = "6 oz Filet", Cost=1 });
 			OptionType size = new OptionType { Type = "Size", Options = size_options };
 
 			List<Option> side_options = new List<Option>();
-			side_options.Add(new Option { ID = 1, Name = "Fries", Cost=1 });
-			side_options.Add(new Option { ID = 1, Name = "Caesar Salad", Cost=1 });
-			side_options.Add(new Option { ID = 1, Name = "Kale Salad", Cost=1 });
+			Guid side_options_id = Guid.NewGuid();
+			side_options.Add(new Option { ID = side_options_id, Name = "Fries", Cost=1 });
+			side_options.Add(new Option { ID = side_options_id, Name = "Caesar Salad", Cost=1 });
+			side_options.Add(new Option { ID = side_options_id, Name = "Kale Salad", Cost=1 });
 			OptionType side = new OptionType { Type = "Side", Options = side_options };
 
 			item1_options.Add(size);
@@ -67,11 +70,11 @@ namespace CPSC_481
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/steak_dinner.jpg")),
 				Addons = item1_addons, 
 				Options = item1_options,
-				Cost = 0
+				Cost = 24
 			};
 
 			// Set the current item to the one we just made.
-			orderHandler.setCurrentItem(item1);
+			orderHandler.currentItem = item1;
 		}
 
 		public void Navigate(UserControl nextPage)
@@ -79,39 +82,6 @@ namespace CPSC_481
 			this.Content = nextPage;
 		}
 	}
-}
-
-// Handels the data moving bewteen the mainwindow and user controls.
-public class OrderHandler
-{
-	List<OrderItem> orderCurrent = new List<OrderItem>();
-	List<Order> orderHistory = new List<Order>();
-
-	List<MenuItem> foodMenuItems = new List<MenuItem>();
-	List<MenuItem> drinkMenuItems = new List<MenuItem>();
-
-	MenuItem currentItem;
-
-	public void setCurrentItem(MenuItem item)
-	{
-		currentItem = item;
-	}
-
-	public MenuItem getCurrentItem()
-	{
-		return currentItem;
-	}
-
-	public void addAddon(Addon addon) {
-		
-	}
-
-	public void AddToOrder(OrderItem item)
-	{
-		orderCurrent.Add(item);
-	}
-	public void GetTotal() { }
-	public void CompleteOrder() { }
 }
 
 public enum OrderState
@@ -128,47 +98,35 @@ public enum MenuButton
 	Help
 }
 
-// class for items being displayed on the menu page
-public class MenuItem
+// Handels the data moving bewteen the mainwindow and user controls.
+public class OrderHandler
 {
-	public string Name { get; set; }
-	public string Description { get; set; }
-	public ImageSource ImageSrc { get; set; }
-	public List<Addon> Addons { get; set; }
-	public List<OptionType> Options { get; set; }
-	public float Cost { get; set; }
-}
+	public Dictionary<Guid, OrderItem> orderCurrent { get; set; }
+	public List<Order> orderHistory { get; set; }
 
-// class for items being displayed on the order page
-public class OrderItem
-{
-	public string Name { get; set; }
-	public List<Addon> Addons { get; set; }
-	public string Options { get; set; }
-	public string SpecialRequest { get; set; }
-	public float Cost { get; set; }
-	public int Quantity { get; set; }
-}
+	public MenuItem currentItem { get; set; }
 
-public class Order
-{
-	public OrderState State { get; set; }
-	public DateTime Time { get; set; }
-	public List<OrderItem> Items { get; set; }
-}
-
-public class Addon : INotifyPropertyChanged
-{
-	public string Name { get; set; }
-	public float Cost { get; set; }
-
-	int _Quantity;
-	public int Quantity
-	{
-		get => _Quantity;
-		set => SetField(ref _Quantity, value, nameof(Quantity));
+	public OrderHandler() {
+		orderCurrent = new Dictionary<Guid, OrderItem>();
+		orderHistory = new List<Order>();
 	}
 
+	public void AddToOrder(OrderItem item)
+	{
+		orderCurrent[item.ID] = item;
+	}
+	public void addToOrderHistory(Dictionary<Guid, OrderItem> currentOrder)
+	{
+		List<OrderItem> _orderitems = currentOrder.Values.ToList();
+		Order order = new Order { State = OrderState.Processing, Time = DateTime.Now, Items = _orderitems};
+		orderHistory.Add(order);
+	}
+
+}
+
+// class for items being displayed on the menu page
+public class MenuItem : INotifyPropertyChanged
+{
 	public event PropertyChangedEventHandler PropertyChanged;
 
 	protected void SetField<T>(ref T field, T value, string propertyName)
@@ -178,6 +136,89 @@ public class Addon : INotifyPropertyChanged
 			field = value;
 			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
+	}
+
+	public string Name { get; set; }
+	public string Description { get; set; }
+	public ImageSource ImageSrc { get; set; }
+	public List<Addon> Addons { get; set; }
+	public List<OptionType> Options { get; set; }
+
+	float _Cost;
+	public float Cost
+	{
+		get => _Cost;
+		set => SetField(ref _Cost, value, nameof(Cost));
+	}
+}
+
+public class Order
+{
+	public OrderState State { get; set; }
+	public DateTime Time { get; set; }
+	public List<OrderItem> Items { get; set; }
+}
+
+// class for items being displayed on the order page
+public class OrderItem
+{
+	public Guid ID { get; set; }
+	public string Name { get; set; }
+	public List<Addon> Addons { get; set; }
+	public string Options { get; set; }
+	public string SpecialRequest { get; set; }
+	public float Cost { get; set; }
+	public int Quantity { get; set; }
+
+	public OrderItem Copy()
+	{
+		OrderItem other = (OrderItem)this.MemberwiseClone();
+		other.ID = ID;
+		other.Name = String.Copy(Name);
+		other.Addons = Addons;
+		other.SpecialRequest = String.Copy(SpecialRequest);
+		other.Cost = Cost;
+		other.Quantity = Quantity;
+		return other;
+	}
+}
+
+public class Addon : INotifyPropertyChanged
+{
+	public event PropertyChangedEventHandler PropertyChanged;
+
+	protected void SetField<T>(ref T field, T value, string propertyName)
+	{
+		if (!EqualityComparer<T>.Default.Equals(field, value))
+		{
+			field = value;
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+		}
+	}
+
+	public string Name { get; set; }
+
+	float _Cost;
+	public float Cost
+	{
+		get => _Cost;
+		set => SetField(ref _Cost, value, nameof(Cost));
+	}
+
+	int _Quantity;
+	public int Quantity
+	{
+		get => _Quantity;
+		set => SetField(ref _Quantity, value, nameof(Quantity));
+	}
+
+	public Addon Copy()
+	{
+		Addon other = (Addon)this.MemberwiseClone();
+		other.Name = String.Copy(Name);
+		other.Cost = Cost;
+		other.Quantity = Quantity;
+		return other;
 	}
 }
 
@@ -190,7 +231,7 @@ public class OptionType
 
 public class Option
 {
-	public int ID { get; set; }
+	public Guid ID { get; set; }
 	public string Name { get; set; }
 	public float Cost { get; set; }
 }
