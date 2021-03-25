@@ -56,6 +56,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AppetizerPage.xaml.cs">
+      <DependentUpon>AppetizerPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FoodMenu.xaml.cs">
       <DependentUpon>FoodMenu.xaml</DependentUpon>
     </Compile>
@@ -65,8 +68,17 @@
     <Compile Include="MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="OrderPage.xaml.cs">
       <DependentUpon>OrderPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SidesPage.xaml.cs">
+      <DependentUpon>SidesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SpecialsPage.xaml.cs">
+      <DependentUpon>SpecialsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Switcher.cs" />
     <Compile Include="ItemPage.xaml.cs">
@@ -78,7 +90,15 @@
     <Compile Include="_SpecialsWindow.xaml.cs">
       <DependentUpon>_SpecialsWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="AppetizerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HelpPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -105,6 +125,14 @@
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SidesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SpecialsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="_SpecialsWindow.xaml">
       <SubType>Designer</SubType>

@@ -26,12 +26,12 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="60*" />
                 <RowDefinition Height="40*" />
-                <RowDefinition Height="60*" />
-                <RowDefinition Height="436*" />
+                <RowDefinition Height="70*" />
+                <RowDefinition Height="426*" />
             </Grid.RowDefinitions>
-            <!-- Top row of buttons -->
+            <!-- Top row of tabs/buttons -->
             <Border BorderBrush="#FF3F3F46" BorderThickness="0, 0, 0, 0.75" Padding="0,0,0,3">
-                <!-- Adds a thin line to the bottom of the tabs-->
+                <!-- adds a thin line to the bottom of the tabs -->
                 <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -39,17 +39,17 @@
                         <ColumnDefinition/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Row="1" Grid.Column="0" Height="Auto" Margin="10,10,10,10" Background="White" BorderBrush="#FF616161" BorderThickness="1.5">
+                    <Button x:Name="specialsFoodBtn" Grid.Row="1" Grid.Column="0" Height="Auto" Margin="10,10,10,10" Background="White" BorderBrush="#FF616161" BorderThickness="1.5" Click="specialsClick">
                         <TextBlock Foreground="#FF616161" Margin="-8,0,-8,0">Specials</TextBlock>
                     </Button>
-                    <Button Grid.Row="1" Grid.Column="1" Height="Auto" Margin="0,10,0,10" Background="White" BorderBrush="#FF616161" BorderThickness="1.5">
+                    <Button x:Name="appetizersBtn" Grid.Row="1" Grid.Column="1" Height="Auto" Margin="0,10,0,10" Background="White" BorderBrush="#FF616161" BorderThickness="1.5" Click="appetizerClick">
                         <TextBlock Foreground="#FF616161" Margin="-10,0,-10,0">Appetizers</TextBlock>
                     </Button>
-                    <Button Grid.Row="1" Grid.Column="2" Height="Auto" Margin="12,10,12,10" Background="White" BorderBrush="#FF616161" BorderThickness="1.5">
+                    <Button x:Name="mainBtn" Grid.Row="1" Grid.Column="2" Height="Auto" Margin="12,10,12,10" Background="White" BorderBrush="#FF616161" BorderThickness="1.5" Click="mainClick">
                         <TextBlock Foreground="#FF616161" Margin="-8,0,-8,0">Main</TextBlock>
                     </Button>
-                    <Button Grid.Row="1" Grid.Column="3" Height="Auto" Margin="1,10,12,10" Background="White" BorderBrush="#FF616161" BorderThickness="1.5">
-                        <TextBlock Foreground="#FF616161" Margin="-8,0,-8,0">Sides</TextBlock>
+                    <Button Grid.Row="1" Grid.Column="3" Height="Auto" Margin="1,10,12,10" Background="White" BorderBrush="#FF616161" BorderThickness="1.5" Click="sidesClick">
+                        <TextBlock x:Name="sidesBtn" Foreground="#FF616161" Margin="-8,0,-8,0">Sides</TextBlock>
                     </Button>
                 </Grid>
             </Border>
@@ -60,9 +60,9 @@
             </Grid>
 
             <!-- Filter button -->
-            <Grid Background="WhiteSmoke" Grid.Row="2" >
+            <Grid Background="WhiteSmoke" Grid.Row="2" Margin="0,0,0,5" >
                 <TextBlock Padding="15,5,0,0" Foreground="#E25A42" FontWeight="Bold">4 Results (3 Filters Applied)</TextBlock>
-                <Button Margin="15,25,200,0" Background="#FF4F4F4F" >
+                <Button Margin="15,20,200,0" Background="#FF4F4F4F" >
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="tune" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" />
                         <TextBlock TextAlignment="Center" VerticalAlignment="Center">Filter</TextBlock>
@@ -70,72 +70,9 @@
                 </Button>
             </Grid>
 
-            <!--Appetizer page content - images and descriptions of food -->
-            <Grid Background="WhiteSmoke" Grid.Row="3">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <!-- Left column -->
-                <Grid Grid.Column="0" Margin="10">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid Grid.Row="0" Margin="0,5,0,5">
-                        <StackPanel>
-                            <Image Source="/Resources/images/food_items/fries_landscape.jpg" VerticalAlignment="Top" />
-                            <TextBlock Text="Garlic Fries" Style="{DynamicResource MaterialDesignSubtitle1TextBlock}" FontWeight="DemiBold" Padding="0,2,0,0"/>
-                            <TextBlock Text="$6.00" Foreground="#FF4F4F4F" FontStyle="Italic" Style="{DynamicResource MaterialDesignBody2TextBlock}"></TextBlock>
-                            <TextBlock Padding="0,2,0,0" Foreground="#FF4F4F4F" Style="{DynamicResource MaterialDesignBody2TextBlock}" TextWrapping="Wrap" FontSize="9">
-			                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-			                sed do eiusmod tempor incididunt ut labore.
-                            </TextBlock>
-                        </StackPanel>
-                    </Grid>
-                    <Grid Grid.Row="1" Margin="0,5,0,5">
-                        <StackPanel>
-                            <Image Source="/Resources/images/food_items/kale.jpg" VerticalAlignment="Top" />
-                            <TextBlock Text="Kale Caesar Salad" Style="{DynamicResource MaterialDesignSubtitle1TextBlock}" FontWeight="DemiBold" Padding="0,2,0,0"/>
-                            <TextBlock Text="$11.00" Foreground="#FF4F4F4F" FontStyle="Italic" Style="{DynamicResource MaterialDesignBody2TextBlock}"></TextBlock>
-                            <TextBlock Padding="0,2,0,0" Foreground="#FF4F4F4F" Style="{DynamicResource MaterialDesignBody2TextBlock}" TextWrapping="Wrap" FontSize="9">
-			                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-			                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            </TextBlock>
-                        </StackPanel>
-                    </Grid>
-                </Grid>
+            <Frame x:Name="Food" Grid.Row="3" NavigationUIVisibility="Hidden"/>
 
-                <!-- Right column -->
-                <Grid Grid.Column="1" Margin="10">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid Grid.Row="0" Margin="0,5,0,5">
-                        <StackPanel>
-                            <Image Source="/Resources/images/food_items/wings.jpg" VerticalAlignment="Top" />
-                            <TextBlock Text="Chicken Wings" Style="{DynamicResource MaterialDesignSubtitle1TextBlock}" FontWeight="DemiBold" Padding="0,2,0,0"/>
-                            <TextBlock Text="$8.00" Foreground="#FF4F4F4F" FontStyle="Italic" Style="{DynamicResource MaterialDesignBody2TextBlock}"></TextBlock>
-                            <TextBlock Padding="0,2,0,0" Foreground="#FF4F4F4F" Style="{DynamicResource MaterialDesignBody2TextBlock}" TextWrapping="Wrap" FontSize="9">
-			                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-			                sed do eiusmod tempor incididunt ut labore.
-                            </TextBlock>
-                        </StackPanel>
-                    </Grid>
-                    <Grid Grid.Row="1" Margin="0,5,0,5">
-                        <StackPanel>
-                            <Image Source="/Resources/images/food_items/nachos.jpg" VerticalAlignment="Top" />
-                            <TextBlock Text="Nachos" Style="{DynamicResource MaterialDesignSubtitle1TextBlock}" FontWeight="DemiBold" Padding="0,2,0,0"/>
-                            <TextBlock Text="$10.00" Foreground="#FF4F4F4F" FontStyle="Italic" Style="{DynamicResource MaterialDesignBody2TextBlock}"></TextBlock>
-                            <TextBlock Padding="0,2,0,0" Foreground="#FF4F4F4F" Style="{DynamicResource MaterialDesignBody2TextBlock}" TextWrapping="Wrap" FontSize="9">
-			                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-			                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            </TextBlock>
-                        </StackPanel>
-                    </Grid>
-                </Grid>
-            </Grid>
+
         </Grid>
     </Grid>
 </UserControl>

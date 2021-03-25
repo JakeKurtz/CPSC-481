@@ -23,6 +23,27 @@ namespace CPSC_481
 		public FoodMenu()
 		{
 			InitializeComponent();
+			Food.Content = new AppetizerPage();
+		}
+
+		private void specialsClick(object sender, RoutedEventArgs e)
+		{
+			Food.Content = new SpecialsPage();
+		}
+
+		private void appetizerClick(object sender, RoutedEventArgs e)
+		{
+			Food.Content = new AppetizerPage();
+		}
+
+		private void mainClick(object sender, RoutedEventArgs e)
+		{
+			Food.Content = new MainPage();
+		}
+
+		private void sidesClick(object sender, RoutedEventArgs e)
+		{
+			Food.Content = new SidesPage();
 		}
 	}
 }
