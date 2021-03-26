@@ -16,15 +16,24 @@ using System.Windows.Shapes;
 namespace CPSC_481
 {
 	/// <summary>
-	/// Interaction logic for AppetizerPage.xaml
+	/// Interaction logic for MenuItemPage.xaml
 	/// </summary>
-	public partial class AppetizerPage : Page
+	public partial class MenuItemPage : Page
 	{
+		public static OrderHandler orderHandler { get; set; }
 
-		public AppetizerPage()
+		public MenuItemPage()
 		{
 			InitializeComponent();
-			MenuItem1.Content = new MenuItemControl();
+
+			//// get the current item that the user is looking at
+			//var item = orderHandler.currentItem;
+
+			//// update the user control with item info
+			//imageSrc.Source = item.ImageSrc;
+			//itemName.Text = item.Name;
+			//itemDesc.Text = item.Description;
+			//itemPrice.Text = "  $" + item.Cost.ToString();
 		}
 	}
 }

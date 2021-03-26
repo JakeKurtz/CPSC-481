@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace CPSC_481
 {
@@ -25,11 +26,16 @@ namespace CPSC_481
 		public MainWindow()
         {
 			OrderHandler orderHandler = new OrderHandler();
+			MenuLists menuLists = new MenuLists();
+
 			InitializeComponent();
 
 			// Passing reference of the orderhandler to the itempage usercontrol
 			ItemPage.orderHandler = orderHandler;
 			OrderPage.orderHandler = orderHandler;
+
+			// Pass reference of the menu lists to the food menu page
+			FoodMenu.menuLists = menuLists;
 
 			// Set the food menu as default usercontrol
 			Switcher.pageSwitcher = this;
@@ -72,6 +78,64 @@ namespace CPSC_481
 				Options = item1_options,
 				Cost = 24
 			};
+
+			MenuItem appitem1 = new MenuItem
+			{
+				Name = "Garlic Fries",
+				Description = "Crunchy fries with garlic seasoning",
+				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/fries_landscape.jpg")),
+				Addons = item1_addons,
+				Options = item1_options,
+				Cost = 10
+			};
+
+			MenuItem appitem2 = new MenuItem
+			{
+				Name = "Kale Caesar Salad",
+				Description = "Fresh kale salad with house caesar dressing",
+				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/kale.jpg")),
+				Addons = item1_addons,
+				Options = item1_options,
+				Cost = 14
+			};
+
+			MenuItem appitem3 = new MenuItem
+			{
+				Name = "Chicken Wings",
+				Description = "Fried chicken wings of your choice, comes with carrot and celery sticks",
+				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/wings.jpg")),
+				Addons = item1_addons,
+				Options = item1_options,
+				Cost = 12
+			};
+
+			MenuItem appitem4 = new MenuItem
+			{
+				Name = "Nachos",
+				Description = "Baked nachos topped with jalapenos, tomatoes, onions and aged cheddar. Comes with salsa and sour cream",
+				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/wings.jpg")),
+				Addons = item1_addons,
+				Options = item1_options,
+				Cost = 16
+			};
+
+			// create a list of Appetizers
+			List<MenuItem> AppetizerList = new List<MenuItem>();
+			AppetizerList.Add(appitem1);
+			AppetizerList.Add(appitem2);
+			AppetizerList.Add(appitem3);
+			AppetizerList.Add(appitem4);
+
+			menuLists.AppetizerList = AppetizerList;
+
+			//Trace.WriteLine("TEST TEST TEST");
+			//Trace.WriteLine(AppetizerList.Count);
+
+			//// print out list of apps to test
+			//for (int i = 0; i < AppetizerList.Count; i++) {
+			//	Trace.WriteLine(AppetizerList[i].Name);
+			//}
+
 
 			// Set the current item to the one we just made.
 			orderHandler.currentItem = item1;
@@ -150,6 +214,16 @@ public class MenuItem : INotifyPropertyChanged
 		get => _Cost;
 		set => SetField(ref _Cost, value, nameof(Cost));
 	}
+}
+
+// public class to keep a list of all food menu items
+// work-around for passing data to the FoodMenu
+public class MenuLists
+{
+	public List<MenuItem> AppetizerList { get; set; }
+	public List<MenuItem> MainList { get; set; }
+	public List<MenuItem> SideList { get; set; }
+	public List<MenuItem> SpecialsList { get; set; }
 }
 
 public class Order

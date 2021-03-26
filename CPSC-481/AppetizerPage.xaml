@@ -23,15 +23,7 @@
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0" Margin="0,5,0,5">
                         <Button Height="190" Background="WhiteSmoke" BorderBrush="WhiteSmoke" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Padding="0">
-                            <StackPanel>
-                                <Image Source="/Resources/images/food_items/fries_landscape.jpg" VerticalAlignment="Top" />
-                                <TextBlock Text="Garlic Fries" Style="{DynamicResource MaterialDesignSubtitle1TextBlock}" FontWeight="DemiBold" Padding="0,2,0,0"/>
-                                <TextBlock Text="$6.00" Foreground="#FF4F4F4F" FontStyle="Italic" Style="{DynamicResource MaterialDesignBody2TextBlock}"></TextBlock>
-                                <TextBlock Padding="0,2,0,0" Foreground="#FF4F4F4F" Style="{DynamicResource MaterialDesignBody2TextBlock}" TextWrapping="Wrap" FontSize="9">
-			                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-			                sed do eiusmod tempor incididunt ut labore.
-                                </TextBlock>
-                            </StackPanel>
+                            <Frame x:Name="MenuItem1" NavigationUIVisibility="Hidden"/>
                         </Button>
 
                     </Grid>

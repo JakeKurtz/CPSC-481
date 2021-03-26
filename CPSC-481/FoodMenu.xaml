@@ -56,7 +56,7 @@
 
             <!-- Menu title -->
             <Grid Background="WhiteSmoke" Grid.Row="1">
-                <TextBlock Text="Appetizers" Style="{DynamicResource MaterialDesignHeadline5TextBlock}" FontWeight="DemiBold" HorizontalAlignment="Center" Padding="5"></TextBlock>
+                <TextBlock Name="menuTitle" Style="{DynamicResource MaterialDesignHeadline5TextBlock}" FontWeight="DemiBold" HorizontalAlignment="Center" Padding="5"></TextBlock>
             </Grid>
 
             <!-- Filter button -->
