@@ -55,7 +55,11 @@
                         <StackPanel>
                             <Grid>
                                 <Image Name="itemImageSrc" Height="Auto"/>
-                                <TextBlock Name="itemName" Style="{DynamicResource MaterialDesignHeadline5TextBlock}" Foreground="WhiteSmoke" VerticalAlignment="Bottom" Padding="10"/>
+                                <TextBlock Name="itemName" Style="{DynamicResource MaterialDesignHeadline5TextBlock}" Foreground="WhiteSmoke" VerticalAlignment="Bottom" Padding="10">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect ShadowDepth="2" Direction="330" Color="Black" Opacity="0.8" BlurRadius="5" />
+                                    </TextBlock.Effect>
+                                </TextBlock>
                             </Grid>
                             <TextBlock Name="itemDescription"  Padding="5,10,5,0" Style="{DynamicResource MaterialDesignBody2TextBlock}" TextWrapping="Wrap"/>
                         </StackPanel>
