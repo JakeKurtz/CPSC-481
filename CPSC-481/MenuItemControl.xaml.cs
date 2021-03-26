@@ -50,12 +50,8 @@ namespace CPSC_481
 
 			orderHandler.currentItem = thisItem;
 
-			// omg please work
+			// switch to the Item Page to display this item
 			Switcher.Switch(new ItemPage());
-
-			//if (thisItem != null) {
-			//	Trace.WriteLine("clicked on " + thisItem.Name);
-			//}
 		}
 	}
 }
