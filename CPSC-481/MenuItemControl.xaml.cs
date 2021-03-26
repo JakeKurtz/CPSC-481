@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
+
 
 namespace CPSC_481
 {
@@ -20,9 +22,7 @@ namespace CPSC_481
 	/// </summary>
 	public partial class MenuItemControl : UserControl
 	{
-		public static OrderHandler orderHandler { get; set; }
-
-		public MenuItemControl()
+		public MenuItemControl(MenuItem menuItem)
 		{
 			InitializeComponent();
 			// get the current item that the user is looking at
@@ -33,6 +33,18 @@ namespace CPSC_481
 			//itemName.Text = item.Name;
 			//itemDesc.Text = item.Description;
 			//itemPrice.Text = "  $" + item.Cost.ToString();
+
+			try
+			{
+				Trace.WriteLine("MENU ITEM NAME: " + menuItem.Name);
+				imageSrc.Source = menuItem.ImageSrc;
+				itemName.Text = menuItem.Name;
+				itemDesc.Text = menuItem.Description;
+				itemPrice.Text = "  $" + menuItem.Cost.ToString();
+			}
+			catch (Exception ex) {
+				Trace.WriteLine("Menu item is empty");
+			}
 		}
 	}
 }

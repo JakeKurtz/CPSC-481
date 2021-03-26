@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
+
 
 namespace CPSC_481
 {
@@ -20,11 +22,30 @@ namespace CPSC_481
 	/// </summary>
 	public partial class AppetizerPage : Page
 	{
+		//public static List<MenuItem> appList;	
 
-		public AppetizerPage()
+		public AppetizerPage(List<MenuItem> appList)
 		{
 			InitializeComponent();
-			MenuItem1.Content = new MenuItemControl();
+			try
+			{
+				MenuItem1.Content = new MenuItemControl(appList[0]);
+
+				Trace.WriteLine("APPETIZER LIST FROM THE APPETIZER PAGE");
+
+				// print out list of appys to test
+				for (int i = 0; i < appList.Count; i++)
+				{
+					Trace.WriteLine(appList[i].Name);
+				}
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine("AppList is empty");
+			}
+
+			
+
 		}
 	}
 }

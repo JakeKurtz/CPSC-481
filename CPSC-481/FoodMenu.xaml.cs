@@ -30,19 +30,23 @@ namespace CPSC_481
 	public FoodMenu()
 		{
 			InitializeComponent();
-			Food.Content = new AppetizerPage();
+			Food.Content = new AppetizerPage(AppList);
 			menuTitle.Text = "Appetizers";
 
-			if (AppList != null) {
-				Trace.WriteLine("APPETIZER LIST FROM THE FOOD MENU PAGE");
+			MenuLists appyList = new MenuLists();
+			appyList.AppetizerList = AppList;
 
-				// print out list of apps to test
-				for (int i = 0; i < AppList.Count; i++)
-				{
-					Trace.WriteLine(AppList[i].Name);
-				}
-			}
-			
+			//// print to Output to test if it worked
+			//if (AppList != null)
+			//{
+			//	Trace.WriteLine("APPETIZER LIST FROM THE FOOD MENU PAGE");
+
+			//	// print out list of appys to test
+			//	for (int i = 0; i < appyList.AppetizerList.Count; i++)
+			//	{
+			//		Trace.WriteLine(appyList.AppetizerList[i].Name);
+			//	}
+			//}
 		}
 
 		private void specialsClick(object sender, RoutedEventArgs e)
@@ -53,7 +57,7 @@ namespace CPSC_481
 
 		private void appetizerClick(object sender, RoutedEventArgs e)
 		{
-			Food.Content = new AppetizerPage();
+			Food.Content = new AppetizerPage(AppList);
 			menuTitle.Text = "Appetizers";
 		}
 
