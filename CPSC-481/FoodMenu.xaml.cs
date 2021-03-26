@@ -24,7 +24,6 @@ namespace CPSC_481
 	{
 		// Get the MenuList from the MainWindow
 		public static MenuLists menuLists { get; set; }
-		List<MenuItem> SideList = menuLists.SideList;
 
 	public FoodMenu()
 		{
@@ -55,7 +54,7 @@ namespace CPSC_481
 
 		private void sidesClick(object sender, RoutedEventArgs e)
 		{
-			Food.Content = new SidesPage();
+			Food.Content = new SidesPage(menuLists.SideList);
 			menuTitle.Text = "Sides";
 		}
 	}

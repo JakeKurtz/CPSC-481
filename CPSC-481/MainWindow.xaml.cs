@@ -186,16 +186,6 @@ namespace CPSC_481
 				Cost = 10
 			};
 
-			//MenuItem appitem2 = new MenuItem
-			//{
-			//	Name = "Kale Caesar Salad",
-			//	Description = "Fresh kale salad with house caesar dressing",
-			//	ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/kale.jpg")),
-			//	Addons = item1_addons,
-			//	Options = item1_options,
-			//	Cost = 14
-			//};
-
 			MenuItem appitem2 = new MenuItem
 			{
 				Name = "Crispy Brussels Sprouts",
@@ -235,6 +225,93 @@ namespace CPSC_481
 
 			// Set the appetizer list in the MenuList class
 			menuLists.AppetizerList = AppetizerList;
+
+
+			// sides menu
+			MenuItem sideitem1 = new MenuItem
+			{
+				Name = "Handcut fries",
+				Description = "Freshly cut fries, lightly salted and seasoned",
+				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/friesSide.jpg")),
+				Addons = item1_addons,
+				Options = item1_options,
+				Cost = 12
+			};
+
+			MenuItem sideitem2 = new MenuItem
+			{
+				Name = "Kale Caesar Salad",
+				Description = "Fresh kale salad with house caesar dressing",
+				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/kale.jpg")),
+				Addons = item1_addons,
+				Options = item1_options,
+				Cost = 6
+			};
+
+			MenuItem sideitem3 = new MenuItem
+			{
+				Name = "Garden Salad",
+				Description = "Mixed greens, cucumbers, grape tomatoes, onions and croutons tossed in italian dressing",
+				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/salad.jpg")),
+				Addons = item1_addons,
+				Options = item1_options,
+				Cost = 4
+			};
+
+			MenuItem sideitem4 = new MenuItem
+			{
+				Name = "Garlic Bread",
+				Description = "Garlic butter spread on freshly toasted bread",
+				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/garlicBread.jpg")),
+				Addons = item1_addons,
+				Options = item1_options,
+				Cost = 3
+			};
+
+			MenuItem sideitem5 = new MenuItem
+			{
+				Name = "Mashed Potatoes",
+				Description = "Yukon gold potatoes, mashed with sour cream and house seasoning",
+				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/mashedPotatoes.jpg")),
+				Addons = item1_addons,
+				Options = item1_options,
+				Cost = 5
+			};
+
+			MenuItem sideitem6 = new MenuItem
+			{
+				Name = "Ceasar Salad",
+				Description = "Crunchy romaine lettuce with house caesar and croutons",
+				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/caesar.jpg")),
+				Addons = item1_addons,
+				Options = item1_options,
+				Cost = 5
+			};
+
+			MenuItem sideitem7 = new MenuItem
+			{
+				Name = "Soup of the Day",
+				Description = "Made with the chef's choice of fresh ingredients, ask your server for which soup is served today",
+				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/soup.jpg")),
+				Addons = item1_addons,
+				Options = item1_options,
+				Cost = 4
+			};
+
+			// create a list of sides
+			List<MenuItem> SidesList = new List<MenuItem>();
+
+			SidesList.Add(sideitem1);
+			SidesList.Add(sideitem2);
+			SidesList.Add(sideitem3);
+			SidesList.Add(sideitem4);
+			SidesList.Add(sideitem5);
+			SidesList.Add(sideitem6);
+			SidesList.Add(sideitem7);
+
+			// Set the appetizer list in the MenuList class
+			menuLists.SideList = SidesList;
+
 
 			// Set the current item to the one we just made.
 			orderHandler.currentItem = item1;

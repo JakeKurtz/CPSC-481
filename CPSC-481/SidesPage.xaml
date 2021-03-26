@@ -8,7 +8,57 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SidesPage">
 
-    <Grid>
-        <TextBlock>   This is the sides page!</TextBlock>
-    </Grid>
+    <ScrollViewer VerticalScrollBarVisibility="Hidden">
+        <Grid>
+            <!--Appetizer page content - images and descriptions of food -->
+            <Grid Background="WhiteSmoke" Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                
+                <!-- Left column -->
+                <Grid Grid.Column="0" Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Margin="0,5,0,5">
+                        <!-- MenuItemControl for top left grid item -->
+                        <Frame x:Name="MenuItem1" NavigationUIVisibility="Hidden"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Margin="0,5,0,5">
+                        <Frame x:Name="MenuItem2" NavigationUIVisibility="Hidden"/>
+                    </Grid>
+                    <Grid Grid.Row="2" Margin="0,5,0,5">
+                        <Frame x:Name="MenuItem3" NavigationUIVisibility="Hidden"/>
+                    </Grid>
+                    <Grid Grid.Row="3" Margin="0,5,0,5">
+                        <Frame x:Name="MenuItem4" NavigationUIVisibility="Hidden"/>
+                    </Grid>
+                </Grid>
+
+                <!-- Right column -->
+                <Grid Grid.Column="1" Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Margin="0,5,0,5">
+                        <!-- MenuItemControl for top right grid item -->
+                        <Frame x:Name="MenuItem5" NavigationUIVisibility="Hidden"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Margin="0,5,0,5">
+                        <Frame x:Name="MenuItem6" NavigationUIVisibility="Hidden"/>
+                    </Grid>
+                    <Grid Grid.Row="2" Margin="0,5,0,5">
+                        <Frame x:Name="MenuItem7" NavigationUIVisibility="Hidden"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
 </Page>
