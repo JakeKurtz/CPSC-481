@@ -22,8 +22,6 @@ namespace CPSC_481
 	/// </summary>
 	public partial class AppetizerPage : Page
 	{
-		//public static List<MenuItem> appList;	
-
 		public AppetizerPage(List<MenuItem> appList)
 		{
 			InitializeComponent();
@@ -47,9 +45,6 @@ namespace CPSC_481
 			{
 				Console.WriteLine("appList is empty");
 			}
-
-			
-
 		}
 	}
 }

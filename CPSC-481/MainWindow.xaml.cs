@@ -309,8 +309,61 @@ namespace CPSC_481
 			SidesList.Add(sideitem6);
 			SidesList.Add(sideitem7);
 
-			// Set the appetizer list in the MenuList class
+			// Set the sides list in the MenuList class
 			menuLists.SideList = SidesList;
+
+
+			// Specials menu
+			MenuItem specialitem1 = new MenuItem
+			{
+				Name = "Wings Special",
+				Description = "Crispy fried wings, tossed in sauce of your choice",
+				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/wings_special.jpg")),
+				Addons = item1_addons,
+				Options = item1_options,
+				Cost = 8
+			};
+
+			MenuItem specialitem2 = new MenuItem
+			{
+				Name = "Draft Beer",
+				Description = "Choose from our premium selection of local draft beer",
+				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/drink_items/beer.jpg")),
+				Addons = item1_addons,
+				Options = item1_options,
+				Cost = 5
+			};
+
+			MenuItem specialitem3 = new MenuItem
+			{
+				Name = "Sushi Rolls",
+				Description = "Crunchy seaweed, warm sushi rice with your choice of cucmber, spicy tuna, salmon or california roll",
+				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/sushi_crop.jpg")),
+				Addons = item1_addons,
+				Options = item1_options,
+				Cost = 10
+			};
+
+			MenuItem specialitem4 = new MenuItem
+			{
+				Name = "House Wine",
+				Description = "Choose from our large selection of house wines",
+				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/drink_items/wine.jpg")),
+				Addons = item1_addons,
+				Options = item1_options,
+				Cost = 5
+			};
+
+			// create a list of specials
+			List<MenuItem> SpecialsList = new List<MenuItem>();
+
+			SpecialsList.Add(specialitem1);
+			SpecialsList.Add(specialitem2);
+			SpecialsList.Add(specialitem3);
+			SpecialsList.Add(specialitem4);
+
+			// set the specials list in MenuList class
+			menuLists.SpecialsList = SpecialsList;
 
 
 			// Set the current item to the one we just made.

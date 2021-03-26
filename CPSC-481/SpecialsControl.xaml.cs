@@ -18,13 +18,13 @@ using System.Diagnostics;
 namespace CPSC_481
 {
 	/// <summary>
-	/// Interaction logic for MenuItemControl.xaml
+	/// Interaction logic for SpecialsControl.xaml
 	/// </summary>
-	public partial class MenuItemControl : UserControl
+	public partial class SpecialsControl : UserControl
 	{
 		MenuItem thisItem = new MenuItem();
 
-		public MenuItemControl(MenuItem menuItem)
+		public SpecialsControl(MenuItem menuItem)
 		{
 			InitializeComponent();
 			thisItem = menuItem;
@@ -32,16 +32,16 @@ namespace CPSC_481
 			try
 			{
 				imageSrc.Source = menuItem.ImageSrc;
-				itemName.Text = menuItem.Name;
-				itemDesc.Text = menuItem.Description;
-				itemPrice.Text = "$" + menuItem.Cost.ToString();
+				specialName.Text = menuItem.Name;
+				specialPrice.Text = "$" + menuItem.Cost.ToString();
 			}
-			catch (Exception ex) {
-				Trace.WriteLine("Menu item is empty" + ex);
+			catch (Exception ex)
+			{
+				Trace.WriteLine("Special item is empty " + ex);
 			}
 		}
 
-		private void selectItemClick(object sender, RoutedEventArgs e)
+		private void specialBtnClick(object sender, RoutedEventArgs e)
 		{
 			OrderHandler orderHandler = new OrderHandler();
 

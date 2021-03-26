@@ -80,6 +80,9 @@
     <Compile Include="SidesPage.xaml.cs">
       <DependentUpon>SidesPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SpecialsControl.xaml.cs">
+      <DependentUpon>SpecialsControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SpecialsPage.xaml.cs">
       <DependentUpon>SpecialsPage.xaml</DependentUpon>
     </Compile>
@@ -137,6 +140,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="SidesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SpecialsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

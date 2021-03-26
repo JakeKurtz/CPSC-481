@@ -35,7 +35,7 @@ namespace CPSC_481
 
 		private void specialsClick(object sender, RoutedEventArgs e)
 		{
-			Food.Content = new SpecialsPage();
+			Food.Content = new SpecialsPage(menuLists.SpecialsList);
 			menuTitle.Text = "Today's Specials";
 		}
 
