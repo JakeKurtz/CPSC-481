@@ -12,30 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Diagnostics;
-
 
 namespace CPSC_481
 {
 	/// <summary>
-	/// Interaction logic for MenuItemControl.xaml
+	/// Interaction logic for WelcomePage.xaml
 	/// </summary>
-	public partial class MenuItemControl : UserControl
+	public partial class WelcomePage : UserControl
 	{
-		public MenuItemControl(MenuItem menuItem)
+		public WelcomePage()
 		{
 			InitializeComponent();
-
-			try
-			{
-				imageSrc.Source = menuItem.ImageSrc;
-				itemName.Text = menuItem.Name;
-				itemDesc.Text = menuItem.Description;
-				itemPrice.Text = "$" + menuItem.Cost.ToString();
-			}
-			catch (Exception ex) {
-				Trace.WriteLine("Menu item is empty");
-			}
 		}
 	}
 }

@@ -6,13 +6,15 @@
              xmlns:local="clr-namespace:CPSC_481"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <Grid Background="WhiteSmoke">
         <!-- Container for items on the menu pages -->
-        <StackPanel>
-            <Image Name="imageSrc" VerticalAlignment="Top" />
-            <TextBlock Name="itemName" Style="{DynamicResource MaterialDesignSubtitle1TextBlock}" FontWeight="DemiBold" Padding="0,2,0,0" />
-            <TextBlock  Name="itemPrice" Foreground="#FF4F4F4F" FontStyle="Italic" Style="{DynamicResource MaterialDesignBody2TextBlock}" />
-            <TextBlock Name ="itemDesc" Padding="0,2,0,0" Foreground="#FF4F4F4F" Style="{DynamicResource MaterialDesignBody2TextBlock}" TextWrapping="Wrap" FontSize="9" />
-        </StackPanel>
+        <Button Height="190" Background="WhiteSmoke" BorderBrush="WhiteSmoke" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Padding="0">
+            <StackPanel VerticalAlignment="Top">
+                <Image Name="imageSrc" />
+                <TextBlock Name="itemName" Style="{DynamicResource MaterialDesignSubtitle1TextBlock}" FontWeight="DemiBold" Padding="0,2,0,0"  />
+                <TextBlock Name="itemPrice" Foreground="#FF4F4F4F" FontStyle="Italic" Style="{DynamicResource MaterialDesignBody2TextBlock}"  />
+                <TextBlock Name ="itemDesc" Padding="0,2,0,0" Foreground="#FF4F4F4F" Style="{DynamicResource MaterialDesignBody2TextBlock}" TextWrapping="Wrap"  Height="30" FontSize="9" TextTrimming="CharacterEllipsis"  />
+            </StackPanel>
+        </Button>
     </Grid>
 </UserControl>

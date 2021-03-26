@@ -22,23 +22,12 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0" Margin="0,5,0,5">
-                        <Button Height="190" Background="WhiteSmoke" BorderBrush="WhiteSmoke" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Padding="0">
-                            <Frame x:Name="MenuItem1" NavigationUIVisibility="Hidden"/>
-                        </Button>
-
+                        <!-- MenuItemControl for top left grid item -->
+                        <Frame x:Name="MenuItem1" NavigationUIVisibility="Hidden"/>
                     </Grid>
                     <Grid Grid.Row="1" Margin="0,5,0,5">
-                        <Button Height="190" Background="WhiteSmoke" BorderBrush="WhiteSmoke" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Padding="0">
-                            <StackPanel>
-                                <Image Source="/Resources/images/food_items/kale.jpg" VerticalAlignment="Top" />
-                                <TextBlock Text="Kale Caesar Salad" Style="{DynamicResource MaterialDesignSubtitle1TextBlock}" FontWeight="DemiBold" Padding="0,2,0,0"/>
-                                <TextBlock Text="$11.00" Foreground="#FF4F4F4F" FontStyle="Italic" Style="{DynamicResource MaterialDesignBody2TextBlock}"></TextBlock>
-                                <TextBlock Padding="0,2,0,0" Foreground="#FF4F4F4F" Style="{DynamicResource MaterialDesignBody2TextBlock}" TextWrapping="Wrap" FontSize="9">
-			                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-			                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                </TextBlock>
-                            </StackPanel>
-                        </Button>
+                        <!-- MenuItemControl for left grid item -->
+                        <Frame x:Name="MenuItem2" NavigationUIVisibility="Hidden"/>
                     </Grid>
                 </Grid>
 
@@ -49,30 +38,12 @@
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid Grid.Row="0" Margin="0,5,0,5">
-                        <Button Height="190" Background="WhiteSmoke" BorderBrush="WhiteSmoke" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Padding="0">
-                            <StackPanel>
-                                <Image Source="/Resources/images/food_items/wings.jpg" VerticalAlignment="Top" />
-                                <TextBlock Text="Chicken Wings" Style="{DynamicResource MaterialDesignSubtitle1TextBlock}" FontWeight="DemiBold" Padding="0,2,0,0"/>
-                                <TextBlock Text="$8.00" Foreground="#FF4F4F4F" FontStyle="Italic" Style="{DynamicResource MaterialDesignBody2TextBlock}"></TextBlock>
-                                <TextBlock Padding="0,2,0,0" Foreground="#FF4F4F4F" Style="{DynamicResource MaterialDesignBody2TextBlock}" TextWrapping="Wrap" FontSize="9">
-			                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-			                sed do eiusmod tempor incididunt ut labore.
-                                </TextBlock>
-                            </StackPanel>
-                        </Button>
+                        <!-- MenuItemControl for top right grid item -->
+                        <Frame x:Name="MenuItem3" NavigationUIVisibility="Hidden"/>
                     </Grid>
                     <Grid Grid.Row="1" Margin="0,5,0,5">
-                        <Button Height="190" Background="WhiteSmoke" BorderBrush="WhiteSmoke" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Padding="0">
-                            <StackPanel>
-                                <Image Source="/Resources/images/food_items/nachos.jpg" VerticalAlignment="Top" />
-                                <TextBlock Text="Nachos" Style="{DynamicResource MaterialDesignSubtitle1TextBlock}" FontWeight="DemiBold" Padding="0,2,0,0"/>
-                                <TextBlock Text="$10.00" Foreground="#FF4F4F4F" FontStyle="Italic" Style="{DynamicResource MaterialDesignBody2TextBlock}"></TextBlock>
-                                <TextBlock Padding="0,2,0,0" Foreground="#FF4F4F4F" Style="{DynamicResource MaterialDesignBody2TextBlock}" TextWrapping="Wrap" FontSize="9">
-			                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-			                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                </TextBlock>
-                            </StackPanel>
-                        </Button>
+                        <!-- MenuItemControl for right grid item -->
+                        <Frame x:Name="MenuItem4" NavigationUIVisibility="Hidden"/>
                     </Grid>
                 </Grid>
             </Grid>

@@ -30,6 +30,9 @@ namespace CPSC_481
 			try
 			{
 				MenuItem1.Content = new MenuItemControl(appList[0]);
+				MenuItem2.Content = new MenuItemControl(appList[1]);
+				MenuItem3.Content = new MenuItemControl(appList[2]);
+				MenuItem4.Content = new MenuItemControl(appList[3]);
 
 				Trace.WriteLine("APPETIZER LIST FROM THE APPETIZER PAGE");
 

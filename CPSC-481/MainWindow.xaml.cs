@@ -39,7 +39,7 @@ namespace CPSC_481
 
 			// Set the food menu as default usercontrol
 			Switcher.pageSwitcher = this;
-			Switcher.Switch(new FoodMenu());
+			Switcher.Switch(new WelcomePage());
 
 			// Example of a menu item. Used for testing out the itempage.
 			Dictionary<string, OptionType> item1_options = new Dictionary<string, OptionType>();
@@ -113,7 +113,7 @@ namespace CPSC_481
 			{
 				Name = "Nachos",
 				Description = "Baked nachos topped with jalapenos, tomatoes, onions and aged cheddar. Comes with salsa and sour cream",
-				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/wings.jpg")),
+				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/nachos.jpg")),
 				Addons = item1_addons,
 				Options = item1_options,
 				Cost = 16
