@@ -20,9 +20,9 @@ namespace CPSC_481
 	/// <summary>
 	/// Interaction logic for MainPage.xaml
 	/// </summary>
-	public partial class MainPage : Page
+	public partial class MainsPage : Page
 	{
-		public MainPage(List<MenuItem> mainList)
+		public MainsPage(List<MenuItem> mainList)
 		{
 			InitializeComponent();
 

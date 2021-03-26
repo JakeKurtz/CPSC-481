@@ -49,7 +49,7 @@ namespace CPSC_481
 
 		private void mainClick(object sender, RoutedEventArgs e)
 		{
-			Food.Content = new MainPage(menuLists.MainList);
+			Food.Content = new MainsPage(menuLists.MainList);
 			menuTitle.Text = "Main Dishes";
 		}
 
