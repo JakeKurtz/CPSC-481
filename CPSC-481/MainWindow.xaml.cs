@@ -126,16 +126,8 @@ namespace CPSC_481
 			AppetizerList.Add(appitem3);
 			AppetizerList.Add(appitem4);
 
+			// Set the appetizer list in the MenuList class
 			menuLists.AppetizerList = AppetizerList;
-
-			//Trace.WriteLine("TEST TEST TEST");
-			//Trace.WriteLine(AppetizerList.Count);
-
-			//// print out list of apps to test
-			//for (int i = 0; i < AppetizerList.Count; i++) {
-			//	Trace.WriteLine(AppetizerList[i].Name);
-			//}
-
 
 			// Set the current item to the one we just made.
 			orderHandler.currentItem = item1;

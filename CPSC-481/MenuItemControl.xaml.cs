@@ -22,9 +22,12 @@ namespace CPSC_481
 	/// </summary>
 	public partial class MenuItemControl : UserControl
 	{
+		MenuItem thisItem = new MenuItem();
+
 		public MenuItemControl(MenuItem menuItem)
 		{
 			InitializeComponent();
+			thisItem = menuItem;
 
 			try
 			{
@@ -36,6 +39,22 @@ namespace CPSC_481
 			catch (Exception ex) {
 				Trace.WriteLine("Menu item is empty");
 			}
+		}
+
+		private void selectItemClick(object sender, RoutedEventArgs e)
+		{
+			OrderHandler orderHandler = new OrderHandler();
+
+			ItemPage.orderHandler = orderHandler;
+
+			orderHandler.currentItem = thisItem;
+
+			// omg please work
+			Switcher.Switch(new ItemPage());
+
+			//if (thisItem != null) {
+			//	Trace.WriteLine("clicked on " + thisItem.Name);
+			//}
 		}
 	}
 }

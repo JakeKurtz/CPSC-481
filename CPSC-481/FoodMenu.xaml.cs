@@ -22,31 +22,18 @@ namespace CPSC_481
 	/// </summary>
 	public partial class FoodMenu : UserControl
 	{
+		// Get the MenuList from the MainWindow
 		public static MenuLists menuLists { get; set; }
-		List<MenuItem> AppList = menuLists.AppetizerList;
+
 		List<MenuItem> MainList = menuLists.MainList;
 		List<MenuItem> SideList = menuLists.SideList;
 
 	public FoodMenu()
 		{
 			InitializeComponent();
-			Food.Content = new AppetizerPage(AppList);
+			// pass the appetizer list into the constructor of the AppetizerPage
+			Food.Content = new AppetizerPage(menuLists.AppetizerList);
 			menuTitle.Text = "Appetizers";
-
-			MenuLists appyList = new MenuLists();
-			appyList.AppetizerList = AppList;
-
-			//// print to Output to test if it worked
-			//if (AppList != null)
-			//{
-			//	Trace.WriteLine("APPETIZER LIST FROM THE FOOD MENU PAGE");
-
-			//	// print out list of appys to test
-			//	for (int i = 0; i < appyList.AppetizerList.Count; i++)
-			//	{
-			//		Trace.WriteLine(appyList.AppetizerList[i].Name);
-			//	}
-			//}
 		}
 
 		private void specialsClick(object sender, RoutedEventArgs e)
@@ -57,7 +44,8 @@ namespace CPSC_481
 
 		private void appetizerClick(object sender, RoutedEventArgs e)
 		{
-			Food.Content = new AppetizerPage(AppList);
+			// pass the appetizer list into the constructor of the AppetizerPage
+			Food.Content = new AppetizerPage(menuLists.AppetizerList);
 			menuTitle.Text = "Appetizers";
 		}
 

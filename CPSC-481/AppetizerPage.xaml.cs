@@ -29,6 +29,7 @@ namespace CPSC_481
 			InitializeComponent();
 			try
 			{
+				// pass each MenuItem into a MenuItemControl
 				MenuItem1.Content = new MenuItemControl(appList[0]);
 				MenuItem2.Content = new MenuItemControl(appList[1]);
 				MenuItem3.Content = new MenuItemControl(appList[2]);
@@ -44,7 +45,7 @@ namespace CPSC_481
 			}
 			catch (Exception ex)
 			{
-				Console.WriteLine("AppList is empty");
+				Console.WriteLine("appList is empty");
 			}
 
 			
