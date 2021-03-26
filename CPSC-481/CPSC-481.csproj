@@ -68,8 +68,8 @@
     <Compile Include="MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
+    <Compile Include="MainsPage.xaml.cs">
+      <DependentUpon>MainsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MenuItemControl.xaml.cs">
       <DependentUpon>MenuItemControl.xaml</DependentUpon>
@@ -104,7 +104,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainPage.xaml">
+    <Page Include="MainsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -222,6 +222,28 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\images\arrow-9190.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\food_items\burger.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\food_items\brusselsSprouts.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\food_items\bbqRibs.jpg" />
+    <Resource Include="Resources\images\food_items\caesar.jpg" />
+    <Resource Include="Resources\images\food_items\chickenClub.jpg" />
+    <Resource Include="Resources\images\food_items\chickenPasta.jpg" />
+    <Resource Include="Resources\images\food_items\falafelBurger.jpg" />
+    <Resource Include="Resources\images\food_items\garlicBread.jpg" />
+    <Resource Include="Resources\images\food_items\mashedPotatoes.jpg" />
+    <Resource Include="Resources\images\food_items\salad.jpg" />
+    <Resource Include="Resources\images\food_items\salmon.jpg" />
+    <Resource Include="Resources\images\food_items\soup.jpg" />
+    <Resource Include="Resources\images\food_items\tofuBowl.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\food_items\fishChips.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

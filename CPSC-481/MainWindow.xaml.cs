@@ -70,6 +70,7 @@ namespace CPSC_481
 			item1_addons.Add(addon_2);
 			item1_addons.Add(addon_3);
 			
+			// mains menu
 			MenuItem item1 = new MenuItem {
 				Name = "Steak Frites", 
 				Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus integer feugiat scelerisque varius morbi enim. Tristique et egestas quis ipsum suspendisse ultrices gravida.",
@@ -79,6 +80,102 @@ namespace CPSC_481
 				Cost = 24
 			};
 
+			MenuItem item2 = new MenuItem
+			{
+				Name = "Chicken Club",
+				Description = "Grilled chicken, crispy bacon, tomatoes, lettuce and mayo on bread of your choice",
+				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/chickenClub.jpg")),
+				Addons = item1_addons,
+				Options = item1_options,
+				Cost = 18
+			};
+
+			MenuItem item3 = new MenuItem
+			{
+				Name = "BBQ Ribs",
+				Description = "Tender babyback ribs, handcut fries and cornbread",
+				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/bbqRibs.jpg")),
+				Addons = item1_addons,
+				Options = item1_options,
+				Cost = 28
+			};
+
+			MenuItem item4 = new MenuItem
+			{
+				Name = "Grilled Salmon Bowl",
+				Description = "Grilled salmon, grilled asparagus, jasmine rice, carrots, peas and mushrooms",
+				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/salmon.jpg")),
+				Addons = item1_addons,
+				Options = item1_options,
+				Cost = 25
+			};
+
+			MenuItem item5 = new MenuItem
+			{
+				Name = "Fish n' Chips",
+				Description = "North atlantic haddock, handcut fries, tartar sauce",
+				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/fishChips.jpg")),
+				Addons = item1_addons,
+				Options = item1_options,
+				Cost = 21
+			};
+
+			MenuItem item6 = new MenuItem
+			{
+				Name = "Bacon Cheddar Burger",
+				Description = "Smoked bacon, tomatoes, onion, lettuce, pickles on a toasted bun",
+				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/burger.jpg")),
+				Addons = item1_addons,
+				Options = item1_options,
+				Cost = 20
+			};
+
+			MenuItem item7 = new MenuItem
+			{
+				Name = "Crispy Falafel Burger",
+				Description = "Chickpea falafel, roasted peppers, spicy tzatziki and feta cheese on bread of your choice",
+				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/falafelBurger.jpg")),
+				Addons = item1_addons,
+				Options = item1_options,
+				Cost = 17
+			};
+
+			MenuItem item8 = new MenuItem
+			{
+				Name = "Chicken Fettuccine Alfredo",
+				Description = "Seasoned grilled chicken, mushrooms and fettuccine baked in cream sauce",
+				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/chickenPasta.jpg")),
+				Addons = item1_addons,
+				Options = item1_options,
+				Cost = 22
+			};
+
+			MenuItem item9 = new MenuItem
+			{
+				Name = "Tofu Zen Bowl",
+				Description = "Crispy tofu, edamame beans, cucumber, green cabbage, grape tomatoes, corn, quail eggs and romaine lettuce tossed in ginger sesame sauce",
+				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/tofuBowl.jpg")),
+				Addons = item1_addons,
+				Options = item1_options,
+				Cost = 16
+			};
+
+			// create a list of mains
+			List<MenuItem> MainList = new List<MenuItem>();
+			MainList.Add(item1);
+			MainList.Add(item2);
+			MainList.Add(item3);
+			MainList.Add(item4);
+			MainList.Add(item5);
+			MainList.Add(item6);
+			MainList.Add(item7);
+			MainList.Add(item8);
+			MainList.Add(item9);
+
+			menuLists.MainList = MainList;
+
+
+			// appetizers menu
 			MenuItem appitem1 = new MenuItem
 			{
 				Name = "Garlic Fries",
@@ -89,11 +186,21 @@ namespace CPSC_481
 				Cost = 10
 			};
 
+			//MenuItem appitem2 = new MenuItem
+			//{
+			//	Name = "Kale Caesar Salad",
+			//	Description = "Fresh kale salad with house caesar dressing",
+			//	ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/kale.jpg")),
+			//	Addons = item1_addons,
+			//	Options = item1_options,
+			//	Cost = 14
+			//};
+
 			MenuItem appitem2 = new MenuItem
 			{
-				Name = "Kale Caesar Salad",
-				Description = "Fresh kale salad with house caesar dressing",
-				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/kale.jpg")),
+				Name = "Crispy Brussels Sprouts",
+				Description = "Fried brussels sprouts, roasted peppers, onions, garlic, vegan margarine",
+				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/brusselsSprouts.jpg")),
 				Addons = item1_addons,
 				Options = item1_options,
 				Cost = 14

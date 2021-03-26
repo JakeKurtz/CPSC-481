@@ -35,9 +35,10 @@ namespace CPSC_481
 				itemName.Text = menuItem.Name;
 				itemDesc.Text = menuItem.Description;
 				itemPrice.Text = "$" + menuItem.Cost.ToString();
+				itemPrice.Text = "$" + menuItem.Cost.ToString();
 			}
 			catch (Exception ex) {
-				Trace.WriteLine("Menu item is empty");
+				Trace.WriteLine("Menu item is empty" + ex);
 			}
 		}
 
