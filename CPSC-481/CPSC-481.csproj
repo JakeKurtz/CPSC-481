@@ -62,6 +62,9 @@
     <Compile Include="BeerPage.xaml.cs">
       <DependentUpon>BeerPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CocktailPage.xaml.cs">
+      <DependentUpon>CocktailPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DrinkMenu.xaml.cs">
       <DependentUpon>DrinkMenu.xaml</DependentUpon>
     </Compile>
@@ -79,6 +82,9 @@
     </Compile>
     <Compile Include="MenuItemControl.xaml.cs">
       <DependentUpon>MenuItemControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NonAlcoholicPage.xaml.cs">
+      <DependentUpon>NonAlcoholicPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="OrderPage.xaml.cs">
       <DependentUpon>OrderPage.xaml</DependentUpon>
@@ -102,6 +108,9 @@
     <Compile Include="WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WinePage.xaml.cs">
+      <DependentUpon>WinePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="_SpecialsWindow.xaml.cs">
       <DependentUpon>_SpecialsWindow.xaml</DependentUpon>
     </Compile>
@@ -110,6 +119,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BeerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CocktailPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -126,6 +139,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MenuItemControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NonAlcoholicPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -166,6 +183,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WelcomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WinePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -270,7 +291,52 @@
     <Resource Include="Resources\images\food_items\friesSide.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\images\drink_items\beerLandscape.jpg" />
+    <Resource Include="Resources\images\drink_items\Beers\beerLandscape.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\Wines\champagne.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\Wines\redWine.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\Wines\whiteWine.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\Wines\otherWines.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\Beers\seasonalBeers.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\Beers\importedBeers.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\NonAlcoholic\shirleytemple.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\Beers\genericBeers.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\Cocktails\martini.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\Cocktails\manhattan.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\Cocktails\bloodyMary.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\Cocktails\cocktails.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\NonAlcoholic\craftSodas.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\NonAlcoholic\sodas.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\NonAlcoholic\teas.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
