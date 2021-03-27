@@ -48,8 +48,8 @@
                     <Button x:Name="mainBtn" Grid.Row="1" Grid.Column="2" Height="Auto" Margin="12,10,12,10" Background="White" BorderBrush="#FF616161" BorderThickness="1.5" Click="mainClick">
                         <TextBlock Foreground="#FF616161" Margin="-8,0,-8,0">Main</TextBlock>
                     </Button>
-                    <Button Grid.Row="1" Grid.Column="3" Height="Auto" Margin="1,10,12,10" Background="White" BorderBrush="#FF616161" BorderThickness="1.5" Click="sidesClick">
-                        <TextBlock x:Name="sidesBtn" Foreground="#FF616161" Margin="-8,0,-8,0">Sides</TextBlock>
+                    <Button x:Name="sidesBtn" Grid.Row="1" Grid.Column="3" Height="Auto" Margin="1,10,12,10" Background="White" BorderBrush="#FF616161" BorderThickness="1.5" Click="sidesClick">
+                        <TextBlock Foreground="#FF616161" Margin="-8,0,-8,0">Sides</TextBlock>
                     </Button>
                 </Grid>
             </Border>
