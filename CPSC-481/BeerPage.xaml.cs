@@ -27,10 +27,10 @@ namespace CPSC_481
 			try
 			{
 				// pass each MenuItem into a MenuItemControl
-				MenuItem1.Content = new MenuItemControl(beerList[0]);
-				MenuItem2.Content = new MenuItemControl(beerList[1]);
-				MenuItem3.Content = new MenuItemControl(beerList[2]);
-				MenuItem4.Content = new MenuItemControl(beerList[3]);
+				//MenuItem1.Content = new MenuItemControl(beerList[0]);
+				//MenuItem2.Content = new MenuItemControl(beerList[1]);
+				//MenuItem3.Content = new MenuItemControl(beerList[2]);
+				//MenuItem4.Content = new MenuItemControl(beerList[3]);
 
 				Trace.WriteLine("BEER LIST:");
 

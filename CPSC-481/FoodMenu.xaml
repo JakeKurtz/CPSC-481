@@ -70,8 +70,80 @@
                 </Button>
             </Grid>
 
-            <Frame x:Name="Food" Grid.Row="3" NavigationUIVisibility="Hidden"/>
-
+            <ScrollViewer VerticalScrollBarVisibility="Hidden" Grid.Row="3">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <ListView Grid.Column="0" x:Name="_items_column_1" Template="{StaticResource NonScrollableListView}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Button x:Name="SelectItemBtn" Height="190" Background="WhiteSmoke" BorderBrush="WhiteSmoke" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Padding="0" Click="selectItemClick" Tag="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}}" >
+                                    <Grid>
+                                        <!--SPECIALS TEXT FORMAT-->
+                                        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" Visibility="{Binding TextFormatSpecial}">
+                                            <Grid Margin="-16">
+                                                <Image Source="{Binding ImageSrc}" MaxWidth="170" Grid.RowSpan="2"/>
+                                                <TextBlock Text="{Binding Name}" Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Foreground="White" VerticalAlignment="Bottom" Padding="20,0,0,50">
+                                                    <TextBlock.Effect>
+                                                        <DropShadowEffect ShadowDepth="2" Direction="330" Color="Black" Opacity="0.8" BlurRadius="5" />
+                                                    </TextBlock.Effect>
+                                                </TextBlock>
+                                                <TextBlock Text="{Binding Cost, StringFormat={}{0}$}" Style="{DynamicResource MaterialDesignHeadline6TextBlock}" FontWeight="Regular" FontStyle="Italic" Foreground="White" VerticalAlignment="Bottom" Padding="20,0,0,25">
+                                                    <TextBlock.Effect>
+                                                        <DropShadowEffect ShadowDepth="2" Direction="330" Color="Black" Opacity="0.8" BlurRadius="5" />
+                                                    </TextBlock.Effect>
+                                                </TextBlock>
+                                            </Grid>
+                                        </StackPanel>
+                                        <!--NORMAL TEXT FORMAT-->
+                                        <StackPanel VerticalAlignment="Top" Visibility="{Binding TextFormatNormal}">
+                                            <Image Source="{Binding ImageSrc}"/>
+                                            <TextBlock Text="{Binding Name}" Style="{DynamicResource MaterialDesignSubtitle1TextBlock}" FontWeight="DemiBold" FontSize="12" Padding="0,2,0,0"  />
+                                            <TextBlock Text="{Binding Cost}" Foreground="#FF4F4F4F" FontStyle="Italic" Style="{DynamicResource MaterialDesignBody2TextBlock}"  />
+                                            <TextBlock Text ="{Binding Description}" Padding="0,2,0,0" Foreground="#FF4F4F4F" Style="{DynamicResource MaterialDesignBody2TextBlock}" TextWrapping="Wrap"  Height="30" FontSize="9" TextTrimming="CharacterEllipsis"  />
+                                        </StackPanel>
+                                    </Grid>
+                                </Button>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <ListView Grid.Column="1" x:Name="_items_column_2" Template="{StaticResource NonScrollableListView}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Button x:Name="SelectItemBtn" Height="190" Background="WhiteSmoke" BorderBrush="WhiteSmoke" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Padding="0" Click="selectItemClick" Tag="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}}" >
+                                    <Grid>
+                                        <!--SPECIALS TEXT FORMAT-->
+                                        <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0" Visibility="{Binding TextFormatSpecial}">
+                                            <Grid Margin="-16">
+                                                <Image Source="{Binding ImageSrc}" MaxWidth="170" Grid.RowSpan="2"/>
+                                                <TextBlock Text="{Binding Name}" Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Foreground="White" VerticalAlignment="Bottom" Padding="20,0,0,50">
+                                                    <TextBlock.Effect>
+                                                        <DropShadowEffect ShadowDepth="2" Direction="330" Color="Black" Opacity="0.8" BlurRadius="5" />
+                                                    </TextBlock.Effect>
+                                                </TextBlock>
+                                                <TextBlock Text="{Binding Cost, StringFormat={}{0}$}" Style="{DynamicResource MaterialDesignHeadline6TextBlock}" FontWeight="Regular" FontStyle="Italic" Foreground="White" VerticalAlignment="Bottom" Padding="20,0,0,25">
+                                                    <TextBlock.Effect>
+                                                        <DropShadowEffect ShadowDepth="2" Direction="330" Color="Black" Opacity="0.8" BlurRadius="5" />
+                                                    </TextBlock.Effect>
+                                                </TextBlock>
+                                            </Grid>
+                                        </StackPanel>
+                                        <!--NORMAL TEXT FORMAT-->
+                                        <StackPanel VerticalAlignment="Top" Visibility="{Binding TextFormatNormal}">
+                                            <Image Source="{Binding ImageSrc}"/>
+                                            <TextBlock Text="{Binding Name}" Style="{DynamicResource MaterialDesignSubtitle1TextBlock}" FontWeight="DemiBold" FontSize="12" Padding="0,2,0,0"  />
+                                            <TextBlock Text="{Binding Cost}" Foreground="#FF4F4F4F" FontStyle="Italic" Style="{DynamicResource MaterialDesignBody2TextBlock}"  />
+                                            <TextBlock Text ="{Binding Description}" Padding="0,2,0,0" Foreground="#FF4F4F4F" Style="{DynamicResource MaterialDesignBody2TextBlock}" TextWrapping="Wrap"  Height="30" FontSize="9" TextTrimming="CharacterEllipsis"  />
+                                        </StackPanel>
+                                    </Grid>
+                                </Button>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </ScrollViewer>
         </Grid>
     </Grid>
 </UserControl>

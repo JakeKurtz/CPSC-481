@@ -30,16 +30,12 @@ namespace CPSC_481
 
 			InitializeComponent();
 
-			// Passing reference of the orderhandler to the itempage usercontrol
+			// Passing references
 			ItemPage.orderHandler = orderHandler;
 			OrderPage.orderHandler = orderHandler;
 
-			// Pass reference of the menu lists to the food menu page
+			FoodMenu.orderHandler = orderHandler;
 			FoodMenu.menuLists = menuLists;
-
-			// Set the food menu as default usercontrol
-			Switcher.pageSwitcher = this;
-			Switcher.Switch(new WelcomePage());
 
 			// Example of a menu item. Used for testing out the itempage.
 			Dictionary<string, OptionType> item1_options = new Dictionary<string, OptionType>();
@@ -173,7 +169,6 @@ namespace CPSC_481
 			MainList.Add(item9);
 
 			menuLists.MainList = MainList;
-
 
 			// appetizers menu
 			MenuItem appitem1 = new MenuItem
@@ -321,7 +316,9 @@ namespace CPSC_481
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/wings_special.jpg")),
 				Addons = item1_addons,
 				Options = item1_options,
-				Cost = 8
+				Cost = 8,
+				TextFormatNormal = Visibility.Hidden,
+				TextFormatSpecial = Visibility.Visible
 			};
 
 			MenuItem specialitem2 = new MenuItem
@@ -331,7 +328,9 @@ namespace CPSC_481
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/drink_items/beer.jpg")),
 				Addons = item1_addons,
 				Options = item1_options,
-				Cost = 5
+				Cost = 5,
+				TextFormatNormal = Visibility.Hidden,
+				TextFormatSpecial = Visibility.Visible
 			};
 
 			MenuItem specialitem3 = new MenuItem
@@ -341,7 +340,9 @@ namespace CPSC_481
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/sushi_crop.jpg")),
 				Addons = item1_addons,
 				Options = item1_options,
-				Cost = 10
+				Cost = 10,
+				TextFormatNormal = Visibility.Hidden,
+				TextFormatSpecial = Visibility.Visible
 			};
 
 			MenuItem specialitem4 = new MenuItem
@@ -351,7 +352,9 @@ namespace CPSC_481
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/drink_items/wine.jpg")),
 				Addons = item1_addons,
 				Options = item1_options,
-				Cost = 5
+				Cost = 5,
+				TextFormatNormal = Visibility.Hidden,
+				TextFormatSpecial = Visibility.Visible
 			};
 
 			// create a list of specials
@@ -365,9 +368,12 @@ namespace CPSC_481
 			// set the specials list in MenuList class
 			menuLists.SpecialsList = SpecialsList;
 
-
 			// Set the current item to the one we just made.
 			orderHandler.currentItem = item1;
+
+			// Set the food menu as default usercontrol
+			Switcher.pageSwitcher = this;
+			Switcher.Switch(new FoodMenu());
 		}
 
 		public void Navigate(UserControl nextPage)
@@ -436,8 +442,10 @@ public class MenuItem : INotifyPropertyChanged
 	public ImageSource ImageSrc { get; set; }
 	public List<Addon> Addons { get; set; }
 	public Dictionary<string, OptionType> Options { get; set; }
+	public Visibility TextFormatNormal { get; set; } = Visibility.Visible;
+	public Visibility TextFormatSpecial { get; set; } = Visibility.Hidden;
 
-	float _Cost;
+float _Cost;
 	public float Cost
 	{
 		get => _Cost;

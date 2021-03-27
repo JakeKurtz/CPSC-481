@@ -56,17 +56,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AppetizerPage.xaml.cs">
-      <DependentUpon>AppetizerPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="BeerPage.xaml.cs">
       <DependentUpon>BeerPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="DrinkMenu.xaml.cs">
       <DependentUpon>DrinkMenu.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="FoodMenu.xaml.cs">
-      <DependentUpon>FoodMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="HelpPage.xaml.cs">
       <DependentUpon>HelpPage.xaml</DependentUpon>
@@ -74,23 +68,11 @@
     <Compile Include="MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainsPage.xaml.cs">
-      <DependentUpon>MainsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MenuItemControl.xaml.cs">
-      <DependentUpon>MenuItemControl.xaml</DependentUpon>
+    <Compile Include="FoodMenu.xaml.cs">
+      <DependentUpon>FoodMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="OrderPage.xaml.cs">
       <DependentUpon>OrderPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SidesPage.xaml.cs">
-      <DependentUpon>SidesPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SpecialsControl.xaml.cs">
-      <DependentUpon>SpecialsControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SpecialsPage.xaml.cs">
-      <DependentUpon>SpecialsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Switcher.cs" />
     <Compile Include="ItemPage.xaml.cs">
@@ -99,16 +81,9 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WelcomePage.xaml.cs">
-      <DependentUpon>WelcomePage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="_SpecialsWindow.xaml.cs">
       <DependentUpon>_SpecialsWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="AppetizerPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="BeerPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -121,19 +96,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MenuItemControl.xaml">
+    <Page Include="FoodMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="OrderPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="FoodMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -152,22 +119,6 @@
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="SidesPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="SpecialsControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="SpecialsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="WelcomePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="_SpecialsWindow.xaml">
       <SubType>Designer</SubType>
