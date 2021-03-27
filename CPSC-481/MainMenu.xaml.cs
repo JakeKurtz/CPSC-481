@@ -21,8 +21,9 @@ namespace CPSC_481
 		
 		void Button_Click_1(object sender, RoutedEventArgs e)
 		{
-			// Just for testing purposes
-			Switcher.Switch(new ItemPage());
+			//// Just for testing purposes
+			//Switcher.Switch(new ItemPage());
+			Switcher.Switch(new DrinkMenu());
 		}
 
 		void Button_Click_2(object sender, RoutedEventArgs e)

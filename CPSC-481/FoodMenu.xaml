@@ -72,7 +72,6 @@
 
             <Frame x:Name="Food" Grid.Row="3" NavigationUIVisibility="Hidden"/>
 
-
         </Grid>
     </Grid>
 </UserControl>

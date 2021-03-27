@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,38 +13,36 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Diagnostics;
-
 
 namespace CPSC_481
 {
 	/// <summary>
-	/// Interaction logic for AppetizerPage.xaml
+	/// Interaction logic for BeerPage.xaml
 	/// </summary>
-	public partial class AppetizerPage : Page
+	public partial class BeerPage : Page
 	{
-		public AppetizerPage(List<MenuItem> appList)
+		public BeerPage(List<MenuItem> beerList)
 		{
 			InitializeComponent();
 			try
 			{
 				// pass each MenuItem into a MenuItemControl
-				MenuItem1.Content = new MenuItemControl(appList[0]);
-				MenuItem2.Content = new MenuItemControl(appList[1]);
-				MenuItem3.Content = new MenuItemControl(appList[2]);
-				MenuItem4.Content = new MenuItemControl(appList[3]);
+				MenuItem1.Content = new MenuItemControl(beerList[0]);
+				MenuItem2.Content = new MenuItemControl(beerList[1]);
+				MenuItem3.Content = new MenuItemControl(beerList[2]);
+				MenuItem4.Content = new MenuItemControl(beerList[3]);
 
-				Trace.WriteLine("APPETIZER LIST FROM THE APPETIZER PAGE");
+				Trace.WriteLine("BEER LIST:");
 
 				// print out list of appys to test
-				for (int i = 0; i < appList.Count; i++)
+				for (int i = 0; i < beerList.Count; i++)
 				{
-					Trace.WriteLine(appList[i].Name);
+					Trace.WriteLine(beerList[i].Name);
 				}
 			}
 			catch (Exception ex)
 			{
-				Console.WriteLine("appList is empty: " + ex);
+				Console.WriteLine("beerList is empty " + ex);
 			}
 		}
 	}

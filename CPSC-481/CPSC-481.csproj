@@ -59,6 +59,12 @@
     <Compile Include="AppetizerPage.xaml.cs">
       <DependentUpon>AppetizerPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BeerPage.xaml.cs">
+      <DependentUpon>BeerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DrinkMenu.xaml.cs">
+      <DependentUpon>DrinkMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FoodMenu.xaml.cs">
       <DependentUpon>FoodMenu.xaml</DependentUpon>
     </Compile>
@@ -100,6 +106,14 @@
       <DependentUpon>_SpecialsWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="AppetizerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BeerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DrinkMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -254,6 +268,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\images\food_items\friesSide.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\beerLandscape.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
