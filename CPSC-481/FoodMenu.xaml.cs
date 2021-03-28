@@ -22,39 +22,46 @@ namespace CPSC_481
 	public partial class FoodMenu : UserControl
 	{
 		// Get the MenuList from the MainWindow
-		public static MenuLists menuLists { get; set; }
+		public static Dictionary<Categories, List<MenuItem>> menuLists { get; set; }
 		public static OrderHandler orderHandler { get; set; }
 
 		public FoodMenu()
 		{
 			InitializeComponent();
 
-			_items_column_1.ItemsSource = menuLists?.SpecialsList;
-			_items_column_2.ItemsSource = menuLists?.SpecialsList;
+			_items_column_1.ItemsSource = menuLists?[Categories.Special];
+			_items_column_2.ItemsSource = menuLists?[Categories.Special];
+			btnSelected(0);
 		}
 
 		private void specialsClick(object sender, RoutedEventArgs e)
 		{
-			_items_column_1.ItemsSource = menuLists?.SpecialsList;
-			_items_column_2.ItemsSource = menuLists?.SpecialsList;
+			_items_column_1.ItemsSource = menuLists?[Categories.Special];
+			_items_column_2.ItemsSource = menuLists?[Categories.Special];
+			btnSelected(0);
 		}
-
 		private void appetizerClick(object sender, RoutedEventArgs e)
 		{
-			_items_column_1.ItemsSource = menuLists?.AppetizerList;
-			_items_column_2.ItemsSource = menuLists?.AppetizerList;
+			_items_column_1.ItemsSource = menuLists[Categories.Apps];
+			_items_column_2.ItemsSource = menuLists[Categories.Apps];
+			btnSelected(1);
 		}
-
 		private void mainClick(object sender, RoutedEventArgs e)
 		{
-			_items_column_1.ItemsSource = menuLists?.MainList;
-			_items_column_2.ItemsSource = menuLists?.MainList;
+			_items_column_1.ItemsSource = menuLists[Categories.Main];
+			_items_column_2.ItemsSource = menuLists?[Categories.Main];
+			btnSelected(2);
 		}
-
 		private void sidesClick(object sender, RoutedEventArgs e)
 		{
-			_items_column_1.ItemsSource = menuLists?.SideList;
-			_items_column_2.ItemsSource = menuLists?.SideList;
+			_items_column_1.ItemsSource = menuLists[Categories.Side];
+			_items_column_2.ItemsSource = menuLists[Categories.Side];
+			btnSelected(3);
+		}
+
+		public void refreshPage() {
+			_items_column_1.Items.Refresh();
+			_items_column_2.Items.Refresh();
 		}
 
 		// switches the background colour of buttons based on the menu that's selected
@@ -89,7 +96,6 @@ namespace CPSC_481
 				sidesBtn.Background = Brushes.LightGray;
 			}
 		}
-
 
 		private void selectItemClick(object sender, RoutedEventArgs e)
 		{

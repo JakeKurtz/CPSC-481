@@ -170,7 +170,7 @@ namespace CPSC_481
 		{
 			if (sendit)
 			{
-				Switcher.Switch(new FoodMenu());
+				Switcher.Switch(MainMenu.foodMenu);
 			}
 		}
 	}

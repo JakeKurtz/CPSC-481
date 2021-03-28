@@ -223,5 +223,53 @@
   <ItemGroup>
     <Resource Include="Resources\images\drink_items\beerLandscape.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\Beers\beerLandscape.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\Beers\genericBeers.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\Beers\importedBeers.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\Beers\seasonalBeers.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\Cocktails\bloodyMary.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\Cocktails\cocktails.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\Cocktails\manhattan.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\Cocktails\martini.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\NonAlcoholic\craftSodas.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\NonAlcoholic\shirleytemple.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\NonAlcoholic\sodas.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\NonAlcoholic\teas.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\Wines\champagne.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\Wines\otherWines.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\Wines\redWine.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\images\drink_items\Wines\whiteWine.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
