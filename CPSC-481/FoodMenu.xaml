@@ -114,7 +114,7 @@
 
                 <!-- Filter button -->
                 <Grid Background="WhiteSmoke" Grid.Row="2" Margin="0,0,0,5" >
-                    <TextBlock Padding="15,5,0,0" Foreground="#E25A42" FontWeight="Bold">4 Results (3 Filters Applied)</TextBlock>
+                    <TextBlock Name="filterStats" Padding="15,5,0,0" Foreground="#E25A42" FontWeight="Bold"/>
                     <Button Margin="15,20,200,0" Background="#FF4F4F4F" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="tune" Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" />

@@ -129,6 +129,7 @@ namespace CPSC_481
 			{
 				sendit = true;
 				DialogContentTextBlock.Text = "Item has been added to your order!";
+				DialogContentTextBlock.Foreground = new SolidColorBrush(Colors.Black);
 				var item = orderHandler.currentItem;
 
 				var _Cost = getTotal(item);
@@ -164,8 +165,10 @@ namespace CPSC_481
 			} else
 			{
 				DialogContentTextBlock.Text = "Please select from the required options above";
+				DialogContentTextBlock.Foreground = new SolidColorBrush(Colors.Red);
 			}
 		}
+
 		public void Button_Confirm_Order(object sender, RoutedEventArgs e)
 		{
 			if (sendit)

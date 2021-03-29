@@ -32,8 +32,7 @@ namespace CPSC_481
 
 			applyFilters();
 
-			_items_column_1.ItemsSource = orderHandler.foodMenuLists_filtered?[Categories.Special];
-			_items_column_2.ItemsSource = orderHandler.foodMenuLists_filtered?[Categories.Special];
+			setupMenus(orderHandler.foodMenuLists_filtered[Categories.Special]);
 
 			allergies_filter.ItemsSource = orderHandler.filterList;
 			diet_filter.ItemsSource = orderHandler.dietFilterList;
@@ -47,36 +46,34 @@ namespace CPSC_481
 
 		private void specialsClick(object sender, RoutedEventArgs e)
 		{
-			_items_column_1.ItemsSource = orderHandler.foodMenuLists_filtered?[Categories.Special];
-			_items_column_2.ItemsSource = orderHandler.foodMenuLists_filtered?[Categories.Special];
+			setupMenus(orderHandler.foodMenuLists_filtered[Categories.Special]);
 			btnSelected(0);
 			orderHandler.currentPage = Categories.Special;
+			applyFilters();
 			menuTitle.Text = "Specials";
 		}
 		private void appetizerClick(object sender, RoutedEventArgs e)
 		{
-			_items_column_1.ItemsSource = orderHandler.foodMenuLists_filtered[Categories.Apps];
-			_items_column_2.ItemsSource = orderHandler.foodMenuLists_filtered[Categories.Apps];
+			setupMenus(orderHandler.foodMenuLists_filtered[Categories.Apps]);
 			btnSelected(1);
 			orderHandler.currentPage = Categories.Apps;
+			applyFilters();
 			menuTitle.Text = "Appies";
 		}
 		private void mainClick(object sender, RoutedEventArgs e)
 		{
-			_items_column_1.ItemsSource = orderHandler.foodMenuLists_filtered[Categories.Main];
-			_items_column_2.ItemsSource = orderHandler.foodMenuLists_filtered?[Categories.Main];
+			setupMenus(orderHandler.foodMenuLists_filtered[Categories.Main]);
 			btnSelected(2);
-
 			orderHandler.currentPage = Categories.Main;
-
+			applyFilters();
 			menuTitle.Text = "Main";
 		}
 		private void sidesClick(object sender, RoutedEventArgs e)
 		{
-			_items_column_1.ItemsSource = orderHandler.foodMenuLists_filtered[Categories.Side];
-			_items_column_2.ItemsSource = orderHandler.foodMenuLists_filtered[Categories.Side];
+			setupMenus(orderHandler.foodMenuLists_filtered[Categories.Side]);
 			btnSelected(3);
 			orderHandler.currentPage = Categories.Side;
+			applyFilters();
 			menuTitle.Text = "Sides";
 		}
 
@@ -88,8 +85,7 @@ namespace CPSC_481
 			else if (orderHandler.dietFilterList.ContainsKey(option.Key)) orderHandler.dietFilterList[option.Key] = !orderHandler.dietFilterList[option.Key];
 
 			applyFilters();
-			_items_column_1.ItemsSource = orderHandler.foodMenuLists_filtered[orderHandler.currentPage];
-			_items_column_2.ItemsSource = orderHandler.foodMenuLists_filtered[orderHandler.currentPage];
+			setupMenus(orderHandler.foodMenuLists_filtered[orderHandler.currentPage]);
 		}
 
 		private void Button_Ok_Filter(object sender, RoutedEventArgs e)
@@ -97,17 +93,31 @@ namespace CPSC_481
 			//refreshPage();
 		}
 
+		private void setupMenus(List<MenuItem> list) {
+			var firstArray = list.Take(list.Count() / 2).ToArray();
+			var secondArray = list.Skip(list.Count() / 2).ToArray();
+
+			_items_column_1.ItemsSource = secondArray;
+			_items_column_2.ItemsSource = firstArray;
+		}
+
 		private void applyFilters() {
 			Categories i = 0;
 			if (orderHandler.foodMenuLists_filtered == null) orderHandler.foodMenuLists_filtered = new Dictionary<Categories, List<MenuItem>>();
 			else orderHandler.foodMenuLists_filtered.Clear();
+
+			Dictionary<Categories, (int, int)> foobar = new Dictionary<Categories, (int, int)>();
+
 			foreach (var menu in orderHandler.foodMenuLists) 
 			{
 				List<MenuItem> newMenu = new List<MenuItem>();
+
+				int numberOfItems = 0;
+				int numberofFilters = 0;
+
 				foreach (var item in menu.Value)
 				{
 					bool flag = true;
-
 					foreach (var filter in orderHandler.filterList) 
 					{
 						if (filter.Value && !item.FilterTags.ContainsKey(filter.Key))
@@ -116,7 +126,6 @@ namespace CPSC_481
 							break;
 						}
 					}
-
 					foreach (var filter in orderHandler.dietFilterList)
 					{
 						if (filter.Value && !item.FilterTags.ContainsKey(filter.Key))
@@ -126,8 +135,23 @@ namespace CPSC_481
 						}
 					}
 
-					if (flag) newMenu.Add(item);
+					if (flag)
+					{
+						newMenu.Add(item);
+						numberOfItems++;
+					}
 				}
+
+				foreach (var filter in orderHandler.filterList)
+				{
+					if (filter.Value) numberofFilters++;
+				}
+				foreach (var filter in orderHandler.dietFilterList)
+				{
+					if (filter.Value) numberofFilters++;
+				}
+
+				foobar.Add(i, (numberOfItems, numberofFilters));
 
 				if (orderHandler.foodMenuLists_filtered.ContainsKey(i)) 
 				{
@@ -139,6 +163,13 @@ namespace CPSC_481
 				}
 				i++;
 			}
+			//return foobar;
+
+			var _numberofItems = foobar[orderHandler.currentPage].Item1;
+			var _numberofFilters = foobar[orderHandler.currentPage].Item2;
+
+			if (_numberofFilters != 0) filterStats.Text = _numberofItems.ToString() + " Results (" + _numberofFilters.ToString() + " applied)";
+			else filterStats.Text = "";
 		}
 
 		// switches the background colour of buttons based on the menu that's selected
