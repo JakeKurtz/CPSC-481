@@ -27,7 +27,6 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
 
-
                             <TextBlock Grid.Row="0" Text="Allergies" TextWrapping="Wrap" Width="230" TextAlignment="Center" Margin="0,10,0,10" Style="{DynamicResource MaterialDesignHeadline6TextBlock}"/>
 
                             <Grid Grid.Row="1">
@@ -35,24 +34,14 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <ListView Grid.Column="0" Template="{StaticResource NonScrollableListView}">
-                                    <CheckBox Content="Egg"/>
-                                    <CheckBox Content="Milk"/>
-                                    <CheckBox Content="Mustard"/>
-                                    <CheckBox Content="Peanuts"/>
-                                    <CheckBox Content="Shell fish"/>
-                                    <CheckBox Content="Wheat and triticale"/>
-                                </ListView>
-                            
-                                <ListView Grid.Column="1" Template="{StaticResource NonScrollableListView}">
-                                    <CheckBox Content="Fish"/>
-                                    <CheckBox Content="Sesame seeds"/>
-                                    <CheckBox Content="Soy"/>
-                                    <CheckBox Content="Sulphites"/>
-                                    <CheckBox Content="Tree nuts"/>
+                                <ListView x:Name="allergies_filter" Grid.Column="0" Template="{StaticResource NonScrollableListView}">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <CheckBox Click="HandleCheck" Tag="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}}" Content="{Binding Key}"/>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
                                 </ListView>
                             </Grid>
-
 
                             <TextBlock Grid.Row="2" Text="Diets" TextWrapping="Wrap" Width="230" TextAlignment="Center" Margin="0,10,0,10" Style="{DynamicResource MaterialDesignHeadline6TextBlock}"/>
 
@@ -61,24 +50,18 @@
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
                                 </Grid.ColumnDefinitions>
-                                <ListView Grid.Column="0" Template="{StaticResource NonScrollableListView}">
-                                    <CheckBox Content="Vegan"/>
-                                    <CheckBox Content="Gluten free"/>
-                                    <CheckBox Content="Dairy free"/>
-                                    <CheckBox Content="Hala"/>
-                                </ListView>
-
-                                <ListView Grid.Column="1" Template="{StaticResource NonScrollableListView}">
-                                    <CheckBox Content="Vegetatian"/>
-                                    <CheckBox Content="Lactose free"/>
-                                    <CheckBox Content="Paleo"/>
+                                <ListView x:Name="diet_filter" Grid.Column="0" Template="{StaticResource NonScrollableListView}">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <CheckBox Click="HandleCheck" Tag="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}}" Content="{Binding Key}"/>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
                                 </ListView>
                             </Grid>
-
                         </Grid>
                     </ScrollViewer>
                     <Separator/>
-                    <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{DynamicResource MaterialDesignFlatButton}">
+                    <Button Click="Button_Ok_Filter" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{DynamicResource MaterialDesignFlatButton}">
                         <TextBlock Text="Ok"/>
                     </Button>
                 </StackPanel>

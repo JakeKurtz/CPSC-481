@@ -21,41 +21,42 @@ namespace CPSC_481
 	/// </summary>
 	public partial class DrinkMenu : UserControl
 	{
-		public static Dictionary<Categories, List<MenuItem>> menuLists { get; set; }
 		public static OrderHandler orderHandler { get; set; }
 
 		public DrinkMenu()
 		{
 			InitializeComponent();
 
-			_items_column_1.ItemsSource = menuLists?[Categories.Beer];
-			_items_column_2.ItemsSource = menuLists?[Categories.Beer];
+			applyFilters();
+
+			_items_column_1.ItemsSource = orderHandler.drinkMenuLists_filtered?[Categories.Beer];
+			_items_column_2.ItemsSource = orderHandler.drinkMenuLists_filtered?[Categories.Beer];
 			btnSelected(0);
 		}
 
 		// button click methods
 		private void beerClick(object sender, RoutedEventArgs e)
 		{
-			_items_column_1.ItemsSource = menuLists?[Categories.Beer];
-			_items_column_2.ItemsSource = menuLists?[Categories.Beer];
+			_items_column_1.ItemsSource = orderHandler.drinkMenuLists_filtered?[Categories.Beer];
+			_items_column_2.ItemsSource = orderHandler.drinkMenuLists_filtered?[Categories.Beer];
 			btnSelected(0);
 		}
 		private void wineClick(object sender, RoutedEventArgs e)
 		{
-			_items_column_1.ItemsSource = menuLists?[Categories.Wine];
-			_items_column_2.ItemsSource = menuLists?[Categories.Wine];
+			_items_column_1.ItemsSource = orderHandler.drinkMenuLists_filtered?[Categories.Wine];
+			_items_column_2.ItemsSource = orderHandler.drinkMenuLists_filtered?[Categories.Wine];
 			btnSelected(1);
 		}
 		private void cocktailClick(object sender, RoutedEventArgs e)
 		{
-			_items_column_1.ItemsSource = menuLists?[Categories.Cocktails];
-			_items_column_2.ItemsSource = menuLists?[Categories.Cocktails];
+			_items_column_1.ItemsSource = orderHandler.drinkMenuLists_filtered?[Categories.Cocktails];
+			_items_column_2.ItemsSource = orderHandler.drinkMenuLists_filtered?[Categories.Cocktails];
 			btnSelected(2);
 		}
 		private void nonAlcoholClick(object sender, RoutedEventArgs e)
 		{
-			_items_column_1.ItemsSource = menuLists?[Categories.NonAlch];
-			_items_column_2.ItemsSource = menuLists?[Categories.NonAlch];
+			_items_column_1.ItemsSource = orderHandler.drinkMenuLists_filtered?[Categories.NonAlch];
+			_items_column_2.ItemsSource = orderHandler.drinkMenuLists_filtered?[Categories.NonAlch];
 			btnSelected(3);
 		}
 
@@ -65,6 +66,39 @@ namespace CPSC_481
 			orderHandler.currentItem = item;
 			// switch to the Item Page to display this item
 			Switcher.Switch(new ItemPage());
+		}
+
+		private void applyFilters()
+		{
+			Categories i = Categories.Beer;
+			orderHandler.drinkMenuLists_filtered.Clear();
+			foreach (var menu in orderHandler.drinkMenuLists)
+			{
+				List<MenuItem> newMenu = new List<MenuItem>();
+				foreach (var item in menu.Value)
+				{
+					bool flag = true;
+					foreach (var filter in item.FilterTags)
+					{
+						if (!orderHandler.filterList.ContainsKey(filter.Key))
+						{
+							flag = false;
+							break;
+						}
+					}
+					if (flag) newMenu.Add(item);
+				}
+
+				if (orderHandler.drinkMenuLists_filtered.ContainsKey(i))
+				{
+					orderHandler.drinkMenuLists_filtered[i] = newMenu;
+				}
+				else
+				{
+					orderHandler.drinkMenuLists_filtered.Add(i, newMenu);
+				}
+				i++;
+			}
 		}
 
 		private void btnSelected(int n)

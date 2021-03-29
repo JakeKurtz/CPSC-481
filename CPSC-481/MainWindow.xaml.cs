@@ -32,10 +32,10 @@ namespace CPSC_481
 			OrderPage.orderHandler = orderHandler;
 
 			FoodMenu.orderHandler = orderHandler;
-			FoodMenu.menuLists = foodMenuLists;
+			orderHandler.foodMenuLists = foodMenuLists;
 
 			DrinkMenu.orderHandler = orderHandler;
-			DrinkMenu.menuLists = drinkMenuLists;
+			orderHandler.drinkMenuLists = drinkMenuLists;
 
 			FoodMenu foodMenu = new FoodMenu();
 			OrderPage orderPage = new OrderPage();
@@ -86,7 +86,12 @@ namespace CPSC_481
 							("9 oz Sirloin", 1),
 							("6 oz Filet", 1) }) }
 					},
-				Cost = 24
+				Cost = 24,
+				FilterTags = new Dictionary<string, bool>()
+					{
+						{ "Milk", false},
+						{ "Mustard", false}
+					}
 			};
 			MenuItem item2 = new MenuItem
 			{
@@ -1066,12 +1071,59 @@ public enum Categories
 	Cocktails,
 	NonAlch
 }
+public enum FilterType { 
+	Egg,
+	Milk,
+	Mustard,
+	Peanuts,
+	ShellFish,
+	Fish,
+	Sesame,
+	Soy,
+	Sulphites,
+	TreeNuts,
+	Vegan,
+	Gluten,
+	Dairy,
+	Hala,
+	Vegetarian,
+	Paleo
+}
 
 // Handels the data moving bewteen the mainwindow and user controls.
 public class OrderHandler
 {
 	public Dictionary<Guid, OrderItem> orderCurrent { get; set; }
 	public List<Order> orderHistory { get; set; }
+
+	public Dictionary<Categories, List<MenuItem>> foodMenuLists { get; set; }
+	public Dictionary<Categories, List<MenuItem>> drinkMenuLists { get; set; }
+
+	public Categories currentPage { get; set; }
+
+	public Dictionary<Categories, List<MenuItem>> foodMenuLists_filtered { get; set; } = new Dictionary<Categories, List<MenuItem>>();
+	public Dictionary<Categories, List<MenuItem>> drinkMenuLists_filtered { get; set; } = new Dictionary<Categories, List<MenuItem>>();
+
+	public Dictionary<string, bool> filterList = new Dictionary<string, bool>() {
+		{"Milk", false},
+		{"Mustard", false},
+		{"Peanuts", false},
+		{"Shell fish", false},
+		{"Egg", false},
+		{"Fish", false},
+		{"Sesame seeds", false},
+		{"Soy", false},
+		{"Sulphites", false},
+	};
+
+	public Dictionary<string, bool> dietFilterList = new Dictionary<string, bool>() {
+		{"Vegan", false},
+		{"Gluten free", false},
+		{"Dairy free", false},
+		{"Hala", false},
+		{"Vegetarian", false},
+		{"Paleo", false}
+	};
 
 	public MenuItem currentItem { get; set; }
 
@@ -1114,6 +1166,8 @@ public class MenuItem : INotifyPropertyChanged
 	public Dictionary<string, OptionType> Options { get; set; }
 	public Visibility TextFormatNormal { get; set; } = Visibility.Visible;
 	public Visibility TextFormatSpecial { get; set; } = Visibility.Hidden;
+	public Visibility PopularItem { get; set; } = Visibility.Hidden;
+	public Dictionary<string, bool> FilterTags { get; set; } = new Dictionary<string, bool>();
 
 float _Cost;
 	public float Cost
