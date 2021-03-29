@@ -32,7 +32,7 @@ namespace CPSC_481
 
 		void Button_Click_2(object sender, RoutedEventArgs e)
 		{
-			Switcher.Switch(orderPage);
+			Switcher.Switch(new OrderPage());
 		}
 
 		void Button_Click_3(object sender, RoutedEventArgs e)

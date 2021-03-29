@@ -32,6 +32,8 @@ namespace CPSC_481
 			_items_column_1.ItemsSource = menuLists?[Categories.Special];
 			_items_column_2.ItemsSource = menuLists?[Categories.Special];
 			btnSelected(0);
+
+			menuTitle.Text = "Specials";
 		}
 
 		private void specialsClick(object sender, RoutedEventArgs e)
@@ -39,24 +41,32 @@ namespace CPSC_481
 			_items_column_1.ItemsSource = menuLists?[Categories.Special];
 			_items_column_2.ItemsSource = menuLists?[Categories.Special];
 			btnSelected(0);
+
+			menuTitle.Text = "Specials";
 		}
 		private void appetizerClick(object sender, RoutedEventArgs e)
 		{
 			_items_column_1.ItemsSource = menuLists[Categories.Apps];
 			_items_column_2.ItemsSource = menuLists[Categories.Apps];
 			btnSelected(1);
+
+			menuTitle.Text = "Appies";
 		}
 		private void mainClick(object sender, RoutedEventArgs e)
 		{
 			_items_column_1.ItemsSource = menuLists[Categories.Main];
 			_items_column_2.ItemsSource = menuLists?[Categories.Main];
 			btnSelected(2);
+
+			menuTitle.Text = "Main";
 		}
 		private void sidesClick(object sender, RoutedEventArgs e)
 		{
 			_items_column_1.ItemsSource = menuLists[Categories.Side];
 			_items_column_2.ItemsSource = menuLists[Categories.Side];
 			btnSelected(3);
+
+			menuTitle.Text = "Sides";
 		}
 
 		public void refreshPage() {

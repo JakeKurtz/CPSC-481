@@ -56,9 +56,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BeerPage.xaml.cs">
-      <DependentUpon>BeerPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="DrinkMenu.xaml.cs">
       <DependentUpon>DrinkMenu.xaml</DependentUpon>
     </Compile>
@@ -84,10 +81,6 @@
     <Compile Include="_SpecialsWindow.xaml.cs">
       <DependentUpon>_SpecialsWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="BeerPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="DrinkMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

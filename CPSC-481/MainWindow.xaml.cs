@@ -28,7 +28,6 @@ namespace CPSC_481
 			InitDrinkMenu();
 
 			// Passing references
-
 			ItemPage.orderHandler = orderHandler;
 			OrderPage.orderHandler = orderHandler;
 
