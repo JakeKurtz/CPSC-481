@@ -69,6 +69,8 @@ namespace CPSC_481
 
 		private void updateOrderCurrentInvoice() {
 
+			if (orderHandler == null) return;
+
 			var itemList = new List<OrderItem>(orderHandler?.orderCurrent.Values);
 
 			if (itemList.Count > 0)
@@ -86,6 +88,8 @@ namespace CPSC_481
 			oc_total.Text = getTotal(itemList).ToString();
 		}
 		private void updateOrderHistoryInvoice() {
+
+			if (orderHandler == null) return;
 
 			var orderList = orderHandler?.orderHistory;
 			var subTotal = 0.0f;

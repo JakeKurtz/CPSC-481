@@ -42,7 +42,6 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    
     <materialDesign:DialogHost>
         <materialDesign:DialogHost.DialogContent>
             <Grid Margin="20">

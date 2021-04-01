@@ -56,15 +56,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AppetizerPage.xaml.cs">
-      <DependentUpon>AppetizerPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="BeerPage.xaml.cs">
-      <DependentUpon>BeerPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="CocktailPage.xaml.cs">
-      <DependentUpon>CocktailPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="DrinkMenu.xaml.cs">
       <DependentUpon>DrinkMenu.xaml</DependentUpon>
     </Compile>
@@ -77,26 +68,8 @@
     <Compile Include="MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainsPage.xaml.cs">
-      <DependentUpon>MainsPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MenuItemControl.xaml.cs">
-      <DependentUpon>MenuItemControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="NonAlcoholicPage.xaml.cs">
-      <DependentUpon>NonAlcoholicPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="OrderPage.xaml.cs">
       <DependentUpon>OrderPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SidesPage.xaml.cs">
-      <DependentUpon>SidesPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SpecialsControl.xaml.cs">
-      <DependentUpon>SpecialsControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="SpecialsPage.xaml.cs">
-      <DependentUpon>SpecialsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Switcher.cs" />
     <Compile Include="ItemPage.xaml.cs">
@@ -105,44 +78,14 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WelcomePage.xaml.cs">
-      <DependentUpon>WelcomePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="WinePage.xaml.cs">
-      <DependentUpon>WinePage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="_SpecialsWindow.xaml.cs">
       <DependentUpon>_SpecialsWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="AppetizerPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="BeerPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="CocktailPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="DrinkMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="HelpPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MenuItemControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="NonAlcoholicPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -169,26 +112,6 @@
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="SidesPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="SpecialsControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="SpecialsPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="WelcomePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="WinePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="_SpecialsWindow.xaml">
       <SubType>Designer</SubType>

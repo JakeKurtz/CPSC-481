@@ -10,20 +10,24 @@ namespace CPSC_481
 	public partial class MainMenu : UserControl
 	{
 
+		public static OrderHandler orderHandler { get; set; }
+		public static FoodMenu foodMenu { get; set; }
+		public static DrinkMenu drinkMenu { get; set; }
+		public static OrderPage orderPage { get; set; }
+
 		public MainMenu()
 		{
 			InitializeComponent();
 		}
+
 		void Button_Click_0(object sender, RoutedEventArgs e)
 		{
-			Switcher.Switch(new FoodMenu());
+			Switcher.Switch(foodMenu);
 		}
 		
 		void Button_Click_1(object sender, RoutedEventArgs e)
 		{
-			//// Just for testing purposes
-			//Switcher.Switch(new ItemPage());
-			Switcher.Switch(new DrinkMenu());
+			Switcher.Switch(drinkMenu);
 		}
 
 		void Button_Click_2(object sender, RoutedEventArgs e)
