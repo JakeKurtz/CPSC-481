@@ -45,6 +45,12 @@ namespace CPSC_481
 			item.Quantity += 1;
 			itemCost.Text = "  $" + getTotal(orderHandler.currentItem).ToString();
 		}
+
+		private void Button_Click_Back(object sender, RoutedEventArgs e)
+		{
+			switchToMenu();
+		}
+
 		private void Button_Remove_Addon(object sender, RoutedEventArgs e)
 		{
 			var item = ((sender as Button)?.Tag as ListViewItem)?.DataContext as Addon;
@@ -121,6 +127,21 @@ namespace CPSC_481
 			return success;
 		}
 
+		private void switchToMenu()
+		{
+			var item = orderHandler.currentItem;
+			bool food = false;
+			foreach (var menu in orderHandler.foodMenuLists)
+			{
+				if (menu.Value.Contains(item))
+				{
+					food = true;
+					break;
+				}
+			}
+			if (food) Switcher.Switch(MainMenu.foodMenu);
+			else Switcher.Switch(MainMenu.drinkMenu);
+		}
 
 		private bool sendit = false; 
 		void Button_Click_AddToOrder(object sender, RoutedEventArgs e)
@@ -152,7 +173,7 @@ namespace CPSC_481
 					Name = item.Name,
 					Addons = new List<Addon>(addons_selected),
 					Options = optionString,
-					SpecialRequest = _SpecialRequest,
+					SpecialRequest = special_requests.Text,
 					Cost = _Cost,
 					Quantity = 1
 				};
@@ -173,7 +194,7 @@ namespace CPSC_481
 		{
 			if (sendit)
 			{
-				Switcher.Switch(MainMenu.foodMenu);
+				switchToMenu();
 			}
 		}
 	}

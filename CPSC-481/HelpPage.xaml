@@ -14,60 +14,72 @@
             TextOptions.TextRenderingMode="Auto"
             Background="{DynamicResource MaterialDesignPaper}"
             FontFamily="{DynamicResource MaterialDesignFont}">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Style="{StaticResource mainPageContentRowHeight}"/>
-            <RowDefinition Style="{StaticResource mainPageMenuRowHeight}"/>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="1">
-            <local:MainMenu x:Name ="menu"/>
-        </Grid>
-        <Canvas Background="WhiteSmoke" Grid.Row="0"/>
-        <!-- help page -->
-        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Hidden">
-            <StackPanel Margin="0,35,20,0" Grid.Row="0">
-                <!-- getting started -->
-                <Expander x:Name="gettingStarted" Width="333" Background="WhiteSmoke" RenderTransformOrigin="0.5,0.5" Margin="0" Collapsed="onGettingStartedTabCollapse" Expanded="onGettingStartedTabExpand">
-                    <Expander.Header>
-                        <TextBlock Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Text="GETTING STARTED"/>
-                    </Expander.Header>
-                    <Canvas Height="450">
-                        <Button x:Name="gettingStartedBackButton" Canvas.Left="10" Canvas.Top="10" Width="80" Visibility="Hidden" Click="LastGettingStartedItem">Back</Button>
-                        <Button Height="400" Canvas.Top="50" Width="350" Opacity="0" Panel.ZIndex="3" Click="NextGettingStartedItem"/>
-                        <TextBlock x:Name="gettingStartedContinueText" FontSize="23" Canvas.Top="110" TextAlignment="Center" TextWrapping="Wrap" FontWeight="Bold" Text="Tap to continue" Width="350"/>
-                        <Image x:Name="gettingStartedArrow" Source="/Resources/images/arrow-9190.png" Width="90" Canvas.Top="354" Height="114" Canvas.Left="0"/>
-                        <TextBlock x:Name="gettingStartedDescription" FontSize="18"  Canvas.Top="295" Width="226" TextWrapping="Wrap" Text="Here is where you browse the food menu" Canvas.Left="10"/>
-                    </Canvas>
-                </Expander>
+    <materialDesign:DialogHost>
+        <materialDesign:DialogHost.DialogContent>
+            <Grid Margin="20">
+                <StackPanel>
+                    <TextBlock Text="Your server has been notified and is on the way"  TextWrapping="Wrap" Width="230" TextAlignment="Center" Margin="0,0,0,10" Style="{DynamicResource MaterialDesignBody1TextBlock}"/>
+                    <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{DynamicResource MaterialDesignFlatButton}">
+                        <TextBlock Text="Ok"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </materialDesign:DialogHost.DialogContent>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Style="{StaticResource mainPageContentRowHeight}"/>
+                <RowDefinition Style="{StaticResource mainPageMenuRowHeight}"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1">
+                <local:MainMenu x:Name ="menu"/>
+            </Grid>
+            <Canvas Background="WhiteSmoke" Grid.Row="0"/>
+            <!-- help page -->
+            <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Hidden">
+                <StackPanel Margin="0,35,20,0" Grid.Row="0">
+                    <!-- getting started -->
+                    <Expander x:Name="gettingStarted" Width="333" Background="WhiteSmoke" RenderTransformOrigin="0.5,0.5" Margin="0" Collapsed="onGettingStartedTabCollapse" Expanded="onGettingStartedTabExpand">
+                        <Expander.Header>
+                            <TextBlock Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Text="GETTING STARTED"/>
+                        </Expander.Header>
+                        <Canvas Height="450">
+                            <Button x:Name="gettingStartedBackButton" Canvas.Left="10" Canvas.Top="10" Width="80" Visibility="Hidden" Click="LastGettingStartedItem">Back</Button>
+                            <Button Height="400" Canvas.Top="50" Width="350" Opacity="0" Panel.ZIndex="3" Click="NextGettingStartedItem"/>
+                            <TextBlock x:Name="gettingStartedContinueText" FontSize="23" Canvas.Top="110" TextAlignment="Center" TextWrapping="Wrap" FontWeight="Bold" Text="Tap to continue" Width="350"/>
+                            <Image x:Name="gettingStartedArrow" Source="/Resources/images/arrow-9190.png" Width="90" Canvas.Top="354" Height="114" Canvas.Left="0"/>
+                            <TextBlock x:Name="gettingStartedDescription" FontSize="18"  Canvas.Top="295" Width="226" TextWrapping="Wrap" Text="Here is where you browse the food menu" Canvas.Left="10"/>
+                        </Canvas>
+                    </Expander>
 
-                <!-- FAQ-->
-                <Expander x:Name="FAQ" Width="333" Background="WhiteSmoke" RenderTransformOrigin="0.5,0.5" Margin="0">
-                    <Expander.Header>
-                        <TextBlock Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Text="FAQ"/>
-                    </Expander.Header>
-                    <ListView Name="_QnA" Margin="15,0,10,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="320" >
+                    <!-- FAQ-->
+                    <Expander x:Name="FAQ" Width="333" Background="WhiteSmoke" RenderTransformOrigin="0.5,0.5" Margin="0">
+                        <Expander.Header>
+                            <TextBlock Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Text="FAQ"/>
+                        </Expander.Header>
+                        <ListView Name="_QnA" Margin="15,0,10,0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="320" >
 
-                    </ListView>
+                        </ListView>
 
-                </Expander>
-                <!-- CONTACT SERVER -->
-                <Expander x:Name="contactServer" Width="333" Background="WhiteSmoke" RenderTransformOrigin="0.5,0.5" Margin="0">
-                    <Expander.Header>
-                        <TextBlock Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Text="CONTACT SERVER"/>
-                    </Expander.Header>
-                    <StackPanel>
-                        <TextBlock Name ="csIntro" TextWrapping="Wrap" Margin="43,30,0,0">
+                    </Expander>
+                    <!-- CONTACT SERVER -->
+                    <Expander x:Name="contactServer" Width="333" Background="WhiteSmoke" RenderTransformOrigin="0.5,0.5" Margin="0">
+                        <Expander.Header>
+                            <TextBlock Style="{DynamicResource MaterialDesignHeadline6TextBlock}" Text="CONTACT SERVER"/>
+                        </Expander.Header>
+                        <StackPanel>
+                            <TextBlock Name ="csIntro" TextWrapping="Wrap" Margin="43,30,0,0">
                         <Bold>Optional: </Bold> add a message with your request.
-                        </TextBlock>
+                            </TextBlock>
 
-                        <TextBox Name ="csInput"  Margin="25, 5" TextWrapping="Wrap" MinHeight="150" MaxHeight="150" MinWidth="250" MaxWidth="250" BorderThickness="1"/>
+                            <TextBox Name ="csInput"  Margin="25, 5" TextWrapping="Wrap" MinHeight="150" MaxHeight="150" MinWidth="250" MaxWidth="250" BorderThickness="1"/>
 
-                        <Button Width="200" Margin="20">REQUEST SERVER</Button>
+                            <Button Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" Width="200" Margin="20">REQUEST SERVER</Button>
 
-                    </StackPanel>
+                        </StackPanel>
 
-                </Expander>
-            </StackPanel>
-        </ScrollViewer>
-    </Grid>
+                    </Expander>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </materialDesign:DialogHost>
 </UserControl>

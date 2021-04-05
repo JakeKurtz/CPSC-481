@@ -17,6 +17,7 @@
             FontFamily="{DynamicResource MaterialDesignFont}">
     <UserControl.Resources>
         <local:StateColorSelector x:Key="StateColorSelector"/>
+        <local:NullVisibilityConverter x:Key="NullToVisibilityConverter"/>
         <Style TargetType="{x:Type TabItem}">
             <Setter Property="Template">
                 <Setter.Value>
@@ -103,28 +104,31 @@
                                             </Expander.Header>
 
                                             <!--> Addons <-->
-                                            <ListView ItemsSource="{Binding Addons}" Margin="50,0,0,0" IsHitTestVisible="False">
-                                                <ListView.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <BulletDecorator>
-                                                            <BulletDecorator.Bullet>
-                                                                <Ellipse Height="5" Width="5" Fill="DarkGray"/>
-                                                            </BulletDecorator.Bullet>
-                                                            <!--> Addon text format <-->
-                                                            <Grid>
-                                                                <Grid.ColumnDefinitions>
-                                                                    <ColumnDefinition Width="30" />
-                                                                    <ColumnDefinition Width="136" />
-                                                                    <ColumnDefinition Width="Auto" />
-                                                                </Grid.ColumnDefinitions>
-                                                                <TextBlock Text="{Binding Quantity, StringFormat={}   {0}}" Grid.Column="0"/>
-                                                                <TextBlock Text="{Binding Name}" Grid.Column="1"/>
-                                                                <TextBlock Text="{Binding Cost, StringFormat={}${0}}" Grid.Column="2"/>
-                                                            </Grid>
-                                                        </BulletDecorator>
-                                                    </DataTemplate>
-                                                </ListView.ItemTemplate>
-                                            </ListView>
+                                            <StackPanel>
+                                                <ListView ItemsSource="{Binding Addons}" Margin="50,0,0,0" IsHitTestVisible="False">
+                                                    <ListView.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <BulletDecorator>
+                                                                <BulletDecorator.Bullet>
+                                                                    <Ellipse Height="5" Width="5" Fill="DarkGray"/>
+                                                                </BulletDecorator.Bullet>
+                                                                <!--> Addon text format <-->
+                                                                <Grid>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="30" />
+                                                                        <ColumnDefinition Width="136" />
+                                                                        <ColumnDefinition Width="Auto" />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock Text="{Binding Quantity, StringFormat={}   {0}}" Grid.Column="0"/>
+                                                                    <TextBlock Text="{Binding Name}" Grid.Column="1"/>
+                                                                    <TextBlock Text="{Binding Cost, StringFormat={}${0}}" Grid.Column="2"/>
+                                                                </Grid>
+                                                            </BulletDecorator>
+                                                        </DataTemplate>
+                                                    </ListView.ItemTemplate>
+                                                </ListView>
+                                                <TextBlock Margin="{Binding SpecialRequest, Converter={StaticResource NullToVisibilityConverter}}" FontStyle="Italic" Text="{Binding SpecialRequest, StringFormat={}{0}}"/>
+                                            </StackPanel>
                                         </Expander>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
@@ -237,7 +241,7 @@
                                                                         </DataTemplate>
                                                                     </ListView.ItemTemplate>
                                                                 </ListView>
-                                                                <Button Style="{DynamicResource MaterialDesignRaisedDarkButton}" Height="Auto">
+                                                                <Button  Click="Button_Reorder_Item" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" Tag="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}}" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Height="Auto">
                                                                     <StackPanel Orientation="Horizontal">
                                                                         <materialDesign:PackIcon Kind="RepeatVariant" Width="25" Height="25" HorizontalAlignment="Center"/>
                                                                         <TextBlock Margin="0,4,0,0">Reorder</TextBlock>

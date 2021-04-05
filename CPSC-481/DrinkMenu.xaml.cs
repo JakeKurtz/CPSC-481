@@ -32,6 +32,7 @@ namespace CPSC_481
 			_items_column_1.ItemsSource = orderHandler.drinkMenuLists_filtered?[Categories.Beer];
 			_items_column_2.ItemsSource = orderHandler.drinkMenuLists_filtered?[Categories.Beer];
 			btnSelected(0);
+			orderHandler.currentPage = Categories.Beer;
 		}
 
 		// button click methods
@@ -40,24 +41,28 @@ namespace CPSC_481
 			_items_column_1.ItemsSource = orderHandler.drinkMenuLists_filtered?[Categories.Beer];
 			_items_column_2.ItemsSource = orderHandler.drinkMenuLists_filtered?[Categories.Beer];
 			btnSelected(0);
+			orderHandler.currentPage = Categories.Beer;
 		}
 		private void wineClick(object sender, RoutedEventArgs e)
 		{
 			_items_column_1.ItemsSource = orderHandler.drinkMenuLists_filtered?[Categories.Wine];
 			_items_column_2.ItemsSource = orderHandler.drinkMenuLists_filtered?[Categories.Wine];
 			btnSelected(1);
+			orderHandler.currentPage = Categories.Wine;
 		}
 		private void cocktailClick(object sender, RoutedEventArgs e)
 		{
 			_items_column_1.ItemsSource = orderHandler.drinkMenuLists_filtered?[Categories.Cocktails];
 			_items_column_2.ItemsSource = orderHandler.drinkMenuLists_filtered?[Categories.Cocktails];
 			btnSelected(2);
+			orderHandler.currentPage = Categories.Cocktails;
 		}
 		private void nonAlcoholClick(object sender, RoutedEventArgs e)
 		{
 			_items_column_1.ItemsSource = orderHandler.drinkMenuLists_filtered?[Categories.NonAlch];
 			_items_column_2.ItemsSource = orderHandler.drinkMenuLists_filtered?[Categories.NonAlch];
 			btnSelected(3);
+			orderHandler.currentPage = Categories.NonAlch;
 		}
 
 		private void selectItemClick(object sender, RoutedEventArgs e)

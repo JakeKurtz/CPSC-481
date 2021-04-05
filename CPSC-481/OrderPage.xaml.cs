@@ -42,10 +42,14 @@ namespace CPSC_481
 		{
 			if (orderHandler?.orderCurrent.Values.Count > 0)
 			{
+				_orderCurrent.Items.Refresh();
+				_orderHistory.Items.Refresh();
 				OrderCurrentTab.IsSelected = true;
 			}
 			else
 			{
+				_orderCurrent.Items.Refresh();
+				_orderHistory.Items.Refresh();
 				OrderHistoryTab.IsSelected = true;
 			}
 		}
@@ -147,6 +151,16 @@ namespace CPSC_481
 			orderHandler?.orderCurrent.Remove(item.ID);
 			_orderCurrent.Items.Refresh();
 			updateOrderCurrentInvoice();
+		}		
+		
+		public void Button_Reorder_Item(object sender, RoutedEventArgs e) {
+
+			var item = ((sender as Button)?.Tag as ListViewItem)?.DataContext as OrderItem;
+			orderHandler?.AddToOrder(item.Copy());
+			_orderCurrent.Items.Refresh();
+			updateOrderCurrentInvoice();
+
+			OrderButtonMessage.Text = item.Name+" has been added to your current order";
 		}
 
 	}
@@ -171,5 +185,20 @@ namespace CPSC_481
 		}
 	}
 
-	// Source: https://stackoverflow.com/questions/4449000/multiple-expander-have-to-collapse-if-one-is-expanded
+	public class NullVisibilityConverter : IValueConverter
+	{
+		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+		{
+
+			var thickness_2 = new Thickness(70, 10, 0, 10);
+			var thickness_1 = new Thickness(0);
+
+			return value == "" ? thickness_1 : thickness_2;
+		}
+
+		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+		{
+			throw new NotImplementedException();
+		}
+	}
 }

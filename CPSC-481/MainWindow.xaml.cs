@@ -1208,7 +1208,7 @@ public class OrderItem
 	public OrderItem Copy()
 	{
 		OrderItem other = (OrderItem)this.MemberwiseClone();
-		other.ID = ID;
+		other.ID = Guid.NewGuid();
 		other.Name = String.Copy(Name);
 		other.Addons = Addons;
 		other.SpecialRequest = String.Copy(SpecialRequest);
