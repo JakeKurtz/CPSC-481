@@ -16,6 +16,7 @@
             FontFamily="{DynamicResource MaterialDesignFont}">
     <UserControl.Resources>
         <local:StateColorSelector x:Key="OptionColorSelector"/>
+        <local:NullToVisibilityConverter2 x:Key="NullToVisibilityConverter2"/>
     </UserControl.Resources>
     <materialDesign:DialogHost>
         <materialDesign:DialogHost.DialogContent>
@@ -97,9 +98,24 @@
                                                         GroupName="{Binding ElementName=OuterRef, Path=DataContext.Type}" 
                                                         Click="HandleCheck" 
                                                         Tag="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}}" 
-                                                        Content="{Binding Name}" 
                                                         Style="{DynamicResource MaterialDesignDarkRadioButton}"
                                                         Margin="20,0,0,0">
+                                                            <RadioButton.Content>
+                                                                <Grid>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="auto"/>
+                                                                        <ColumnDefinition Width="auto"/>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <TextBlock Grid.Column="0">
+                                                                      <Run Text=""/>
+                                                                      <Run Text="{Binding Name}"/>
+                                                                    </TextBlock>
+                                                                    <TextBlock Grid.Column="1" Visibility="{Binding Cost, Converter={StaticResource NullToVisibilityConverter2}}">
+                                                                      <Run Text="   + $"/>
+                                                                      <Run Text="{Binding Cost}"/>
+                                                                    </TextBlock>
+                                                                </Grid>
+                                                            </RadioButton.Content>
                                                             <RadioButton.Foreground>
                                                                 <SolidColorBrush Color="{Binding ElementName=OuterRef, Path=DataContext.Color}"/>
                                                             </RadioButton.Foreground>
@@ -114,7 +130,7 @@
                         </StackPanel>
                     </Border>
                     <!-- Addons -->
-                    <Border Grid.Row="3">
+                    <Border Name="addon_list" Grid.Row="3">
                         <StackPanel>
                             <TextBlock Text="Addons" FontSize="20" Style="{DynamicResource MaterialDesignSubtitle2TextBlock}" FontWeight="Bold" Padding="0,0,0,15"/>
                             <ListView Name="itemAddons" Template="{StaticResource NonScrollableListView}">

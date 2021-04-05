@@ -37,6 +37,13 @@ namespace CPSC_481
 			itemCost.Text = "  $" + item.Cost.ToString();
 			itemOptions.ItemsSource = item.Options.Values;
 			itemAddons.ItemsSource = item.Addons;
+
+			if (item.Addons.Count == 0)
+			{
+				addon_list.Visibility = Visibility.Hidden;
+				var thickness = new Thickness(-200);
+				addon_list.Margin = thickness;
+			}
 		}
 
 		private void Button_Add_Addon(object sender, RoutedEventArgs e)
@@ -66,6 +73,8 @@ namespace CPSC_481
 
 			orderHandler.currentItem.Options[group].Selected = true;
 			orderHandler.currentItem.Options[group].Color = Colors.Black;
+
+			itemCost.Text = "  $" + getTotal(orderHandler.currentItem).ToString();
 		}
 
 		private float getTotal(MenuItem item) {
@@ -201,6 +210,20 @@ namespace CPSC_481
 			{
 				switchToMenu();
 			}
+		}
+	}
+
+	public class NullToVisibilityConverter2 : IValueConverter
+	{
+		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+		{
+
+			return (float) value == 0.0f ? Visibility.Hidden : Visibility.Visible;
+		}
+
+		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }

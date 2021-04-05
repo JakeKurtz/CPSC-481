@@ -69,7 +69,7 @@ namespace CPSC_481
 			MenuItem item1 = new MenuItem
 			{
 				Name = "Steak Frites",
-				Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Tellus integer feugiat scelerisque varius morbi enim. Tristique et egestas quis ipsum suspendisse ultrices gravida.",
+				Description = "We proudly serve Canadian beef aged 45 days for superior tenderness. With French fries and confit garlic butter",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/steak_dinner.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
 					("Sauteed Mushrooms", 2.5f),
@@ -78,15 +78,15 @@ namespace CPSC_481
 				Options = new Dictionary<string, OptionType>()
 					{
 						{ "Side", createNewOptionType("Side", new List<(string, float)> {
-							("Fries", 1),
-							("Caesar Salad", 1),
-							("Kale Salad", 1) }) },
+							("Fries", 0.0f),
+							("Caesar Salad", 0.0f),
+							("Kale Salad", 0.0f) }) },
 						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("6 oz Sirloin", 1),
-							("9 oz Sirloin", 1),
-							("6 oz Filet", 1) }) }
+							("6 oz Sirloin", 0.0f),
+							("9 oz Sirloin", 3.0f),
+							("6 oz Filet", 9.0f) }) }
 					},
-				Cost = 24,
+				Cost = 27.50f,
 				FilterTags = new Dictionary<string, bool>()
 					{
 						{ "Milk", false},
@@ -660,23 +660,18 @@ namespace CPSC_481
 			// beer menu
 			MenuItem beer1 = new MenuItem
 			{
-				Name = "Local Beer",
-				Description = "Choose from our premium selection of local draft beer",
+				Name = "Misty Mountain Hazy IPA",
+				Description = "This lagered blonde was made to be a favourite for as long as the trail has been. Light in body and colour, with hints of stone fruit and grain.",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/drink_items/Beers/beerLandscape.jpg")),
-				Addons = createNewAddonList(new List<(string, float)> {
-					("Pickles", 5.0f),
-					("Olives", 5.0f),
-					("Cheese platter", 25.0f) }),
+				Addons = createNewAddonList(new List<(string, float)> {}),
 				Options = new Dictionary<string, OptionType>()
 					{
 						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("Piccolo 187.5ml", 5),
-							("Demi 375ml", 10),
-							("Jennie 500ml", 15),
-							("Standard 750ml", 20),
-							("Liter 1000ml", 25) }) }
+							("12 oz.", 0.0f),
+							("18 oz.", 2.50f),
+							("48 oz.", 19.25f) }) }
 					},
-				Cost = 6
+				Cost = 8.0f
 			};
 			MenuItem beer2 = new MenuItem
 			{

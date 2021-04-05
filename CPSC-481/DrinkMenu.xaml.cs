@@ -28,9 +28,7 @@ namespace CPSC_481
 			InitializeComponent();
 
 			applyFilters();
-
-			_items_column_1.ItemsSource = orderHandler.drinkMenuLists_filtered?[Categories.Beer];
-			_items_column_2.ItemsSource = orderHandler.drinkMenuLists_filtered?[Categories.Beer];
+			setupMenus(orderHandler.drinkMenuLists_filtered[Categories.Beer]);
 			btnSelected(0);
 			orderHandler.currentPage = Categories.Beer;
 		}
@@ -38,29 +36,25 @@ namespace CPSC_481
 		// button click methods
 		private void beerClick(object sender, RoutedEventArgs e)
 		{
-			_items_column_1.ItemsSource = orderHandler.drinkMenuLists_filtered?[Categories.Beer];
-			_items_column_2.ItemsSource = orderHandler.drinkMenuLists_filtered?[Categories.Beer];
+			setupMenus(orderHandler.drinkMenuLists_filtered[Categories.Beer]);
 			btnSelected(0);
 			orderHandler.currentPage = Categories.Beer;
 		}
 		private void wineClick(object sender, RoutedEventArgs e)
 		{
-			_items_column_1.ItemsSource = orderHandler.drinkMenuLists_filtered?[Categories.Wine];
-			_items_column_2.ItemsSource = orderHandler.drinkMenuLists_filtered?[Categories.Wine];
+			setupMenus(orderHandler.drinkMenuLists_filtered[Categories.Wine]);
 			btnSelected(1);
 			orderHandler.currentPage = Categories.Wine;
 		}
 		private void cocktailClick(object sender, RoutedEventArgs e)
 		{
-			_items_column_1.ItemsSource = orderHandler.drinkMenuLists_filtered?[Categories.Cocktails];
-			_items_column_2.ItemsSource = orderHandler.drinkMenuLists_filtered?[Categories.Cocktails];
+			setupMenus(orderHandler.drinkMenuLists_filtered[Categories.Cocktails]);
 			btnSelected(2);
 			orderHandler.currentPage = Categories.Cocktails;
 		}
 		private void nonAlcoholClick(object sender, RoutedEventArgs e)
 		{
-			_items_column_1.ItemsSource = orderHandler.drinkMenuLists_filtered?[Categories.NonAlch];
-			_items_column_2.ItemsSource = orderHandler.drinkMenuLists_filtered?[Categories.NonAlch];
+			setupMenus(orderHandler.drinkMenuLists_filtered[Categories.NonAlch]);
 			btnSelected(3);
 			orderHandler.currentPage = Categories.NonAlch;
 		}
@@ -71,6 +65,15 @@ namespace CPSC_481
 			orderHandler.currentItem = item;
 			// switch to the Item Page to display this item
 			Switcher.Switch(new ItemPage());
+		}
+
+		private void setupMenus(List<MenuItem> list)
+		{
+			var firstArray = list.Take(list.Count() / 2).ToArray();
+			var secondArray = list.Skip(list.Count() / 2).ToArray();
+
+			_items_column_1.ItemsSource = secondArray;
+			_items_column_2.ItemsSource = firstArray;
 		}
 
 		private void applyFilters()
