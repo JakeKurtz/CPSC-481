@@ -143,6 +143,11 @@ namespace CPSC_481
 			else Switcher.Switch(MainMenu.drinkMenu);
 		}
 
+		private string buildSpecialRequestString() {
+			if (special_requests.Text == null) return null;
+			else return "\"" + special_requests.Text + "\"";
+		}
+
 		private bool sendit = false; 
 		void Button_Click_AddToOrder(object sender, RoutedEventArgs e)
 		{
@@ -173,7 +178,7 @@ namespace CPSC_481
 					Name = item.Name,
 					Addons = new List<Addon>(addons_selected),
 					Options = optionString,
-					SpecialRequest = special_requests.Text,
+					SpecialRequest = "\"" + special_requests.Text + "\"",
 					Cost = _Cost,
 					Quantity = 1
 				};

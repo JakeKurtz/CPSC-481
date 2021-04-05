@@ -17,7 +17,9 @@
             FontFamily="{DynamicResource MaterialDesignFont}">
     <UserControl.Resources>
         <local:StateColorSelector x:Key="StateColorSelector"/>
-        <local:NullVisibilityConverter x:Key="NullToVisibilityConverter"/>
+        <local:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
+        <local:SpecialRequestToMarginConverter1 x:Key="SpecialRequestToMarginConverter1"/>
+        <local:SpecialRequestToMarginConverter2 x:Key="SpecialRequestToMarginConverter2"/>
         <Style TargetType="{x:Type TabItem}">
             <Setter Property="Template">
                 <Setter.Value>
@@ -127,7 +129,7 @@
                                                         </DataTemplate>
                                                     </ListView.ItemTemplate>
                                                 </ListView>
-                                                <TextBlock Margin="{Binding SpecialRequest, Converter={StaticResource NullToVisibilityConverter}}" FontStyle="Italic" Text="{Binding SpecialRequest, StringFormat={}{0}}"/>
+                                                <TextBlock Visibility="{Binding SpecialRequest, Converter={StaticResource NullToVisibilityConverter}}" Margin="{Binding SpecialRequest, Converter={StaticResource SpecialRequestToMarginConverter1}}" FontStyle="Italic" Text="{Binding SpecialRequest, StringFormat={}{0}}"/>
                                             </StackPanel>
                                         </Expander>
                                     </DataTemplate>
@@ -241,6 +243,7 @@
                                                                         </DataTemplate>
                                                                     </ListView.ItemTemplate>
                                                                 </ListView>
+                                                                <TextBlock Visibility="{Binding SpecialRequest, Converter={StaticResource NullToVisibilityConverter}}" Margin="{Binding SpecialRequest, Converter={StaticResource SpecialRequestToMarginConverter2}}" FontStyle="Italic" Text="{Binding SpecialRequest, StringFormat={}{0}}"/>
                                                                 <Button  Click="Button_Reorder_Item" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" Tag="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}}" Style="{DynamicResource MaterialDesignRaisedDarkButton}" Height="Auto">
                                                                     <StackPanel Orientation="Horizontal">
                                                                         <materialDesign:PackIcon Kind="RepeatVariant" Width="25" Height="25" HorizontalAlignment="Center"/>

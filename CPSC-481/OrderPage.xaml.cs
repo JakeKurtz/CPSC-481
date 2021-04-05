@@ -185,7 +185,21 @@ namespace CPSC_481
 		}
 	}
 
-	public class NullVisibilityConverter : IValueConverter
+	public class NullToVisibilityConverter : IValueConverter
+	{
+		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+		{
+
+			return (string) value == "\"\"" ? Visibility.Hidden : Visibility.Visible;
+		}
+
+		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+		{
+			throw new NotImplementedException();
+		}
+	}
+
+	public class SpecialRequestToMarginConverter1 : IValueConverter
 	{
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
@@ -193,7 +207,24 @@ namespace CPSC_481
 			var thickness_2 = new Thickness(70, 10, 0, 10);
 			var thickness_1 = new Thickness(0);
 
-			return value == "" ? thickness_1 : thickness_2;
+			return (string) value == "\"\"" ? thickness_1 : thickness_2;
+		}
+
+		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+		{
+			throw new NotImplementedException();
+		}
+	}
+
+	public class SpecialRequestToMarginConverter2 : IValueConverter
+	{
+		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+		{
+
+			var thickness_2 = new Thickness(30, 10, 0, 10);
+			var thickness_1 = new Thickness(0);
+
+			return (string) value == "\"\"" ? thickness_1 : thickness_2;
 		}
 
 		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
