@@ -38,11 +38,34 @@ namespace CPSC_481
 			itemOptions.ItemsSource = item.Options.Values;
 			itemAddons.ItemsSource = item.Addons;
 
-			if (item.Addons.Count == 0)
+			// if menu item does not have options or addons, hide the lists and bump the special request box up
+			if (item.Options.Count == 0 && item.Addons.Count == 0)
 			{
+				itemOptions.Visibility = Visibility.Hidden;
+				optionsTitle.Visibility = Visibility.Hidden;
 				addon_list.Visibility = Visibility.Hidden;
-				var thickness = new Thickness(-200);
-				addon_list.Margin = thickness;
+				var thickness = new Thickness(0, -100, 0, 0);
+				specialRequestBorder.Margin = thickness;
+			}
+			// if menu item has either options or addons
+			else {
+				// if there are no options, hide it
+				if (item.Options.Count == 0)
+				{
+					itemOptions.Visibility = Visibility.Hidden;
+					optionsTitle.Visibility = Visibility.Hidden;
+					var thickness = new Thickness(-400);
+					itemOptions.Margin = thickness;
+					var addOnThickness = new Thickness(0, -50, 0, 0);
+					addon_list.Margin = addOnThickness;
+				}
+
+				if (item.Addons.Count == 0)
+				{
+					addon_list.Visibility = Visibility.Hidden;
+					var thickness = new Thickness(-200);
+					addon_list.Margin = thickness;
+				}
 			}
 		}
 

@@ -72,7 +72,7 @@
                     <!-- Options -->
                     <Border Grid.Row="2">
                         <StackPanel>
-                            <TextBlock Text="Options" FontSize="20" Style="{DynamicResource MaterialDesignSubtitle2TextBlock}" FontWeight="Bold" Padding="0,0,0,15"/>
+                            <TextBlock Name="optionsTitle" Text="Options" FontSize="20" Style="{DynamicResource MaterialDesignSubtitle2TextBlock}" FontWeight="Bold" Padding="0,0,0,15"/>
                             <ListView Name="itemOptions" Template="{StaticResource NonScrollableListView}">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
@@ -176,7 +176,7 @@
                         </StackPanel>
                     </Border>
                     <!-- Special Requests -->
-                    <Border Grid.Row="4">
+                    <Border Name="specialRequestBorder" Grid.Row="4">
                         <StackPanel>
                             <TextBlock Style="{DynamicResource MaterialDesignSubtitle2TextBlock}" Margin="0,0,0,5" FontWeight="Bold" Text="Special Requests"/>
                             <TextBox Name="special_requests" TextWrapping="Wrap" Height="125" BorderThickness="1"/>
