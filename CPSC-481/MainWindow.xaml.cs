@@ -195,7 +195,7 @@ namespace CPSC_481
 							("Fries", 0.0f),
 							("Caesar Salad", 0.0f),
 							("Kale Salad", 0.0f) }) },
-						{ "Bread", createNewOptionType("Size", new List<(string, float)> {
+						{ "Bread", createNewOptionType("Bread", new List<(string, float)> {
 							("Pita", 0.0f),
 							("Whole Wheat Pita", 0.0f) }) }
 					},
@@ -285,7 +285,7 @@ namespace CPSC_481
 					("Extra Ranch", 1.0f) }),
 				Options = new Dictionary<string, OptionType>()
 				{
-					{ "Flavour", createNewOptionType("Side", new List<(string, float)> {
+					{ "Flavour", createNewOptionType("Flavour", new List<(string, float)> {
 							("Salt & Pepper", 0.0f),
 							("Hot", 0.0f),
 							("BBQ", 0.0f),
@@ -446,9 +446,10 @@ namespace CPSC_481
 				}),
 				Options = new Dictionary<string, OptionType>()
 					{
-						{ "Brand", createNewOptionType("Side", new List<(string, float)> {
+						{ "Brand", createNewOptionType("Brand", new List<(string, float)> {
 							("Bud Light", 0.0f),
 							("Miller Lite", 0.0f),
+							("Steam Whilstle Pilsner", 0.0f),
 							("Kokanee", 0.0f),
 							("Molson Canadian", 0.0f) }) },
 						{ "Size", createNewOptionType("Size", new List<(string, float)> {
@@ -468,7 +469,7 @@ namespace CPSC_481
 				}),
 				Options = new Dictionary<string, OptionType>()
 					{
-						{ "Type", createNewOptionType("Side", new List<(string, float)> {
+						{ "Selection", createNewOptionType("Selection", new List<(string, float)> {
 							("California", 0.0f),
 							("Philadelphia", 0.0f),
 							("Spicy Tuna", 2),
@@ -487,14 +488,14 @@ namespace CPSC_481
 				}),
 				Options = new Dictionary<string, OptionType>()
 					{
-						{ "Type", createNewOptionType("Side", new List<(string, float)> {
+						{ "Selection", createNewOptionType("Selection", new List<(string, float)> {
 							("House Red", 0.0f),
 							("House White", 0.0f) }) },
 						{ "Size", createNewOptionType("Size", new List<(string, float)> {
 							("6 oz", 0.0f),
-							("9 oz", 2) }) }
+							("9 oz", 3.0f) }) }
 					},
-				Cost = 5,
+				Cost = 6,
 				TextFormatNormal = Visibility.Hidden,
 				TextFormatSpecial = Visibility.Visible
 			};
@@ -520,15 +521,15 @@ namespace CPSC_481
 				Options = new Dictionary<string, OptionType>()
 					{
 						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("12 oz.", 0.0f),
-							("18 oz.", 2.50f),
-							("48 oz.", 19.25f) }) }
+							("14 oz.", 0.0f),
+							("16 oz.", 2.0f),
+							("20 oz.", 3.50f) }) }
 					},
 				Cost = 8.0f
 			};
 			MenuItem beer2 = new MenuItem
 			{
-				Name = "Seasonal Beer",
+				Name = "Seasonal Draft Beer",
 				Description = "Choose from our premium selection of seasonal beer",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/drink_items/Beers/seasonalBeers.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
@@ -537,18 +538,20 @@ namespace CPSC_481
 					("Cheese platter", 25.0f) }),
 				Options = new Dictionary<string, OptionType>()
 					{
+						{ "Selection", createNewOptionType("Selection", new List<(string, float)> {
+								("Raspberry Ale", 0.0f),
+								("Mango Passionfruit Sour", 0.0f),
+								("Tropical IPA", 0.0f),
+								("Vanilla Stout", 0.0f) }) },
 						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("Piccolo 187.5ml", 5),
-							("Demi 375ml", 10),
-							("Jennie 500ml", 15),
-							("Standard 750ml", 20),
-							("Liter 1000ml", 25) }) }
+								("16 oz", 0.0f),
+								("20 oz", 2.0f) }) }
 					},
 				Cost = 7
 			};
 			MenuItem beer3 = new MenuItem
 			{
-				Name = "Import Beer",
+				Name = "Imported Draft Beer",
 				Description = "Fancy import beer from faraway places",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/drink_items/Beers/importedBeers.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
@@ -557,18 +560,21 @@ namespace CPSC_481
 					("Cheese platter", 25.0f) }),
 				Options = new Dictionary<string, OptionType>()
 					{
+						{ "Selection", createNewOptionType("Selection", new List<(string, float)> {
+							("Piccolo 187.5ml", 0.0f),
+							("Demi 375ml", 0.0f),
+							("Jennie 500ml", 0.0f),
+							("Standard 750ml", 0.0f),
+							("Liter 1000ml", 0.0f) }) },
 						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("Piccolo 187.5ml", 5),
-							("Demi 375ml", 10),
-							("Jennie 500ml", 15),
-							("Standard 750ml", 20),
-							("Liter 1000ml", 25) }) }
+								("16 oz", 0.0f),
+								("20 oz", 2.0f) }) }
 					},
 				Cost = 9
 			};
 			MenuItem beer4 = new MenuItem
 			{
-				Name = "Generic Beer",
+				Name = "Draft Beer",
 				Description = "The classics you know and love",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/drink_items/Beers/genericBeers.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
@@ -577,12 +583,15 @@ namespace CPSC_481
 					("Cheese platter", 25.0f) }),
 				Options = new Dictionary<string, OptionType>()
 					{
+						{ "Selection", createNewOptionType("Selection", new List<(string, float)> {
+							("Bud Light", 0.0f),
+							("Miller Lite", 0.0f),
+							("Steam Whilstle Pilsner", 0.0f),
+							("Kokanee", 0.0f),
+							("Molson Canadian", 0.0f) }) },
 						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("Piccolo 187.5ml", 5),
-							("Demi 375ml", 10),
-							("Jennie 500ml", 15),
-							("Standard 750ml", 20),
-							("Liter 1000ml", 25) }) }
+								("16 oz", 0.0f),
+								("20 oz", 2.0f) }) }
 					},
 				Cost = 5
 			};
@@ -599,7 +608,7 @@ namespace CPSC_481
 		{
 			MenuItem Wine1 = new MenuItem
 			{
-				Name = "White wine",
+				Name = "White Wine",
 				Description = "Choose from our selection of white wines",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/drink_items/Wines/whiteWine.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
@@ -608,18 +617,22 @@ namespace CPSC_481
 					("Cheese platter", 25.0f) }),
 				Options = new Dictionary<string, OptionType>()
 					{
+						{ "Selection", createNewOptionType("Selection", new List<(string, float)> {
+							("Sawmill Creek Pinot Grigio", 0.0f),
+							("Far Niente Chardonnay", 1.0f),
+							("Abbazia di Novacella Pinot Grigio", 2.0f),
+							("Crestwood Barrel Riesling", 3.0f),
+							("Trois Noix Sauvignon Blanc", 4.0f) }) },
 						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("Piccolo 187.5ml", 5),
-							("Demi 375ml", 10),
-							("Jennie 500ml", 15),
-							("Standard 750ml", 20),
-							("Liter 1000ml", 25) }) }
+							("6 oz", 0.0f),
+							("9 oz", 3.0f),
+							("Bottle", 30.0f) }) }
 					},
-				Cost = 25
+				Cost = 8
 			};
 			MenuItem Wine2 = new MenuItem
 			{
-				Name = "Red wine",
+				Name = "Red Wine",
 				Description = "Choose from our selection of red wines",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/drink_items/Wines/redWine.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
@@ -628,19 +641,23 @@ namespace CPSC_481
 					("Cheese platter", 25.0f) }),
 				Options = new Dictionary<string, OptionType>()
 					{
+						{ "Selection", createNewOptionType("Selection", new List<(string, float)> {
+							("Bonterra Merlot", 0.0f),
+							("La Vieille Ferme Red", 1.0f),
+							("Brady Vineyard Zinfandel", 2.0f),
+							("Crios Malbec", 3.0f),
+							("San Simeon Reserve Pinot Noir", 4.0f) }) },
 						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("Piccolo 187.5ml", 5),
-							("Demi 375ml", 10),
-							("Jennie 500ml", 15),
-							("Standard 750ml", 20),
-							("Liter 1000ml", 25) }) }
+							("6 oz", 0.0f),
+							("9 oz", 3.0f),
+							("Bottle", 30.0f) }) }
 					},
-				Cost = 25
+				Cost = 8
 			};
 			MenuItem Wine3 = new MenuItem
 			{
-				Name = "Champagne",
-				Description = "Premium champagne imported from Italy",
+				Name = "Sparkling Wine",
+				Description = "Premium sparkling wines imported from Italy, France and Spain",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/drink_items/Wines/champagne.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
 					("Pickles", 5.0f),
@@ -648,19 +665,22 @@ namespace CPSC_481
 					("Cheese platter", 25.0f) }),
 				Options = new Dictionary<string, OptionType>()
 					{
+						{ "Selection", createNewOptionType("Selection", new List<(string, float)> {
+							("Villa Marchesi Prosecco", 0.0f),
+							("Saracco Moscato d'Asti", 2.0f),
+							("Elyssia Pinot Noir Brut Cava", 2.0f),
+							("Raymond Henriot Champagne", 3.0f),
+							("Agusti Torello Mata Reserva", 3.0f) }) },
 						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("Piccolo 187.5ml", 5),
-							("Demi 375ml", 10),
-							("Jennie 500ml", 15),
-							("Standard 750ml", 20),
-							("Liter 1000ml", 25) }) }
+							("5 oz", 0.0f),
+							("Bottle", 40.0f) }) }
 					},
-				Cost = 95
+				Cost = 10
 			};
 			MenuItem Wine4 = new MenuItem
 			{
-				Name = "Other wines",
-				Description = "Browse through some unique wines",
+				Name = "Other Wines",
+				Description = "Browse through some of our unique wines",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/drink_items/Wines/otherWines.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
 					("Pickles", 5.0f),
@@ -668,14 +688,18 @@ namespace CPSC_481
 					("Cheese platter", 25.0f) }),
 				Options = new Dictionary<string, OptionType>()
 					{
+						{ "Selection", createNewOptionType("Selection", new List<(string, float)> {
+							("Oyster Bay Rose", 0.0f),
+							("Hecht & Bannier Rose", 2.0f),
+							("Borges Ruby Port Reserve", 3.0f),
+							("Lakeview Cellars Vidal Icewine", 4.0f),
+							("Hidalgo Faraon Oloroso Sherry", 5.0f) }) },
 						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("Piccolo 187.5ml", 5),
-							("Demi 375ml", 10),
-							("Jennie 500ml", 15),
-							("Standard 750ml", 20),
-							("Liter 1000ml", 25) }) }
+							("6 oz", 0.0f),
+							("9 oz", 3.0f),
+							("Bottle", 30.0f) }) }
 					},
-				Cost = 15
+				Cost = 9
 			};
 
 			List<MenuItem> WineList = new List<MenuItem>();
@@ -691,7 +715,7 @@ namespace CPSC_481
 			MenuItem drink1 = new MenuItem
 			{
 				Name = "Martini",
-				Description = "A classic, sour martini",
+				Description = "Chilled gin and dry vermouth, garnished with an olive",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/drink_items/Cocktails/martini.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
 					("Pickles", 5.0f),
@@ -699,19 +723,13 @@ namespace CPSC_481
 					("Cheese platter", 25.0f) }),
 				Options = new Dictionary<string, OptionType>()
 					{
-						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("Piccolo 187.5ml", 5),
-							("Demi 375ml", 10),
-							("Jennie 500ml", 15),
-							("Standard 750ml", 20),
-							("Liter 1000ml", 25) }) }
 					},
-				Cost = 7
+				Cost = 13
 			};
 			MenuItem drink2 = new MenuItem
 			{
 				Name = "Manhattan",
-				Description = "A classic manhattan",
+				Description = "Bourbon, sweet vermouth and orange bitters",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/drink_items/Cocktails/manhattan.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
 					("Pickles", 5.0f),
@@ -719,19 +737,13 @@ namespace CPSC_481
 					("Cheese platter", 25.0f) }),
 				Options = new Dictionary<string, OptionType>()
 					{
-						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("Piccolo 187.5ml", 5),
-							("Demi 375ml", 10),
-							("Jennie 500ml", 15),
-							("Standard 750ml", 20),
-							("Liter 1000ml", 25) }) }
 					},
-				Cost = 7
+				Cost = 15
 			};
 			MenuItem drink3 = new MenuItem
 			{
 				Name = "Bloody Mary",
-				Description = "Clamato juice and alcohol",
+				Description = "Vodka, tomato juice and spices, garnished with celery",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/drink_items/Cocktails/bloodyMary.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
 					("Pickles", 5.0f),
@@ -739,12 +751,6 @@ namespace CPSC_481
 					("Cheese platter", 25.0f) }),
 				Options = new Dictionary<string, OptionType>()
 					{
-						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("Piccolo 187.5ml", 5),
-							("Demi 375ml", 10),
-							("Jennie 500ml", 15),
-							("Standard 750ml", 20),
-							("Liter 1000ml", 25) }) }
 					},
 				Cost = 15
 			};
@@ -759,14 +765,17 @@ namespace CPSC_481
 					("Cheese platter", 25.0f) }),
 				Options = new Dictionary<string, OptionType>()
 					{
+						{ "Selection", createNewOptionType("Selection", new List<(string, float)> {
+							("Cosmopolitan", 0.0f),
+							("Amaretto Sour", 0.0f),
+							("Pina Colada", 2.0f),
+							("Bellini", 2.0f),
+							("Moscow Mule", 2.0f) }) },
 						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("Piccolo 187.5ml", 5),
-							("Demi 375ml", 10),
-							("Jennie 500ml", 15),
-							("Standard 750ml", 20),
-							("Liter 1000ml", 25) }) }
+							("1 oz", 0.0f),
+							("2 oz", 3.0f)}) }
 					},
-				Cost = 15
+				Cost = 12
 			};
 
 			List<MenuItem> CocktailList = new List<MenuItem>();
@@ -781,83 +790,69 @@ namespace CPSC_481
 		{
 			MenuItem drink1 = new MenuItem
 			{
-				Name = "Generic Soda",
+				Name = "Soft Drinks",
 				Description = "Classic sodas",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/drink_items/NonAlcoholic/sodas.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
-					("Pickles", 5.0f),
-					("Olives", 5.0f),
-					("Cheese platter", 25.0f) }),
+				}),
 				Options = new Dictionary<string, OptionType>()
 					{
-						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("Piccolo 187.5ml", 5),
-							("Demi 375ml", 10),
-							("Jennie 500ml", 15),
-							("Standard 750ml", 20),
-							("Liter 1000ml", 25) }) }
+						{ "Selection", createNewOptionType("Selection", new List<(string, float)> {
+							("Coke", 0.0f),
+							("Sprite", 0.0f),
+							("Gingerale", 0.0f),
+							("Fanta", 0.0f),
+							("Dr. Pepper", 0.0f) }) }
 					},
-				Cost = 2
+				Cost = 3
 			};
 			MenuItem drink2 = new MenuItem
 			{
-				Name = "Craft sodas",
+				Name = "Craft Sodas",
 				Description = "Craft sodas with unique flavours",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/drink_items/NonAlcoholic/craftSodas.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
-					("Pickles", 5.0f),
-					("Olives", 5.0f),
-					("Cheese platter", 25.0f) }),
+				}),
 				Options = new Dictionary<string, OptionType>()
 					{
-						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("Piccolo 187.5ml", 5),
-							("Demi 375ml", 10),
-							("Jennie 500ml", 15),
-							("Standard 750ml", 20),
-							("Liter 1000ml", 25) }) }
+						{ "Selection", createNewOptionType("Selection", new List<(string, float)> {
+							("Black Cherry Cola", 0.0f),
+							("Ginger beer", 0.0f),
+							("Orange Cream Soda", 0.0f),
+							("Rootbeer", 0.0f),
+							("Saskatoon Lemonade", 0.0f) }) }
 					},
 				Cost = 5
 			};
 			MenuItem drink3 = new MenuItem
 			{
-				Name = "Shirley temple",
-				Description = "Non-alcoholic cocktail",
+				Name = "Shirley Temple",
+				Description = "Gingerale, orange juice and a splash of grenadine",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/drink_items/NonAlcoholic/shirleytemple.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
-					("Pickles", 5.0f),
-					("Olives", 5.0f),
-					("Cheese platter", 25.0f) }),
+				}),
 				Options = new Dictionary<string, OptionType>()
 					{
-						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("Piccolo 187.5ml", 5),
-							("Demi 375ml", 10),
-							("Jennie 500ml", 15),
-							("Standard 750ml", 20),
-							("Liter 1000ml", 25) }) }
 					},
 				Cost = 6
 			};
 			MenuItem drink4 = new MenuItem
 			{
 				Name = "Teas",
-				Description = "Drink some calming, delicious teas",
+				Description = "Delicious teas sourced from organic farms",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/drink_items/NonAlcoholic/teas.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
-					("Pickles", 5.0f),
-					("Olives", 5.0f),
-					("Cheese platter", 25.0f) }),
+				}),
 				Options = new Dictionary<string, OptionType>()
 					{
-						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("Piccolo 187.5ml", 5),
-							("Demi 375ml", 10),
-							("Jennie 500ml", 15),
-							("Standard 750ml", 20),
-							("Liter 1000ml", 25) }) }
+						{ "Selection", createNewOptionType("Selection", new List<(string, float)> {
+							("Green tea", 0.0f),
+							("Black tea", 0.0f),
+							("Chamomile tea", 0.0f),
+							("Peppermint tea", 0.0f),
+							("Roiboos tea", 0.0f) }) }
 					},
-				Cost = 7
+				Cost = 3
 			};
 
 			List<MenuItem> NonAlcoholicList = new List<MenuItem>();

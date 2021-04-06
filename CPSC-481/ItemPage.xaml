@@ -76,7 +76,7 @@
                             <ListView Name="itemOptions" Template="{StaticResource NonScrollableListView}">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
-                                        <Expander Width="200" Background="White" HorizontalAlignment="Center">
+                                        <Expander Width="300" Background="White" HorizontalAlignment="Center">
                                             <Expander.Header>
                                                 <StackPanel>
                                                     <TextBlock Text="{Binding Type}" Style="{DynamicResource MaterialDesignSubtitle1TextBlock}" FontWeight="Bold">
@@ -99,7 +99,7 @@
                                                         Click="HandleCheck" 
                                                         Tag="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListViewItem}}}" 
                                                         Style="{DynamicResource MaterialDesignDarkRadioButton}"
-                                                        Margin="20,0,0,0">
+                                                        Margin="15,0,0,0">
                                                             <RadioButton.Content>
                                                                 <Grid>
                                                                     <Grid.ColumnDefinitions>
