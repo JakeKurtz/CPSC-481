@@ -99,43 +99,38 @@ namespace CPSC_481
 				Description = "Grilled chicken, crispy bacon, tomatoes, lettuce and mayo on bread of your choice",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/chickenClub.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
-					("Sauteed Mushrooms", 2.5f),
-					("Gravy", 2.0f),
-					("Steak Sauce", 2.0f) }),
+					("Extra bacon", 2.5f),
+					("Cheese", 2.0f) }),
 				Options = new Dictionary<string, OptionType>()
 					{
 						{ "Side", createNewOptionType("Side", new List<(string, float)> {
-							("Fries", 1),
-							("Caesar Salad", 1),
-							("Kale Salad", 1) }) },
-						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("6 oz Sirloin", 1),
-							("9 oz Sirloin", 1),
-							("6 oz Filet", 1) }) }
+							("Fries", 0.0f),
+							("Caesar Salad", 0.0f),
+							("Kale Salad", 0.0f) }) }
 					},
 				Cost = 18
 			};
 			MenuItem item3 = new MenuItem
 			{
 				Name = "BBQ Ribs",
-				Description = "Tender babyback ribs, handcut fries and cornbread",
+				Description = "Tender babyback ribs with cornbread",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/bbqRibs.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
-					("Sauteed Mushrooms", 2.5f),
-					("Gravy", 2.0f),
-					("Steak Sauce", 2.0f) }),
+					("Extra BBQ Sauce", 1.0f),
+					("Extra Cornbread", 2.0f),
+					("Poutine", 3.0f) }),
 				Options = new Dictionary<string, OptionType>()
 					{
 						{ "Side", createNewOptionType("Side", new List<(string, float)> {
-							("Fries", 1),
-							("Caesar Salad", 1),
-							("Kale Salad", 1) }) },
+							("Fries", 0.0f),
+							("Caesar Salad", 0.0f),
+							("Kale Salad", 0.0f) }) },
 						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("6 oz Sirloin", 1),
-							("9 oz Sirloin", 1),
-							("6 oz Filet", 1) }) }
+							("1/3 Rack", 0.0f),
+							("Half Rack", 5.0f),
+							("Full Rack", 10.0f) }) }
 					},
-				Cost = 28
+				Cost = 23
 			};
 			MenuItem item4 = new MenuItem
 			{
@@ -143,19 +138,13 @@ namespace CPSC_481
 				Description = "Grilled salmon, grilled asparagus, jasmine rice, carrots, peas and mushrooms",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/salmon.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
-					("Sauteed Mushrooms", 2.5f),
-					("Gravy", 2.0f),
-					("Steak Sauce", 2.0f) }),
+					("Extra Rice", 2.0f) }),
 				Options = new Dictionary<string, OptionType>()
 					{
 						{ "Side", createNewOptionType("Side", new List<(string, float)> {
-							("Fries", 1),
-							("Caesar Salad", 1),
-							("Kale Salad", 1) }) },
-						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("6 oz Sirloin", 1),
-							("9 oz Sirloin", 1),
-							("6 oz Filet", 1) }) }
+							("Fries", 0.0f),
+							("Caesar Salad", 0.0f),
+							("Kale Salad", 0.0f) }) }
 					},
 				Cost = 25
 			};
@@ -165,19 +154,13 @@ namespace CPSC_481
 				Description = "North atlantic haddock, handcut fries, tartar sauce",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/fishChips.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
-					("Sauteed Mushrooms", 2.5f),
-					("Gravy", 2.0f),
-					("Steak Sauce", 2.0f) }),
+					("Extra tartar sauce", 2.0f),
+					("Upgrade frieds to poutine", 3.0f)}),
 				Options = new Dictionary<string, OptionType>()
 					{
-						{ "Side", createNewOptionType("Side", new List<(string, float)> {
-							("Fries", 1),
-							("Caesar Salad", 1),
-							("Kale Salad", 1) }) },
 						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("6 oz Sirloin", 1),
-							("9 oz Sirloin", 1),
-							("6 oz Filet", 1) }) }
+							("3 piece haddock", 0.0f),
+							("5 piece haddock", 3.0f) }) }
 					},
 				Cost = 21
 			};
@@ -187,41 +170,34 @@ namespace CPSC_481
 				Description = "Smoked bacon, tomatoes, onion, lettuce, pickles on a toasted bun",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/burger.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
-					("Sauteed Mushrooms", 2.5f),
-					("Gravy", 2.0f),
-					("Steak Sauce", 2.0f) }),
+					("Extra Bacon", 2.5f),
+					("Upgrade bun to brioche", 2.0f) }),
 				Options = new Dictionary<string, OptionType>()
 					{
 						{ "Side", createNewOptionType("Side", new List<(string, float)> {
-							("Fries", 1),
-							("Caesar Salad", 1),
-							("Kale Salad", 1) }) },
-						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("6 oz Sirloin", 1),
-							("9 oz Sirloin", 1),
-							("6 oz Filet", 1) }) }
+							("Fries", 0.0f),
+							("Caesar Salad", 0.0f),
+							("Kale Salad", 0.0f) }) }
 					},
 				Cost = 20
 			};
 			MenuItem item7 = new MenuItem
 			{
 				Name = "Crispy Falafel Burger",
-				Description = "Chickpea falafel, roasted peppers, spicy tzatziki and feta cheese on bread of your choice",
+				Description = "Chickpea falafel, roasted peppers, spicy tzatziki and feta cheese",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/falafelBurger.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
-					("Sauteed Mushrooms", 2.5f),
-					("Gravy", 2.0f),
-					("Steak Sauce", 2.0f) }),
+					("Extra feta", 2.0f),
+					("Upgrade to chicken", 3.0f) }),
 				Options = new Dictionary<string, OptionType>()
 					{
 						{ "Side", createNewOptionType("Side", new List<(string, float)> {
-							("Fries", 1),
-							("Caesar Salad", 1),
-							("Kale Salad", 1) }) },
-						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("6 oz Sirloin", 1),
-							("9 oz Sirloin", 1),
-							("6 oz Filet", 1) }) }
+							("Fries", 0.0f),
+							("Caesar Salad", 0.0f),
+							("Kale Salad", 0.0f) }) },
+						{ "Bread", createNewOptionType("Size", new List<(string, float)> {
+							("Pita", 0.0f),
+							("Whole Wheat Pita", 0.0f) }) }
 					},
 				Cost = 17
 			};
@@ -232,18 +208,13 @@ namespace CPSC_481
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/chickenPasta.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
 					("Sauteed Mushrooms", 2.5f),
-					("Gravy", 2.0f),
-					("Steak Sauce", 2.0f) }),
+					("Asparagus", 3.0f) }),
 				Options = new Dictionary<string, OptionType>()
 					{
 						{ "Side", createNewOptionType("Side", new List<(string, float)> {
-							("Fries", 1),
-							("Caesar Salad", 1),
-							("Kale Salad", 1) }) },
-						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("6 oz Sirloin", 1),
-							("9 oz Sirloin", 1),
-							("6 oz Filet", 1) }) }
+							("Fries", 0.0f),
+							("Caesar Salad", 0.0f),
+							("Kale Salad", 0.0f) }) }
 					},
 				Cost = 22
 			};
@@ -254,18 +225,13 @@ namespace CPSC_481
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/tofuBowl.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
 					("Sauteed Mushrooms", 2.5f),
-					("Gravy", 2.0f),
-					("Steak Sauce", 2.0f) }),
+					("Grille chicken", 3.0f) }),
 				Options = new Dictionary<string, OptionType>()
 					{
 						{ "Side", createNewOptionType("Side", new List<(string, float)> {
-							("Fries", 1),
-							("Caesar Salad", 1),
-							("Kale Salad", 1) }) },
-						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("6 oz Sirloin", 1),
-							("9 oz Sirloin", 1),
-							("6 oz Filet", 1) }) }
+							("Fries", 0.0f),
+							("Caesar Salad", 0.0f),
+							("Kale Salad", 0.0f) }) }
 					},
 				Cost = 16
 			};
@@ -294,7 +260,8 @@ namespace CPSC_481
 				Options = new Dictionary<string, OptionType>()
 				{
 				},
-				Cost = 10
+				Cost = 10,
+				PopularItem = Visibility.Visible
 			};
 			MenuItem appitem2 = new MenuItem
 			{
@@ -304,29 +271,27 @@ namespace CPSC_481
 				Addons = createNewAddonList(new List<(string, float)> {
 				}),
 				Options = new Dictionary<string, OptionType>()
-					{
-						{ "Side", createNewOptionType("Side", new List<(string, float)> {
-							("Fries", 1),
-							("Caesar Salad", 1),
-							("Kale Salad", 1) }) },
-						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("6 oz Sirloin", 1),
-							("9 oz Sirloin", 1),
-							("6 oz Filet", 1) }) }
-					},
+				{
+				},
 				Cost = 14
 			};
 			MenuItem appitem3 = new MenuItem
 			{
 				Name = "Chicken Wings",
-				Description = "Fried chicken wings of your choice, comes with carrot and celery sticks",
+				Description = "10 piece fried chicken wings of your choice, comes with carrot and celery sticks",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/wings.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
-					("Sauteed Mushrooms", 2.5f),
-					("Gravy", 2.0f),
-					("Steak Sauce", 2.0f) }),
+					("Double order", 4.0f),
+					("Extra Ranch", 1.0f) }),
 				Options = new Dictionary<string, OptionType>()
 				{
+					{ "Flavour", createNewOptionType("Side", new List<(string, float)> {
+							("Salt & Pepper", 0.0f),
+							("Hot", 0.0f),
+							("BBQ", 0.0f),
+							("Lemon Pepper", 0.0f),
+							("Honey Garlic", 0.0f) })
+					}
 				},
 				Cost = 12
 			};
@@ -336,19 +301,11 @@ namespace CPSC_481
 				Description = "Baked nachos topped with jalapenos, tomatoes, onions and aged cheddar. Comes with salsa and sour cream",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/nachos.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
-					("Sauteed Mushrooms", 2.5f),
-					("Gravy", 2.0f),
-					("Steak Sauce", 2.0f) }),
+					("Guacamole", 2.5f),
+					("Cubed Steak", 4.0f),
+					("Shredded Chicken", 3.0f) }),
 				Options = new Dictionary<string, OptionType>()
 					{
-						{ "Side", createNewOptionType("Side", new List<(string, float)> {
-							("Fries", 1),
-							("Caesar Salad", 1),
-							("Kale Salad", 1) }) },
-						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("6 oz Sirloin", 1),
-							("9 oz Sirloin", 1),
-							("6 oz Filet", 1) }) }
 					},
 				Cost = 16
 			};
@@ -368,20 +325,10 @@ namespace CPSC_481
 				Description = "Freshly cut fries, lightly salted and seasoned",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/friesSide.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
-					("Sauteed Mushrooms", 2.5f),
-					("Gravy", 2.0f),
-					("Steak Sauce", 2.0f) }),
+				}),
 				Options = new Dictionary<string, OptionType>()
-					{
-						{ "Side", createNewOptionType("Side", new List<(string, float)> {
-							("Fries", 1),
-							("Caesar Salad", 1),
-							("Kale Salad", 1) }) },
-						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("6 oz Sirloin", 1),
-							("9 oz Sirloin", 1),
-							("6 oz Filet", 1) }) }
-					},
+				{
+				},
 				Cost = 12
 			};
 			MenuItem sideitem2 = new MenuItem
@@ -390,20 +337,10 @@ namespace CPSC_481
 				Description = "Fresh kale salad with house caesar dressing",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/kale.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
-					("Sauteed Mushrooms", 2.5f),
-					("Gravy", 2.0f),
-					("Steak Sauce", 2.0f) }),
+					("Grilled Chicken", 3.0f) }),
 				Options = new Dictionary<string, OptionType>()
-					{
-						{ "Side", createNewOptionType("Side", new List<(string, float)> {
-							("Fries", 1),
-							("Caesar Salad", 1),
-							("Kale Salad", 1) }) },
-						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("6 oz Sirloin", 1),
-							("9 oz Sirloin", 1),
-							("6 oz Filet", 1) }) }
-					},
+				{
+				},
 				Cost = 6
 			};
 			MenuItem sideitem3 = new MenuItem
@@ -412,20 +349,10 @@ namespace CPSC_481
 				Description = "Mixed greens, cucumbers, grape tomatoes, onions and croutons tossed in italian dressing",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/salad.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
-					("Sauteed Mushrooms", 2.5f),
-					("Gravy", 2.0f),
-					("Steak Sauce", 2.0f) }),
+					("Grilled Chicken", 3.0f)}),
 				Options = new Dictionary<string, OptionType>()
-					{
-						{ "Side", createNewOptionType("Side", new List<(string, float)> {
-							("Fries", 1),
-							("Caesar Salad", 1),
-							("Kale Salad", 1) }) },
-						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("6 oz Sirloin", 1),
-							("9 oz Sirloin", 1),
-							("6 oz Filet", 1) }) }
-					},
+				{
+				},
 				Cost = 4
 			};
 			MenuItem sideitem4 = new MenuItem
@@ -434,20 +361,10 @@ namespace CPSC_481
 				Description = "Garlic butter spread on freshly toasted bread",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/garlicBread.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
-					("Sauteed Mushrooms", 2.5f),
-					("Gravy", 2.0f),
-					("Steak Sauce", 2.0f) }),
+				}),
 				Options = new Dictionary<string, OptionType>()
-					{
-						{ "Side", createNewOptionType("Side", new List<(string, float)> {
-							("Fries", 1),
-							("Caesar Salad", 1),
-							("Kale Salad", 1) }) },
-						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("6 oz Sirloin", 1),
-							("9 oz Sirloin", 1),
-							("6 oz Filet", 1) }) }
-					},
+				{
+				},
 				Cost = 3
 			};
 			MenuItem sideitem5 = new MenuItem
@@ -456,20 +373,10 @@ namespace CPSC_481
 				Description = "Yukon gold potatoes, mashed with sour cream and house seasoning",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/mashedPotatoes.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
-					("Sauteed Mushrooms", 2.5f),
-					("Gravy", 2.0f),
-					("Steak Sauce", 2.0f) }),
+					("Gravy", 2.0f) }),
 				Options = new Dictionary<string, OptionType>()
-					{
-						{ "Side", createNewOptionType("Side", new List<(string, float)> {
-							("Fries", 1),
-							("Caesar Salad", 1),
-							("Kale Salad", 1) }) },
-						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("6 oz Sirloin", 1),
-							("9 oz Sirloin", 1),
-							("6 oz Filet", 1) }) }
-					},
+				{
+				},
 				Cost = 5
 			};
 			MenuItem sideitem6 = new MenuItem
@@ -478,20 +385,10 @@ namespace CPSC_481
 				Description = "Crunchy romaine lettuce with house caesar and croutons",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/caesar.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
-					("Sauteed Mushrooms", 2.5f),
-					("Gravy", 2.0f),
-					("Steak Sauce", 2.0f) }),
+					("Grilled Chicken", 3.0f) }),
 				Options = new Dictionary<string, OptionType>()
-					{
-						{ "Side", createNewOptionType("Side", new List<(string, float)> {
-							("Fries", 1),
-							("Caesar Salad", 1),
-							("Kale Salad", 1) }) },
-						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("6 oz Sirloin", 1),
-							("9 oz Sirloin", 1),
-							("6 oz Filet", 1) }) }
-					},
+				{
+				},
 				Cost = 5
 			};
 			MenuItem sideitem7 = new MenuItem
@@ -500,20 +397,10 @@ namespace CPSC_481
 				Description = "Made with the chef's choice of fresh ingredients, ask your server for which soup is served today",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/soup.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
-					("Sauteed Mushrooms", 2.5f),
-					("Gravy", 2.0f),
-					("Steak Sauce", 2.0f) }),
+					("Toasted bun", 2.0f) }),
 				Options = new Dictionary<string, OptionType>()
-					{
-						{ "Side", createNewOptionType("Side", new List<(string, float)> {
-							("Fries", 1),
-							("Caesar Salad", 1),
-							("Kale Salad", 1) }) },
-						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("6 oz Sirloin", 1),
-							("9 oz Sirloin", 1),
-							("6 oz Filet", 1) }) }
-					},
+				{
+				},
 				Cost = 4
 			};
 
@@ -535,19 +422,16 @@ namespace CPSC_481
 				Description = "Crispy fried wings, tossed in sauce of your choice",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/wings_special.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
-					("Sauteed Mushrooms", 2.5f),
-					("Gravy", 2.0f),
-					("Steak Sauce", 2.0f) }),
+					("Double order", 4.0f),
+					("Extra Ranch", 1.0f) }),
 				Options = new Dictionary<string, OptionType>()
 					{
-						{ "Side", createNewOptionType("Side", new List<(string, float)> {
-							("Fries", 1),
-							("Caesar Salad", 1),
-							("Kale Salad", 1) }) },
-						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("6 oz Sirloin", 1),
-							("9 oz Sirloin", 1),
-							("6 oz Filet", 1) }) }
+						{ "Flavour", createNewOptionType("Side", new List<(string, float)> {
+							("Salt & Pepper", 0.0f),
+							("Hot", 0.0f),
+							("BBQ", 0.0f),
+							("Lemon Pepper", 0.0f),
+							("Honey Garlic", 0.0f) }) }
 					},
 				Cost = 8,
 				TextFormatNormal = Visibility.Hidden,
@@ -559,19 +443,17 @@ namespace CPSC_481
 				Description = "Choose from our premium selection of local draft beer",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/drink_items/beer.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
-					("Sauteed Mushrooms", 2.5f),
-					("Gravy", 2.0f),
-					("Steak Sauce", 2.0f) }),
+				}),
 				Options = new Dictionary<string, OptionType>()
 					{
-						{ "Side", createNewOptionType("Side", new List<(string, float)> {
-							("Fries", 1),
-							("Caesar Salad", 1),
-							("Kale Salad", 1) }) },
+						{ "Brand", createNewOptionType("Side", new List<(string, float)> {
+							("Bud Light", 0.0f),
+							("Miller Lite", 0.0f),
+							("Kokanee", 0.0f),
+							("Molson Canadian", 0.0f) }) },
 						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("6 oz Sirloin", 1),
-							("9 oz Sirloin", 1),
-							("6 oz Filet", 1) }) }
+							("16 oz", 0),
+							("20 oz", 2) }) }
 					},
 				Cost = 5,
 				TextFormatNormal = Visibility.Hidden,
@@ -583,19 +465,14 @@ namespace CPSC_481
 				Description = "Crunchy seaweed, warm sushi rice with your choice of cucmber, spicy tuna, salmon or california roll",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/sushi_crop.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
-					("Sauteed Mushrooms", 2.5f),
-					("Gravy", 2.0f),
-					("Steak Sauce", 2.0f) }),
+				}),
 				Options = new Dictionary<string, OptionType>()
 					{
-						{ "Side", createNewOptionType("Side", new List<(string, float)> {
-							("Fries", 1),
-							("Caesar Salad", 1),
-							("Kale Salad", 1) }) },
-						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("6 oz Sirloin", 1),
-							("9 oz Sirloin", 1),
-							("6 oz Filet", 1) }) }
+						{ "Type", createNewOptionType("Side", new List<(string, float)> {
+							("California", 0.0f),
+							("Philadelphia", 0.0f),
+							("Spicy Tuna", 2),
+							("Spicy Salmon", 2) }) }
 					},
 				Cost = 10,
 				TextFormatNormal = Visibility.Hidden,
@@ -607,19 +484,15 @@ namespace CPSC_481
 				Description = "Choose from our large selection of house wines",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/drink_items/wine.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
-					("Sauteed Mushrooms", 2.5f),
-					("Gravy", 2.0f),
-					("Steak Sauce", 2.0f) }),
+				}),
 				Options = new Dictionary<string, OptionType>()
 					{
-						{ "Side", createNewOptionType("Side", new List<(string, float)> {
-							("Fries", 1),
-							("Caesar Salad", 1),
-							("Kale Salad", 1) }) },
+						{ "Type", createNewOptionType("Side", new List<(string, float)> {
+							("House Red", 0.0f),
+							("House White", 0.0f) }) },
 						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("6 oz Sirloin", 1),
-							("9 oz Sirloin", 1),
-							("6 oz Filet", 1) }) }
+							("6 oz", 0.0f),
+							("9 oz", 2) }) }
 					},
 				Cost = 5,
 				TextFormatNormal = Visibility.Hidden,
