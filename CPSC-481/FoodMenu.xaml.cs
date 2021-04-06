@@ -59,6 +59,11 @@ namespace CPSC_481
 			orderHandler.currentPage = Categories.Apps;
 			applyFilters();
 			menuTitle.Text = "Appies";
+
+			//Trace.WriteLine("APPETIZERS: ");
+			//for (int i = 0; i < orderHandler.foodMenuLists_filtered[Categories.Apps].Count; i++) {
+			//	Trace.WriteLine(orderHandler.foodMenuLists_filtered[Categories.Apps][i].Name);
+			//}
 		}
 		private void mainClick(object sender, RoutedEventArgs e)
 		{

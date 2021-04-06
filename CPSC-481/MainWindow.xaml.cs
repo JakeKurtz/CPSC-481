@@ -1058,8 +1058,8 @@ public enum MenuButton
 public enum Categories
 {
 	Main,
-	Side,
 	Apps,
+	Side,
 	Special,
 	Beer,
 	Wine,
