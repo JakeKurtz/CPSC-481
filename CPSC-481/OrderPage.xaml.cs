@@ -120,9 +120,9 @@ namespace CPSC_481
 				total += getTotal(itemList);
 			}
 
-			oh_subTotal.Text = subTotal.ToString();
-			oh_gst.Text = gst.ToString();
-			oh_total.Text = total.ToString();
+			oh_subTotal.Text = subTotal.ToString("0.00");
+			oh_gst.Text = gst.ToString("0.00");
+			oh_total.Text = total.ToString("0.00");
 		}
 
 		public void Button_Send_Order(object sender, RoutedEventArgs e) {

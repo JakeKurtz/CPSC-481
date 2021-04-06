@@ -426,7 +426,7 @@ namespace CPSC_481
 					("Extra Ranch", 1.0f) }),
 				Options = new Dictionary<string, OptionType>()
 					{
-						{ "Flavour", createNewOptionType("Side", new List<(string, float)> {
+						{ "Flavour", createNewOptionType("Flavour", new List<(string, float)> {
 							("Salt & Pepper", 0.0f),
 							("Hot", 0.0f),
 							("BBQ", 0.0f),
