@@ -87,9 +87,9 @@ namespace CPSC_481
 				OrderCurrentIsEmpty.Visibility = Visibility.Visible;
 			}
 
-			oc_subTotal.Text = getSubTotal(itemList).ToString();
-			oc_gst.Text = getGST(itemList).ToString();
-			oc_total.Text = getTotal(itemList).ToString();
+			oc_subTotal.Text = getSubTotal(itemList).ToString("0.00");
+			oc_gst.Text = getGST(itemList).ToString("0.00");
+			oc_total.Text = getTotal(itemList).ToString("0.00");
 		}
 		private void updateOrderHistoryInvoice() {
 
