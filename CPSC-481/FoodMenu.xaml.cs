@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
 using System.ComponentModel;
+using System.Globalization;
 
 namespace CPSC_481
 {
@@ -104,6 +105,13 @@ namespace CPSC_481
 
 			_items_column_1.ItemsSource = secondArray;
 			_items_column_2.ItemsSource = firstArray;
+		}
+
+		private void setupRecommendations(List<MenuItem> list) {
+			for (int i = 0; i < list.Count(); i++) {
+				if (list[i].Name == "Chicken Wings") {
+				}
+			}
 		}
 
 		private void applyFilters() {

@@ -71,6 +71,7 @@ namespace CPSC_481
 				Name = "Steak Frites",
 				Description = "We proudly serve Canadian beef aged 45 days for superior tenderness. With French fries and confit garlic butter",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/steak_dinner.jpg")),
+				TopPicks = new BitmapImage(new Uri("pack://application:,,,/Resources/images/star.png")),
 				Addons = createNewAddonList(new List<(string, float)> {
 					("Sauteed Mushrooms", 2.5f),
 					("Gravy", 2.0f),
@@ -137,6 +138,7 @@ namespace CPSC_481
 				Name = "Grilled Salmon Bowl",
 				Description = "Grilled salmon, grilled asparagus, jasmine rice, carrots, peas and mushrooms",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/salmon.jpg")),
+				TopPicks = new BitmapImage(new Uri("pack://application:,,,/Resources/images/star.png")),
 				Addons = createNewAddonList(new List<(string, float)> {
 					("Extra Rice", 2.0f) }),
 				Options = new Dictionary<string, OptionType>()
@@ -169,6 +171,7 @@ namespace CPSC_481
 				Name = "Bacon Cheddar Burger",
 				Description = "Smoked bacon, tomatoes, onion, lettuce, pickles on a toasted bun",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/burger.jpg")),
+				TopPicks = new BitmapImage(new Uri("pack://application:,,,/Resources/images/star.png")),
 				Addons = createNewAddonList(new List<(string, float)> {
 					("Extra Bacon", 2.5f),
 					("Upgrade bun to brioche", 2.0f) }),
@@ -186,6 +189,7 @@ namespace CPSC_481
 				Name = "Crispy Falafel Burger",
 				Description = "Chickpea falafel, roasted peppers, spicy tzatziki and feta cheese",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/falafelBurger.jpg")),
+				TopPicks = new BitmapImage(new Uri("pack://application:,,,/Resources/images/star.png")),
 				Addons = createNewAddonList(new List<(string, float)> {
 					("Extra feta", 2.0f),
 					("Upgrade to chicken", 3.0f) }),
@@ -255,6 +259,7 @@ namespace CPSC_481
 				Name = "Garlic Fries",
 				Description = "Crunchy fries with garlic seasoning",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/fries_landscape.jpg")),
+				TopPicks = new BitmapImage(new Uri("pack://application:,,,/Resources/images/star.png")),
 				Addons = createNewAddonList(new List<(string, float)> {
 				}),
 				Options = new Dictionary<string, OptionType>()
@@ -280,6 +285,7 @@ namespace CPSC_481
 				Name = "Chicken Wings",
 				Description = "10 piece fried chicken wings of your choice, comes with carrot and celery sticks",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/wings.jpg")),
+				TopPicks = new BitmapImage(new Uri("pack://application:,,,/Resources/images/star.png")),
 				Addons = createNewAddonList(new List<(string, float)> {
 					("Double order", 4.0f),
 					("Extra Ranch", 1.0f) }),
@@ -324,6 +330,7 @@ namespace CPSC_481
 				Name = "Handcut fries",
 				Description = "Freshly cut fries, lightly salted and seasoned",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/friesSide.jpg")),
+				TopPicks = new BitmapImage(new Uri("pack://application:,,,/Resources/images/star.png")),
 				Addons = createNewAddonList(new List<(string, float)> {
 				}),
 				Options = new Dictionary<string, OptionType>()
@@ -336,6 +343,7 @@ namespace CPSC_481
 				Name = "Kale Caesar Salad",
 				Description = "Fresh kale salad with house caesar dressing",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/kale.jpg")),
+				TopPicks = new BitmapImage(new Uri("pack://application:,,,/Resources/images/star.png")),
 				Addons = createNewAddonList(new List<(string, float)> {
 					("Grilled Chicken", 3.0f) }),
 				Options = new Dictionary<string, OptionType>()
@@ -372,6 +380,7 @@ namespace CPSC_481
 				Name = "Mashed Potatoes",
 				Description = "Yukon gold potatoes, mashed with sour cream and house seasoning",
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/mashedPotatoes.jpg")),
+				TopPicks = new BitmapImage(new Uri("pack://application:,,,/Resources/images/star.png")),
 				Addons = createNewAddonList(new List<(string, float)> {
 					("Gravy", 2.0f) }),
 				Options = new Dictionary<string, OptionType>()
@@ -1011,6 +1020,7 @@ public class MenuItem : INotifyPropertyChanged
 	public Visibility TextFormatSpecial { get; set; } = Visibility.Hidden;
 	public Visibility PopularItem { get; set; } = Visibility.Hidden;
 	public Dictionary<string, bool> FilterTags { get; set; } = new Dictionary<string, bool>();
+	public ImageSource TopPicks { get; set; }
 
 float _Cost;
 	public float Cost
