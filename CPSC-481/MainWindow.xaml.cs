@@ -157,7 +157,7 @@ namespace CPSC_481
 				ImageSrc = new BitmapImage(new Uri("pack://application:,,,/Resources/images/food_items/fishChips.jpg")),
 				Addons = createNewAddonList(new List<(string, float)> {
 					("Extra tartar sauce", 2.0f),
-					("Upgrade frieds to poutine", 3.0f)}),
+					("Upgrade fries to poutine", 3.0f)}),
 				Options = new Dictionary<string, OptionType>()
 					{
 						{ "Size", createNewOptionType("Size", new List<(string, float)> {
