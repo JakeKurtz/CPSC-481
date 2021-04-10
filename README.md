@@ -15,7 +15,7 @@ Download or pull the code from the repository, and open
 
 ## Usage
 
-To run the program, select "Start" in the toolbar.
+To run the program, select "Start" in the Visual Studio toolbar.
 
 No necessary data input is required for the application to work. The main navigation consists of:
 - Food menu
