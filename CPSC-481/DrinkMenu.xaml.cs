@@ -31,6 +31,7 @@ namespace CPSC_481
 			setupMenus(orderHandler.drinkMenuLists_filtered[Categories.Beer]);
 			btnSelected(0);
 			orderHandler.currentPage = Categories.Beer;
+			drinkMenuTitle.Text = "Beer";
 		}
 
 		// button click methods
@@ -39,24 +40,28 @@ namespace CPSC_481
 			setupMenus(orderHandler.drinkMenuLists_filtered[Categories.Beer]);
 			btnSelected(0);
 			orderHandler.currentPage = Categories.Beer;
+			drinkMenuTitle.Text = "Beer";
 		}
 		private void wineClick(object sender, RoutedEventArgs e)
 		{
 			setupMenus(orderHandler.drinkMenuLists_filtered[Categories.Wine]);
 			btnSelected(1);
 			orderHandler.currentPage = Categories.Wine;
+			drinkMenuTitle.Text = "Wine";
 		}
 		private void cocktailClick(object sender, RoutedEventArgs e)
 		{
 			setupMenus(orderHandler.drinkMenuLists_filtered[Categories.Cocktails]);
 			btnSelected(2);
 			orderHandler.currentPage = Categories.Cocktails;
+			drinkMenuTitle.Text = "Cocktails";
 		}
 		private void nonAlcoholClick(object sender, RoutedEventArgs e)
 		{
 			setupMenus(orderHandler.drinkMenuLists_filtered[Categories.NonAlch]);
 			btnSelected(3);
 			orderHandler.currentPage = Categories.NonAlch;
+			drinkMenuTitle.Text = "Non-Alcoholic";
 		}
 
 		private void selectItemClick(object sender, RoutedEventArgs e)
