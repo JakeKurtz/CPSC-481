@@ -530,9 +530,9 @@ namespace CPSC_481
 				Options = new Dictionary<string, OptionType>()
 					{
 						{ "Size", createNewOptionType("Size", new List<(string, float)> {
-							("14 oz.", 0.0f),
-							("16 oz.", 2.0f),
-							("20 oz.", 3.50f) }) }
+							("14 oz", 0.0f),
+							("16 oz", 2.0f),
+							("20 oz", 3.50f) }) }
 					},
 				Cost = 8.0f
 			};
@@ -570,11 +570,11 @@ namespace CPSC_481
 				Options = new Dictionary<string, OptionType>()
 					{
 						{ "Selection", createNewOptionType("Selection", new List<(string, float)> {
-							("Piccolo 187.5ml", 0.0f),
-							("Demi 375ml", 0.0f),
-							("Jennie 500ml", 0.0f),
-							("Standard 750ml", 0.0f),
-							("Liter 1000ml", 0.0f) }) },
+							("Heineken", 0.0f),
+							("Dos Equis", 0.0f),
+							("Corona", 0.0f),
+							("Stella Artois", 1.0f),
+							("Guinness", 1.0f) }) },
 						{ "Size", createNewOptionType("Size", new List<(string, float)> {
 								("16 oz", 0.0f),
 								("20 oz", 2.0f) }) }
