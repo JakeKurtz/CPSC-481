@@ -89,10 +89,18 @@ namespace CPSC_481
 					},
 				Cost = 27.50f,
 				FilterTags = new Dictionary<string, bool>()
-					{
-						{ "Milk", false},
-						{ "Mustard", false}
-					}
+				{
+					{ "Milk", false},
+					{ "Mustard", false},
+					{"Peanuts", false},
+					{"Shell fish", false},
+					{"Egg", false},
+					{"Fish", false},
+					{"Sesame seeds", false},
+					{"Soy", false},
+					{"Gluten free", false},
+					{"Dairy free", false}
+				}
 			};
 			MenuItem item2 = new MenuItem
 			{
@@ -109,7 +117,18 @@ namespace CPSC_481
 							("Caesar Salad", 0.0f),
 							("Kale Salad", 0.0f) }) }
 					},
-				Cost = 18
+				Cost = 18.0f,
+				FilterTags = new Dictionary<string, bool>()
+				{
+					{"Mustard", false},
+					{"Peanuts", false},
+					{"Shell fish", false},
+					{"Egg", false},
+					{"Fish", false},
+					{"Sesame seeds", false},
+					{"Soy", false},
+					{"Sulphites", false}
+				}
 			};
 			MenuItem item3 = new MenuItem
 			{
@@ -131,7 +150,20 @@ namespace CPSC_481
 							("Half Rack", 5.0f),
 							("Full Rack", 10.0f) }) }
 					},
-				Cost = 23
+				Cost = 23.0f,
+				FilterTags = new Dictionary<string, bool>()
+				{
+					{"Milk", false},
+					{"Mustard", false},
+					{"Peanuts", false},
+					{"Shell fish", false},
+					{"Egg", false},
+					{"Fish", false},
+					{"Sesame seeds", false},
+					{"Soy", false},
+					{"Dairy free", false},
+					{"Paleo", false}
+				}
 			};
 			MenuItem item4 = new MenuItem
 			{
@@ -148,7 +180,18 @@ namespace CPSC_481
 							("Caesar Salad", 0.0f),
 							("Kale Salad", 0.0f) }) }
 					},
-				Cost = 25
+				Cost = 25.0f,
+				FilterTags = new Dictionary<string, bool>()
+				{
+					{"Milk", false},
+					{"Mustard", false},
+					{"Peanuts", false},
+					{"Shell fish", false},
+					{"Egg", false},
+					{"Gluten free", false},
+					{"Dairy free", false},
+					{"Vegetarian", false}
+				}
 			};
 			MenuItem item5 = new MenuItem
 			{
@@ -164,7 +207,17 @@ namespace CPSC_481
 							("3 piece haddock", 0.0f),
 							("5 piece haddock", 3.0f) }) }
 					},
-				Cost = 21
+				Cost = 21.0f,
+				FilterTags = new Dictionary<string, bool>()
+				{
+					{"Mustard", false},
+					{"Peanuts", false},
+					{"Shell fish", false},
+					{"Sesame seeds", false},
+					{"Soy", false},
+					{"Sulphites", false},
+					{"Vegetarian", false}
+				}
 			};
 			MenuItem item6 = new MenuItem
 			{
@@ -182,7 +235,20 @@ namespace CPSC_481
 							("Caesar Salad", 0.0f),
 							("Kale Salad", 0.0f) }) }
 					},
-				Cost = 20
+				Cost = 20.0f,
+				FilterTags = new Dictionary<string, bool>()
+				{
+					{"Milk", false},
+					{"Mustard", false},
+					{"Peanuts", false},
+					{"Shell fish", false},
+					{"Egg", false},
+					{"Fish", false},
+					{"Sesame seeds", false},
+					{"Soy", false},
+					{"Sulphites", false},
+					{"Dairy free", false}
+				}
 			};
 			MenuItem item7 = new MenuItem
 			{
@@ -203,7 +269,20 @@ namespace CPSC_481
 							("Pita", 0.0f),
 							("Whole Wheat Pita", 0.0f) }) }
 					},
-				Cost = 17
+				Cost = 17.0f,
+				FilterTags = new Dictionary<string, bool>()
+				{
+					{"Mustard", false},
+					{"Peanuts", false},
+					{"Shell fish", false},
+					{"Egg", false},
+					{"Fish", false},
+					{"Sesame seeds", false},
+					{"Soy", false},
+					{"Sulphites", false},
+					{"Halal", false},
+					{"Vegetarian", false}
+				}
 			};
 			MenuItem item8 = new MenuItem
 			{
@@ -220,7 +299,18 @@ namespace CPSC_481
 							("Caesar Salad", 0.0f),
 							("Kale Salad", 0.0f) }) }
 					},
-				Cost = 22
+				Cost = 22.0f,
+				FilterTags = new Dictionary<string, bool>()
+				{
+					{"Mustard", false},
+					{"Peanuts", false},
+					{"Shell fish", false},
+					{"Egg", false},
+					{"Fish", false},
+					{"Sesame seeds", false},
+					{"Soy", false},
+					{"Sulphites", false}
+				}
 			};
 			MenuItem item9 = new MenuItem
 			{
@@ -237,7 +327,24 @@ namespace CPSC_481
 							("Caesar Salad", 0.0f),
 							("Kale Salad", 0.0f) }) }
 					},
-				Cost = 16
+				Cost = 16.0f,
+				FilterTags = new Dictionary<string, bool>()
+				{
+					{"Milk", false},
+					{"Mustard", false},
+					{"Peanuts", false},
+					{"Shell fish", false},
+					{"Egg", false},
+					{"Fish", false},
+					{"Soy", false},
+					{"Sulphites", false},
+					{"Vegan", false},
+					{"Gluten free", false},
+					{"Dairy free", false},
+					{"Halal", false},
+					{"Vegetarian", false},
+					{"Paleo", false}
+				}
 			};
 
 			List<MenuItem> MainList = new List<MenuItem>();
@@ -266,7 +373,24 @@ namespace CPSC_481
 				{
 				},
 				Cost = 10,
-				PopularItem = Visibility.Visible
+				PopularItem = Visibility.Visible,
+				FilterTags = new Dictionary<string, bool>()
+				{
+					{"Milk", false},
+					{"Mustard", false},
+					{"Peanuts", false},
+					{"Shell fish", false},
+					{"Egg", false},
+					{"Fish", false},
+					{"Sesame seeds", false},
+					{"Soy", false},
+					{"Vegan", false},
+					{"Gluten free", false},
+					{"Dairy free", false},
+					{"Halal", false},
+					{"Vegetarian", false},
+					{"Paleo", false}
+				}
 			};
 			MenuItem appitem2 = new MenuItem
 			{
@@ -278,7 +402,24 @@ namespace CPSC_481
 				Options = new Dictionary<string, OptionType>()
 				{
 				},
-				Cost = 14
+				Cost = 14.0f,
+				FilterTags = new Dictionary<string, bool>()
+				{
+					{"Milk", false},
+					{"Mustard", false},
+					{"Peanuts", false},
+					{"Shell fish", false},
+					{"Egg", false},
+					{"Fish", false},
+					{"Sesame seeds", false},
+					{"Soy", false},
+					{"Vegan", false},
+					{"Gluten free", false},
+					{"Dairy free", false},
+					{"Halal", false},
+					{"Vegetarian", false},
+					{"Paleo", false}
+				}
 			};
 			MenuItem appitem3 = new MenuItem
 			{
@@ -299,7 +440,20 @@ namespace CPSC_481
 							("Honey Garlic", 0.0f) })
 					}
 				},
-				Cost = 12
+				Cost = 12.0f,
+				FilterTags = new Dictionary<string, bool>()
+				{
+					{"Mustard", false},
+					{"Peanuts", false},
+					{"Shell fish", false},
+					{"Egg", false},
+					{"Fish", false},
+					{"Sesame seeds", false},
+					{"Soy", false},
+					{"Gluten free", false},
+					{"Dairy free", false},
+					{"Paleo", false}
+				}
 			};
 			MenuItem appitem4 = new MenuItem
 			{
@@ -313,7 +467,20 @@ namespace CPSC_481
 				Options = new Dictionary<string, OptionType>()
 					{
 					},
-				Cost = 16
+				Cost = 16.0f,
+				FilterTags = new Dictionary<string, bool>()
+				{
+					{"Mustard", false},
+					{"Peanuts", false},
+					{"Shell fish", false},
+					{"Egg", false},
+					{"Fish", false},
+					{"Sesame seeds", false},
+					{"Soy", false},
+					{"Gluten free", false},
+					{"Halal", false},
+					{"Vegetarian", false}
+				}
 			};
 
 			List<MenuItem> AppetizerList = new List<MenuItem>();
@@ -336,7 +503,23 @@ namespace CPSC_481
 				Options = new Dictionary<string, OptionType>()
 				{
 				},
-				Cost = 12
+				Cost = 12.0f,
+				FilterTags = new Dictionary<string, bool>()
+				{
+					{"Milk", false},
+					{"Mustard", false},
+					{"Peanuts", false},
+					{"Shell fish", false},
+					{"Egg", false},
+					{"Fish", false},
+					{"Sesame seeds", false},
+					{"Soy", false},
+					{"Vegan", false},
+					{"Gluten free", false},
+					{"Dairy free", false},
+					{"Halal", false},
+					{"Vegetarian", false}
+				}
 			};
 			MenuItem sideitem2 = new MenuItem
 			{
@@ -349,7 +532,21 @@ namespace CPSC_481
 				Options = new Dictionary<string, OptionType>()
 				{
 				},
-				Cost = 6
+				Cost = 6.0f,
+				FilterTags = new Dictionary<string, bool>()
+				{
+					{"Mustard", false},
+					{"Peanuts", false},
+					{"Shell fish", false},
+					{"Egg", false},
+					{"Fish", false},
+					{"Sesame seeds", false},
+					{"Soy", false},
+					{"Gluten free", false},
+					{"Halal", false},
+					{"Vegetarian", false},
+					{"Paleo", false}
+				}
 			};
 			MenuItem sideitem3 = new MenuItem
 			{
@@ -361,7 +558,24 @@ namespace CPSC_481
 				Options = new Dictionary<string, OptionType>()
 				{
 				},
-				Cost = 4
+				Cost = 4.0f,
+				FilterTags = new Dictionary<string, bool>()
+				{
+					{"Milk", false},
+					{"Mustard", false},
+					{"Peanuts", false},
+					{"Shell fish", false},
+					{"Egg", false},
+					{"Fish", false},
+					{"Sesame seeds", false},
+					{"Soy", false},
+					{"Sulphites", false},
+					{"Vegan", false},
+					{"Dairy free", false},
+					{"Halal", false},
+					{"Vegetarian", false},
+					{"Paleo", false}
+				}
 			};
 			MenuItem sideitem4 = new MenuItem
 			{
@@ -373,7 +587,21 @@ namespace CPSC_481
 				Options = new Dictionary<string, OptionType>()
 				{
 				},
-				Cost = 3
+				Cost = 3.0f,
+				FilterTags = new Dictionary<string, bool>()
+				{
+					{"Mustard", false},
+					{"Peanuts", false},
+					{"Shell fish", false},
+					{"Egg", false},
+					{"Fish", false},
+					{"Sesame seeds", false},
+					{"Soy", false},
+					{"Sulphites", false},
+					{"Halal", false},
+					{"Vegetarian", false},
+					{"Paleo", false}
+				}
 			};
 			MenuItem sideitem5 = new MenuItem
 			{
@@ -386,7 +614,20 @@ namespace CPSC_481
 				Options = new Dictionary<string, OptionType>()
 				{
 				},
-				Cost = 5
+				Cost = 5.0f,
+				FilterTags = new Dictionary<string, bool>()
+				{
+					{"Mustard", false},
+					{"Peanuts", false},
+					{"Shell fish", false},
+					{"Egg", false},
+					{"Fish", false},
+					{"Sesame seeds", false},
+					{"Soy", false},
+					{"Gluten free", false},
+					{"Halal", false},
+					{"Vegetarian", false}
+				}
 			};
 			MenuItem sideitem6 = new MenuItem
 			{
@@ -398,7 +639,21 @@ namespace CPSC_481
 				Options = new Dictionary<string, OptionType>()
 				{
 				},
-				Cost = 5
+				Cost = 5.0f,
+				FilterTags = new Dictionary<string, bool>()
+				{
+					{"Mustard", false},
+					{"Peanuts", false},
+					{"Shell fish", false},
+					{"Egg", false},
+					{"Fish", false},
+					{"Sesame seeds", false},
+					{"Soy", false},
+					{"Gluten free", false},
+					{"Halal", false},
+					{"Vegetarian", false},
+					{"Paleo", false}
+				}
 			};
 			MenuItem sideitem7 = new MenuItem
 			{
@@ -410,7 +665,7 @@ namespace CPSC_481
 				Options = new Dictionary<string, OptionType>()
 				{
 				},
-				Cost = 4
+				Cost = 4.0f
 			};
 
 			List<MenuItem> SidesList = new List<MenuItem>();
@@ -444,7 +699,20 @@ namespace CPSC_481
 					},
 				Cost = 8,
 				TextFormatNormal = Visibility.Hidden,
-				TextFormatSpecial = Visibility.Visible
+				TextFormatSpecial = Visibility.Visible,
+				FilterTags = new Dictionary<string, bool>()
+				{
+					{"Mustard", false},
+					{"Peanuts", false},
+					{"Shell fish", false},
+					{"Egg", false},
+					{"Fish", false},
+					{"Sesame seeds", false},
+					{"Soy", false},
+					{"Gluten free", false},
+					{"Dairy free", false},
+					{"Paleo", false}
+				}
 			};
 			MenuItem specialitem2 = new MenuItem
 			{
@@ -467,7 +735,22 @@ namespace CPSC_481
 					},
 				Cost = 5,
 				TextFormatNormal = Visibility.Hidden,
-				TextFormatSpecial = Visibility.Visible
+				TextFormatSpecial = Visibility.Visible,
+				FilterTags = new Dictionary<string, bool>()
+				{
+					{"Milk", false},
+					{"Mustard", false},
+					{"Peanuts", false},
+					{"Shell fish", false},
+					{"Egg", false},
+					{"Fish", false},
+					{"Sesame seeds", false},
+					{"Soy", false},
+					{"Sulphites", false},
+					{"Vegan", false},
+					{"Dairy free", false},
+					{"Vegetarian", false}
+				}
 			};
 			MenuItem specialitem3 = new MenuItem
 			{
@@ -486,7 +769,18 @@ namespace CPSC_481
 					},
 				Cost = 10,
 				TextFormatNormal = Visibility.Hidden,
-				TextFormatSpecial = Visibility.Visible
+				TextFormatSpecial = Visibility.Visible,
+				FilterTags = new Dictionary<string, bool>()
+				{
+					{"Milk", false},
+					{"Mustard", false},
+					{"Peanuts", false},
+					{"Egg", false},
+					{"Gluten free", false},
+					{"Dairy free", false},
+					{"Halal", false},
+					{"Vegetarian", false}
+				}
 			};
 			MenuItem specialitem4 = new MenuItem
 			{
@@ -506,7 +800,22 @@ namespace CPSC_481
 					},
 				Cost = 6,
 				TextFormatNormal = Visibility.Hidden,
-				TextFormatSpecial = Visibility.Visible
+				TextFormatSpecial = Visibility.Visible,
+				FilterTags = new Dictionary<string, bool>()
+				{
+					{"Milk", false},
+					{"Mustard", false},
+					{"Peanuts", false},
+					{"Shell fish", false},
+					{"Egg", false},
+					{"Fish", false},
+					{"Sesame seeds", false},
+					{"Soy", false},
+					{"Sulphites", false},
+					{"Vegan", false},
+					{"Dairy free", false},
+					{"Vegetarian", false}
+				}
 			};
 
 			List<MenuItem> SpecialsList = new List<MenuItem>();
@@ -972,7 +1281,7 @@ public class OrderHandler
 		{"Vegan", false},
 		{"Gluten free", false},
 		{"Dairy free", false},
-		{"Hala", false},
+		{"Halal", false},
 		{"Vegetarian", false},
 		{"Paleo", false}
 	};
